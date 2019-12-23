@@ -23,7 +23,7 @@ namespace XamlSamples
             };
 
             btncalculator.Clicked += async (sender, args) => {
-                await DisplayAlert("Alert","Coming Shortly!!!","OK","CANCEL");
+                await Navigation.PushAsync(new CalculatorPage());
             };
 
             Button btnTime = new Button {

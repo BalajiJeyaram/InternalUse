@@ -12,3 +12,4 @@ C:\Users\h387014\source\repos\XamlSamples\XamlSamples\XamlSamples\obj\Debug\nets
 C:\Users\h387014\source\repos\XamlSamples\XamlSamples\XamlSamples\obj\Debug\netstandard2.0\XamlSamples.pdb
 C:\Users\h387014\source\repos\XamlSamples\XamlSamples\XamlSamples\obj\Debug\netstandard2.0\HelloXamlPage.xaml.g.cs
 C:\Users\h387014\source\repos\XamlSamples\XamlSamples\XamlSamples\obj\Debug\netstandard2.0\XamlPlusCodePage.xaml.g.cs
+C:\Users\h387014\source\repos\XamlSamples\XamlSamples\XamlSamples\obj\Debug\netstandard2.0\CalculatorPage.xaml.g.cs
