@@ -13,9 +13,11 @@ public class DisplayMessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display_message);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        //String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        String message = intent.getStringExtra(LoginActivity.GLOBAL_USER);
+
         TextView textView = findViewById(R.id.textView);
-        textView.setText(message);
+        textView.setText("You have logged as " + message);
 
     }
 }

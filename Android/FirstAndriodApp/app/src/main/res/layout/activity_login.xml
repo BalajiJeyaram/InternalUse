@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/EnterPassword"
+        android:layout_width="145dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="16dp"
+        android:text="Password"
+        app:layout_constraintEnd_toStartOf="@+id/EnterPassword"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="165dp" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="145dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="16dp"
+        android:text="UserName"
+        app:layout_constraintEnd_toStartOf="@+id/emailaddress"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="38dp" />
+
+    <EditText
+        android:id="@+id/emailaddress"
+        android:layout_width="194dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/username"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/EnterPassword"
+        android:layout_width="175dp"
+        android:layout_height="37dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/EnterPassword"
+        tools:layout_editor_absoluteY="151dp" />
+
+    <Button
+        android:id="@+id/btnok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:onClick="Login"
+        android:text="Login"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="262dp" />
+
+    <Button
+        android:id="@+id/btncancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="72dp"
+        android:text="@android:string/cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="262dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
