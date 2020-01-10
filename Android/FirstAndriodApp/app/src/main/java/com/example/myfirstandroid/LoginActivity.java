@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         EditText emailaddress = (EditText) findViewById(R.id.emailaddress);
-        EditText password = (EditText) findViewById(R.id.EnterPassword) ;
+        EditText password = (EditText) findViewById(R.id.emailaddress) ;
 
 
         String user = emailaddress.getText().toString();

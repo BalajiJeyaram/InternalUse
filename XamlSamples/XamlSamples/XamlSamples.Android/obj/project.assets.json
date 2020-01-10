@@ -800,11 +800,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\h387014\\source\\repos\\XamlSamples\\XamlSamples\\XamlSamples.Android\\XamlSamples.Android.csproj",
+      "projectUniqueName": "C:\\Users\\h387014\\Documents\\GitHub\\InternalUse\\XamlSamples\\XamlSamples\\XamlSamples.Android\\XamlSamples.Android.csproj",
       "projectName": "XamlSamples.Android",
-      "projectPath": "C:\\Users\\h387014\\source\\repos\\XamlSamples\\XamlSamples\\XamlSamples.Android\\XamlSamples.Android.csproj",
+      "projectPath": "C:\\Users\\h387014\\Documents\\GitHub\\InternalUse\\XamlSamples\\XamlSamples\\XamlSamples.Android\\XamlSamples.Android.csproj",
       "packagesPath": "C:\\Users\\h387014\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\h387014\\source\\repos\\XamlSamples\\XamlSamples\\XamlSamples.Android\\obj\\",
+      "outputPath": "C:\\Users\\h387014\\Documents\\GitHub\\InternalUse\\XamlSamples\\XamlSamples\\XamlSamples.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
@@ -822,8 +822,8 @@
       "frameworks": {
         "monoandroid81": {
           "projectReferences": {
-            "C:\\Users\\h387014\\source\\repos\\XamlSamples\\XamlSamples\\XamlSamples\\XamlSamples.csproj": {
-              "projectPath": "C:\\Users\\h387014\\source\\repos\\XamlSamples\\XamlSamples\\XamlSamples\\XamlSamples.csproj"
+            "C:\\Users\\h387014\\Documents\\GitHub\\InternalUse\\XamlSamples\\XamlSamples\\XamlSamples\\XamlSamples.csproj": {
+              "projectPath": "C:\\Users\\h387014\\Documents\\GitHub\\InternalUse\\XamlSamples\\XamlSamples\\XamlSamples\\XamlSamples.csproj"
             }
           }
         }

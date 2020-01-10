@@ -349,11 +349,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\h387014\\source\\repos\\XamlSamples\\XamlSamples\\XamlSamples\\XamlSamples.csproj",
+      "projectUniqueName": "C:\\Users\\h387014\\Documents\\GitHub\\InternalUse\\XamlSamples\\XamlSamples\\XamlSamples\\XamlSamples.csproj",
       "projectName": "XamlSamples",
-      "projectPath": "C:\\Users\\h387014\\source\\repos\\XamlSamples\\XamlSamples\\XamlSamples\\XamlSamples.csproj",
+      "projectPath": "C:\\Users\\h387014\\Documents\\GitHub\\InternalUse\\XamlSamples\\XamlSamples\\XamlSamples\\XamlSamples.csproj",
       "packagesPath": "C:\\Users\\h387014\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\h387014\\source\\repos\\XamlSamples\\XamlSamples\\XamlSamples\\obj\\",
+      "outputPath": "C:\\Users\\h387014\\Documents\\GitHub\\InternalUse\\XamlSamples\\XamlSamples\\XamlSamples\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
