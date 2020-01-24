@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--<audio id="audio" src="http://www.soundjay.com/button/beep-07.wav" autoplay="false"></audio>-->
+    <button onclick="beep(100, 520, 200)">B e e p</button>
+    <button onclick="beep(999, 210, 800); beep(999, 500, 800);">Cool Noise!</button>
+</body>
+</html>
+
+<script>
+    //function playSound() {
+    //      var sound = document.getElementById("audio");
+    //      sound.play();
+    //}
+    a = new AudioContext()
+    function beep(vol, freq, duration) {
+        v = a.createOscillator()
+        u = a.createGain()
+        v.connect(u)
+        v.frequency.value = freq
+        v.type = "square"
+        u.connect(a.destination)
+        u.gain.value = vol * 0.01
+        v.start(a.currentTime)
+        v.stop(a.currentTime + duration * 0.001)
+    }
+</script>
