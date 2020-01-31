@@ -7,7 +7,10 @@
     .alnleft {
         text-align: left;
     }
-   
+
+    .table-hover {
+        font-size: 15px;
+    }
 </style>
 <h2>Assessment</h2>
 <div class=".container-fluid">
@@ -23,7 +26,7 @@
                 </b>
             </div>
             <div class="panel-body">
-                <table class="table table-hover">
+                <table class="table table-hover" id="tablewithQuestions">
                     <thead>
                         <tr>
                             <th>Question</th>
@@ -37,7 +40,7 @@
                             <tr>
                                 <td class="questionclass" style="text-align:left">@item.Question</td>
                                 <td class="answerclass" style="text-align:left">@item.Answer</td>
-                                <td class="alnleft" style="text-align:left"><button class="popupbutton">Answer</button></td>
+                                <td class="alnleft" style="text-align:left"><button class="popupbutton" id="test1">Answer</button></td>
                             </tr>
                         }
                     </tbody>
@@ -94,7 +97,7 @@
     var btn = document.getElementsByClassName("popupbutton")[0];
     var span = document.getElementsByClassName("close")[0];
 
-    btn.onclick = function () {
+   btn.onclick = function () {
         var itemQ = $(this).closest("tr")   // Finds the closest row <tr> 
             .find(".questionclass")     // Gets a descendent with class="nr"
             .text();         // Retrieves the text within <td>
@@ -103,12 +106,29 @@
             .find(".answerclass")     // Gets a descendent with class="nr"
             .text();     
 
-        alert(itemA + '- '+ itemQ);
         document.getElementById('questiontopopup').innerHTML = itemQ;
         document.getElementById('answertopopup').innerHTML = itemA;
 
         popmodal.style.display = "block";
     }
+
+
+    //$("#tablewithQuestions tbody tr td button.btn", function () {
+    //    var itemQ = $(this).closest("tr")   // Finds the closest row <tr> 
+    //        .find(".questionclass")     // Gets a descendent with class="nr"
+    //        .text();         // Retrieves the text within <td>
+
+    //    var itemA = $(this).closest("tr")   // Finds the closest row <tr> 
+    //        .find(".answerclass")     // Gets a descendent with class="nr"
+    //        .text();
+
+    //    alert(itemA + '- ' + itemQ);
+    //    document.getElementById('questiontopopup').innerHTML = itemQ;
+    //    document.getElementById('answertopopup').innerHTML = itemA;
+
+    //    popmodal.style.display = "block";
+    //});
+
     span.onclick = function () {
         popmodal.style.display = "none";
     }
@@ -119,7 +139,7 @@
         }
     }
     $(document).ready(function () {
-
+        
     });
 
     $("#Next").click(function () {
