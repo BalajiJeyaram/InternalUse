@@ -1,0 +1,121 @@
+﻿@model List<Skynax_UserInterface.Models.QuestionAnswer>
+<!doctype html>
+@{
+    ViewBag.Title = "Assessment";
+}
+<style>
+    .alnleft {
+        text-align: left;
+    }
+   
+</style>
+<h2>Assessment</h2>
+<div class=".container-fluid">
+    <div class="row">
+        @if (Model != null)
+        {
+            <div class="panel panel-default col-md-12">
+                <div class="panel-heading" id="panelheadertext">
+                    No of Questions to be Answered - <b>
+                        @if (Model != null)
+                        {@Model.Count.ToString();
+                    }
+                </b>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Question</th>
+                            <th>Answer</th>
+                            <th>Click</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="alnleft">@item.Question</td>
+                                <td class="alnleft">@item.Answer</td>
+                                <td class="alnleft"><button id="popupbutton">Answer</button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    }
+    else
+    {
+        <div class="col-md-12">No Questions to show</div>
+        <div class="col-md-12">N/A</div>
+    }
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <dv class="col-md-6"><button class="btn btn-primary btn-responsive" id="Next">...</button></dv>
+            <dv class="col-md-6"><button class="btn btn-primary btn-responsive" style="align-content:center">Next</button></dv>
+        </div>
+    </div>
+    <!---Below code brings up pop window-->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Modal Header</h2>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the Modal Body</p>
+                <p>Some other text...</p>
+            </div>
+            <div class="modal-footer">
+                <h3>Modal Footer</h3>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var popmodal = document.getElementById("myModal");
+    var btn = document.getElementById("popupbutton");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function () {
+        popmodal.style.display = "block";
+    }
+    span.onclick = function () {
+        popmodal.style.display = "none";
+    }
+    //when user click anywhere outside of the popup window
+    window.onclick = function () {
+        if (event.target == popmodal) {
+            popmodal.style.display = "none";
+        }
+    }
+    $(document).ready(function () {
+
+    });
+
+    $("#Next").click(function () {
+        alert("clicked");
+        $.ajax({
+            url: "@Url.Action("GetQuestions","Home")",
+            success: function (data) {
+
+                $.each(data, function (i, dt) {
+                    alert(dt.Question + ' - ' + dt.answers);
+                });
+                //alert("Result: " + status + " " + xhr.status + " " + xhr.statusText)
+            },
+            error: function () {
+                alert("Result: " + status + " " + xhr.status + " " + xhr.statusText)
+            }
+        });
+
+    });
+</script>
