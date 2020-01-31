@@ -35,9 +35,9 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td class="alnleft">@item.Question</td>
-                                <td class="alnleft">@item.Answer</td>
-                                <td class="alnleft"><button id="popupbutton">Answer</button></td>
+                                <td class="questionclass" style="text-align:left">@item.Question</td>
+                                <td class="answerclass" style="text-align:left">@item.Answer</td>
+                                <td class="alnleft" style="text-align:left"><button class="popupbutton">Answer</button></td>
                             </tr>
                         }
                     </tbody>
@@ -69,8 +69,17 @@
                 <h2>Modal Header</h2>
             </div>
             <div class="modal-body">
-                <p>Some text in the Modal Body</p>
-                <p>Some other text...</p>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th id="questiontopopup">Question</th>
+                        </tr>
+                        <tr>
+                            <th id="answertopopup">Answer</th>
+                        </tr>
+                    </thead>
+              
+                </table>
             </div>
             <div class="modal-footer">
                 <h3>Modal Footer</h3>
@@ -82,10 +91,22 @@
 
 <script>
     var popmodal = document.getElementById("myModal");
-    var btn = document.getElementById("popupbutton");
+    var btn = document.getElementsByClassName("popupbutton")[0];
     var span = document.getElementsByClassName("close")[0];
 
     btn.onclick = function () {
+        var itemQ = $(this).closest("tr")   // Finds the closest row <tr> 
+            .find(".questionclass")     // Gets a descendent with class="nr"
+            .text();         // Retrieves the text within <td>
+
+        var itemA= $(this).closest("tr")   // Finds the closest row <tr> 
+            .find(".answerclass")     // Gets a descendent with class="nr"
+            .text();     
+
+        alert(itemA + '- '+ itemQ);
+        document.getElementById('questiontopopup').innerHTML = itemQ;
+        document.getElementById('answertopopup').innerHTML = itemA;
+
         popmodal.style.display = "block";
     }
     span.onclick = function () {
