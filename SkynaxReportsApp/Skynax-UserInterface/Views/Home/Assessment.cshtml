@@ -11,6 +11,20 @@
     .table-hover {
         font-size: 15px;
     }
+
+    .Radio {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .Radio--large {
+        font-size: 2rem;
+    }
+
+    .Radio-Input {
+        margin: 0 0.5rem 0;
+    }
+
 </style>
 <h2>Assessment</h2>
 <div class=".container-fluid">
@@ -37,11 +51,12 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td class="questionclass" style="text-align:left">@item.Question</td>
-                                <td class="answerclass" style="text-align:left">@item.Answer</td>
-                                <td class="alnleft" style="text-align:left"><button class="popupbutton" id="test1">Answer</button></td>
-                            </tr>
+                        <tr>
+                            <td class="questionclass" style="text-align:left">@item.Question</td>
+                            <td class="answerclass" style="text-align:left">@item.Answer</td>
+                            <td class="typeclass" style="text-align:left">@item.AnswerType</td>
+                            <td class="alnleft" style="text-align:left"><button class="popupbutton" id="test1">Answer</button></td>
+                        </tr>
                         }
                     </tbody>
                 </table>
@@ -85,7 +100,9 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <h3>Modal Footer</h3>
+                @*<h3>Modal Footer</h3>*@
+                <button class="btn btn-primary btn-responsive" id="Next">Cancel</button>
+                <button class="btn btn-primary btn-responsive" style="align-content:center">Submit</button>
             </div>
         </div>
 
@@ -94,41 +111,51 @@
 
 <script>
     var popmodal = document.getElementById("myModal");
-    var btn = document.getElementsByClassName("popupbutton")[0];
     var span = document.getElementsByClassName("close")[0];
 
-   btn.onclick = function () {
+    /*
+Having a .class selector for Event handler will result in bubbling of click event (sometimes to Parent element, sometimes to Children elements in DOM).
+event.StopPropagation() method ensures that event doesn't bubble to Parent elements, while event.StopImmediatePropagation()method ensures that event doesn't bubble to Children elements of desired class selector.
+*/
+    $(".popupbutton").on('click', function (event) {
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
         var itemQ = $(this).closest("tr")   // Finds the closest row <tr> 
             .find(".questionclass")     // Gets a descendent with class="nr"
             .text();         // Retrieves the text within <td>
 
-        var itemA= $(this).closest("tr")   // Finds the closest row <tr> 
+        var itemA = $(this).closest("tr")   // Finds the closest row <tr> 
             .find(".answerclass")     // Gets a descendent with class="nr"
-            .text();     
+            .text();
 
-        document.getElementById('questiontopopup').innerHTML = itemQ;
-        document.getElementById('answertopopup').innerHTML = itemA;
+        var itemT = $(this).closest("tr")
+            .find(".typeclass")
+            .text();
 
+        //document.getElementById('questiontopopup').innerHTML = itemQ;
+        //document.getElementById('answertopopup').innerHTML = itemA;
+
+        if (itemT == "1") {
+            var split = itemA.split("#");
+            var stritem = "";
+            var strhtml = "<fieldset><legend>"+itemQ+"</legend>";
+            $.each(split, function (key, value) {
+                stritem = stritem + "<input class='Radio-Input' type='radio' name='radio1' id='radio1'><label class='Radio Radio--large' for=''>"+ value +"</label><br>";
+            });
+            strhtml = strhtml + stritem + "</fieldset>";
+            document.getElementById('answertopopup').innerHTML = strhtml;
+        }
+        else if (itemT = "2") {
+            var strhtml = "<textarea rows='10' cols='80'>Description</textarea>";
+            document.getElementById('answertopopup').innerHTML = strhtml;
+        }
+       
         popmodal.style.display = "block";
-    }
 
+    });
 
-    //$("#tablewithQuestions tbody tr td button.btn", function () {
-    //    var itemQ = $(this).closest("tr")   // Finds the closest row <tr> 
-    //        .find(".questionclass")     // Gets a descendent with class="nr"
-    //        .text();         // Retrieves the text within <td>
-
-    //    var itemA = $(this).closest("tr")   // Finds the closest row <tr> 
-    //        .find(".answerclass")     // Gets a descendent with class="nr"
-    //        .text();
-
-    //    alert(itemA + '- ' + itemQ);
-    //    document.getElementById('questiontopopup').innerHTML = itemQ;
-    //    document.getElementById('answertopopup').innerHTML = itemA;
-
-    //    popmodal.style.display = "block";
-    //});
-
+  
     span.onclick = function () {
         popmodal.style.display = "none";
     }
@@ -139,7 +166,7 @@
         }
     }
     $(document).ready(function () {
-        
+
     });
 
     $("#Next").click(function () {

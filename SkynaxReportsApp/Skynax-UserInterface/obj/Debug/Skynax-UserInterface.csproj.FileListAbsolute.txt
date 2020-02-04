@@ -87,10 +87,6 @@ C:\Users\h387014\source\repos\SkynaxReportsApp\Skynax-UserInterface\bin\System.W
 C:\Users\h387014\source\repos\SkynaxReportsApp\Skynax-UserInterface\bin\System.Net.Http.Formatting.xml
 C:\Users\h387014\source\repos\SkynaxReportsApp\Skynax-UserInterface\bin\System.Web.Http.xml
 C:\Users\h387014\source\repos\SkynaxReportsApp\Skynax-UserInterface\bin\System.Web.Http.WebHost.xml
-C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\obj\Debug\Skynax-UserInterface.csprojAssemblyReference.cache
-C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\obj\Debug\Skynax-UserInterface.csproj.CoreCompileInputs.cache
-C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\obj\Debug\Skynax-UserInterface.dll
-C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\obj\Debug\Skynax-UserInterface.pdb
 C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\bin\Skynax-UserInterface.dll.config
 C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\bin\Skynax-UserInterface.dll
 C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\bin\Skynax-UserInterface.pdb
@@ -175,4 +171,8 @@ C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterf
 C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\bin\Newtonsoft.Json.xml
 C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\bin\Antlr3.Runtime.pdb
 C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\obj\Debug\Skynax-UserInterface.csprojAssemblyReference.cache
+C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\obj\Debug\Skynax-UserInterface.csproj.CoreCompileInputs.cache
 C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\obj\Debug\Skynax-UserInterface.csproj.CopyComplete
+C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\obj\Debug\Skynax-UserInterface.dll
+C:\Users\h387014\Documents\GitHub\InternalUse\SkynaxReportsApp\Skynax-UserInterface\obj\Debug\Skynax-UserInterface.pdb
