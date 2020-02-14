@@ -24,9 +24,9 @@
     .Radio-Input {
         margin: 0 0.5rem 0;
     }
-
 </style>
 <h2>Assessment</h2>
+<input type="hidden" id="trhidden" />
 <div class=".container-fluid">
     <div class="row">
         @if (Model != null)
@@ -37,46 +37,63 @@
                         @if (Model != null)
                         {@Model.Count.ToString();
                     }
-                </b>
+                    </b>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover" id="tablewithQuestions">
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Answer</th>
+                                <th>Type</th>
+                                <th>Answered</th>
+                                <th>Click</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="questionclass" style="text-align:left">@item.Question</td>
+                                    <td class="answerclass" style="text-align:left">@item.Answer</td>
+                                    <td class="typeclass" style="text-align:center">@item.AnswerType</td>
+                                    <td class="statusclass" style="text-align:center"> @{ string itemtext;
+                                        switch (item.AnsweredStatus.ToString())
+                                        {
+                                            case "0":
+                                                itemtext = "No";
+                                                break;
+                                            case "1":
+                                                itemtext = "Yes";
+                                                break;
+                                            default:
+                                                itemtext = "No";
+                                                break;
+                                        }}
+                                    @itemtext
+                                    </td>
+                                    <td class="alnleft" style="text-align:left"><button class="popupbutton" id="test1"  onclick="getrowid(this)">Answer</button></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="panel-body">
-                <table class="table table-hover" id="tablewithQuestions">
-                    <thead>
-                        <tr>
-                            <th>Question</th>
-                            <th>Answer</th>
-                            <th>Click</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                        <tr>
-                            <td class="questionclass" style="text-align:left">@item.Question</td>
-                            <td class="answerclass" style="text-align:left">@item.Answer</td>
-                            <td class="typeclass" style="text-align:left">@item.AnswerType</td>
-                            <td class="alnleft" style="text-align:left"><button class="popupbutton" id="test1">Answer</button></td>
-                        </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
 
-    }
-    else
-    {
-        <div class="col-md-12">No Questions to show</div>
-        <div class="col-md-12">N/A</div>
-    }
+        }
+        else
+        {
+            <div class="col-md-12">No Questions to show</div>
+            <div class="col-md-12">N/A</div>
+        }
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <dv class="col-md-6"><button class="btn btn-primary btn-responsive" id="Next">...</button></dv>
-            <dv class="col-md-6"><button class="btn btn-primary btn-responsive" style="align-content:center">Next</button></dv>
-        </div>
-    </div>
+    @*<div class="row">
+            <div class="col-md-12">
+                <dv class="col-md-6"><button class="btn btn-primary btn-responsive" id="Next">...</button></dv>
+                <dv class="col-md-6"><button class="btn btn-primary btn-responsive" style="align-content:center">Next</button></dv>
+            </div>
+        </div>*@
     <!---Below code brings up pop window-->
     <div id="myModal" class="modal">
 
@@ -84,25 +101,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
-                <h2>Modal Header</h2>
+                <h4>Answer Window</h4>
             </div>
             <div class="modal-body">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th id="questiontopopup">Question</th>
-                        </tr>
-                        <tr>
-                            <th id="answertopopup">Answer</th>
-                        </tr>
-                    </thead>
-              
-                </table>
+                <div id="answertopopup"></div>
             </div>
             <div class="modal-footer">
                 @*<h3>Modal Footer</h3>*@
                 <button class="btn btn-primary btn-responsive" id="Next">Cancel</button>
-                <button class="btn btn-primary btn-responsive" style="align-content:center">Submit</button>
+                <button class="btn btn-primary btn-responsive" style="align-content:center" onclick="assignvalue()">Submit</button>
             </div>
         </div>
 
@@ -110,9 +117,19 @@
 </div>
 
 <script>
+    function getrowid(element)
+    {
+        $("#trhidden").val(element.parentNode.parentNode.rowIndex);
+    }
     var popmodal = document.getElementById("myModal");
     var span = document.getElementsByClassName("close")[0];
 
+    function assignvalue()
+    {
+        //alert($("#trhidden").val());
+        $("#tablewithQuestions tr:eq(" + $('#trhidden').val() + ")").find('td:eq(3)').html('Yes');
+        popmodal.style.display = "none";
+    }
     /*
 Having a .class selector for Event handler will result in bubbling of click event (sometimes to Parent element, sometimes to Children elements in DOM).
 event.StopPropagation() method ensures that event doesn't bubble to Parent elements, while event.StopImmediatePropagation()method ensures that event doesn't bubble to Children elements of desired class selector.
@@ -121,69 +138,73 @@ event.StopPropagation() method ensures that event doesn't bubble to Parent eleme
         event.stopPropagation();
         event.stopImmediatePropagation();
 
-        var itemQ = $(this).closest("tr")   // Finds the closest row <tr> 
-            .find(".questionclass")     // Gets a descendent with class="nr"
-            .text();         // Retrieves the text within <td>
+    var itemQ = $(this).closest("tr")   // Finds the closest row <tr>
+        .find(".questionclass")     // Gets a descendent with class="nr"
+        .text();         // Retrieves the text within <td>
 
-        var itemA = $(this).closest("tr")   // Finds the closest row <tr> 
-            .find(".answerclass")     // Gets a descendent with class="nr"
-            .text();
+    var itemA = $(this).closest("tr")   // Finds the closest row <tr>
+        .find(".answerclass")     // Gets a descendent with class="nr"
+        .text();
 
-        var itemT = $(this).closest("tr")
-            .find(".typeclass")
-            .text();
+    var itemT = $(this).closest("tr")
+        .find(".typeclass")
+        .text();
 
-        //document.getElementById('questiontopopup').innerHTML = itemQ;
-        //document.getElementById('answertopopup').innerHTML = itemA;
+    if (itemT == "1") {
+        var split = itemA.split("#");
+        var stritem = "";
+        var strhtml = "<fieldset><legend>"+itemQ+"</legend>";
+        $.each(split, function (key, value) {
+            stritem = stritem + "<input class='Radio-Input' type='radio' name='radio1' id='radio1'><label class='Radio Radio--large' for=''>"+ value +"</label><br>";
+        });
+        strhtml = strhtml + stritem + "</fieldset>";
+        document.getElementById('answertopopup').innerHTML = strhtml;
+    }
+    else if (itemT = "2") {
+        var strhtml = "<textarea rows=10 cols=1000>Description</textarea>";
+        document.getElementById('answertopopup').innerHTML = strhtml;
+    }
 
-        if (itemT == "1") {
-            var split = itemA.split("#");
-            var stritem = "";
-            var strhtml = "<fieldset><legend>"+itemQ+"</legend>";
-            $.each(split, function (key, value) {
-                stritem = stritem + "<input class='Radio-Input' type='radio' name='radio1' id='radio1'><label class='Radio Radio--large' for=''>"+ value +"</label><br>";
-            });
-            strhtml = strhtml + stritem + "</fieldset>";
-            document.getElementById('answertopopup').innerHTML = strhtml;
-        }
-        else if (itemT = "2") {
-            var strhtml = "<textarea rows='10' cols='80'>Description</textarea>";
-            document.getElementById('answertopopup').innerHTML = strhtml;
-        }
-       
-        popmodal.style.display = "block";
+    popmodal.style.display = "block";
 
-    });
+});
 
-  
-    span.onclick = function () {
+
+span.onclick = function ()
+{
+
+    popmodal.style.display = "none";
+
+}
+
+//when user click anywhere outside of the popup window
+
+window.onclick = function ()
+{
+    if (event.target == popmodal) {
         popmodal.style.display = "none";
     }
-    //when user click anywhere outside of the popup window
-    window.onclick = function () {
-        if (event.target == popmodal) {
-            popmodal.style.display = "none";
-        }
-    }
-    $(document).ready(function () {
 
-    });
+}
+$(document).ready(function ()
+{
 
-    $("#Next").click(function () {
+
+});
+
+$("#Next").click(function ()
+{
         alert("clicked");
-        $.ajax({
-            url: "@Url.Action("GetQuestions","Home")",
-            success: function (data) {
-
-                $.each(data, function (i, dt) {
-                    alert(dt.Question + ' - ' + dt.answers);
-                });
-                //alert("Result: " + status + " " + xhr.status + " " + xhr.statusText)
+    $.ajax({
+        url: "@Url.Action("GetQuestions","Home")",
+        success: function (data) {
+            $.each(data, function (i, dt) {
+                alert(dt.Question + ' - ' + dt.answers);
+            });
             },
-            error: function () {
-                alert("Result: " + status + " " + xhr.status + " " + xhr.statusText)
-            }
-        });
-
+        error: function () {
+            alert("Result: " + status + " " + xhr.status + " " + xhr.statusText)
+        }
     });
+});
 </script>

@@ -17,5 +17,10 @@ namespace Skynax_UserInterface
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        void session_start(object sender, EventArgs e)
+        {
+
+        }
     }
 }

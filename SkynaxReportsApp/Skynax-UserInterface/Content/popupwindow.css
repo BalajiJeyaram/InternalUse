@@ -20,7 +20,8 @@
 /* Modal Content */
 .modal-content {
     position: relative;
-    background-color: gainsboro;
+    background-color: #f5f5f5;
+    border-color: #ddd;
     margin: auto;
     padding: 0;
     border: 2px solid #888;
@@ -74,7 +75,8 @@
 
 .modal-header {
     padding: 2px 16px;
-    background-color:burlywood;
+    background-color: #333333;
+    border-color: #ddd;
     color: white;
 }
 
@@ -84,6 +86,7 @@
 
 .modal-footer {
     padding: 2px 16px;
-    background-color:burlywood;
+    background-color: #f5f5f5;
+    border-color: #ddd;
     color: white;
 }

@@ -10,5 +10,6 @@ namespace Skynax_UserInterface.Models
         public string Question { get; set; }
         public string Answer { get; set; }
         public int AnswerType { get; set; }
+        public int AnsweredStatus { get; set; } = 0;
     }
 }
