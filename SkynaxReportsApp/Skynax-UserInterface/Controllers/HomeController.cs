@@ -11,6 +11,7 @@ namespace Skynax_UserInterface.Controllers
     public class HomeController : Controller
     {
         private List<QuestionAnswer> QAT = new List<QuestionAnswer>();
+        private CheckUser checklogonuser = new CheckUser();
         public HomeController()
         {
             QAT.Add(new QuestionAnswer() { Answer="It is Honeywell Device#It is Operating System#It is Toothpaste",AnswerType=1,Question="What is EDA51"});
@@ -19,6 +20,7 @@ namespace Skynax_UserInterface.Controllers
             QAT.Add(new QuestionAnswer() { Answer = "It is Honeywell Device#It is Operating System#It is Toothpaste", AnswerType = 1, Question = "What is Dolphin" });
             QAT.Add(new QuestionAnswer() { Answer = "It is Enterprise Application#It is a website where an enduser can buy product#It is thirdparty Website", AnswerType = 1, Question = "What is SalesForce" });
             QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "Write 2-3 lines about CN60" });
+            checklogonuser = new CheckUser() { LoginMessage = "Welcome Admin", LoginSuccess = true, password = "admin", userName = "admin" };
         }
         
         public ActionResult Index()
@@ -51,6 +53,18 @@ namespace Skynax_UserInterface.Controllers
             ViewBag.Message = "GetQuestions Method";
 
             return Json(QAT, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult CheckUser(CheckUser userparam)
+        {
+            var returnobject = userparam;
+            if (userparam.userName == "admin")
+            {
+                returnobject = checklogonuser;
+            }
+            else {
+                returnobject = new CheckUser() { userName = "admin",password="admin",LoginMessage="Invalid User/Password",LoginSuccess=false};
+            }
+            return View("Index",returnobject);
         }
     }
 }
