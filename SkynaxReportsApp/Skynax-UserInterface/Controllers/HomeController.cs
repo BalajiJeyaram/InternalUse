@@ -54,7 +54,7 @@ namespace Skynax_UserInterface.Controllers
 
             return Json(QAT, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult CheckUser(CheckUser userparam)
+        public JsonResult CheckUser(CheckUser userparam)
         {
             var returnobject = userparam;
             if (userparam.userName == "admin")
@@ -64,7 +64,7 @@ namespace Skynax_UserInterface.Controllers
             else {
                 returnobject = new CheckUser() { userName = "admin",password="admin",LoginMessage="Invalid User/Password",LoginSuccess=false};
             }
-            return View("Index",returnobject);
+            return Json(new { returnobject },JsonRequestBehavior.AllowGet); 
         }
     }
 }

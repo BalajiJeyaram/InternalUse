@@ -26,12 +26,12 @@
         <p><a class="btn btn-default" href="https://webpifeed.blob.core.windows.net/webpifeed/Partners/ASP.NET%20MVC%20Application%20Using%20Entity%20Framework%20Code%20First.zip">Download &raquo;</a></p>
     </div>
 </div>
-@if (Model==null || Model.LoginSuccess == false)
-    { 
+@*@if (Model==null || Model.LoginSuccess == false)
+    {*@ 
 <div class="row">
     <div class="col-md-5"></div>
     <div id="id01" class="col-md-2 modal">
-        <form class="modal-content animate" action=@Url.Action("CheckUser","Home",new {username="admin1",password="admin",loginmessage="success",Loginsuccess="false" }) method="post">
+        <form class="modal-content animate">
                 
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -45,12 +45,12 @@
                     {
                         <span class="label label-danger">@Model.LoginMessage</span>
                     }
-                    <input type="text" placeholder="Enter Username" name="uname" required style="max-width:100%">
+                    <input type="text" placeholder="Enter Username" name="uname" id="UserNameText" required style="max-width:100%">
 
                     <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required style="max-width:100%">
+                    <input type="password" placeholder="Enter Password" name="psw" id="PasswordText" required style="max-width:100%">
 
-                    <button type="submit" id="btnsubmit">Login</button>
+                    <button  id="btnsubmit">Login</button>
                     <label>
                         <input type="checkbox" checked="checked" name="remember"> Remember me
                     </label>
@@ -65,7 +65,31 @@
     </div>
     <div class="col-md-5"></div>
 </div>
-}
+@*}*@
 <script>
     $(document).ready(function () { document.getElementById('id01').style.display = 'block'; });
+    $("#btnsubmit").click(function () {
+        alert($("#UserNameText").val());
+        var login = {
+            username: $("#UserNameText").val(),
+            password: $("#PasswordText").val(),
+            loginmessage:'na',
+            Loginsuccess:'na'
+        };
+        alert("You've clicked the submit button");
+        $.ajax({
+            type: "POST",
+            url: "/Home/CheckUser",
+            data:JSON.stringify(login ),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                alert(data.returnobject.username + " # " +
+                    data.returnobject.password + " # " +
+                    data.returnobject.loginmessage + " # " +
+                    data.returnobject.Loginsuccess);
+            },
+            error: function () { alert('Error - Ajax'); }
+        });
+    });
 </script>
