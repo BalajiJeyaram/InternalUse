@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Contoso University</title>
+    <title>@ViewBag.Title - Honeywell University</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/popupwindow.css" rel="stylesheet" />
@@ -19,17 +19,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Contoso University", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Honeywell University", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Students","Index","Index")</li>
-                    <li>@Html.ActionLink("Courses","Index","Course")</li>
-                    <li>@Html.ActionLink("Instructors","Index","Instructor")</li>
-                    <li>@Html.ActionLink("Departments", "Index", "Department")</li>
+                    @*<li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "a" })</li>
+                    <li>@Html.ActionLink("Assessment", "About", "Home")</li>
+                    <li>@Html.ActionLink("Practical Test", "Index", "Index")</li>
+                    <li>@Html.ActionLink("Courses", "Index", "Course")</li>
+                    <li>@Html.ActionLink("Help", "Index", "Department")</li>*@
+                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li><a href="@Url.Action("About","Home")">Assessment</a></li>
+                    <li><a href="@Url.Action("About","Home")">Practical Test</a></li>
+                    <li><a href="@Url.Action("About","Home")">Courses</a></li>
+                    <li><a href="@Url.Action("About","Home")">Help</a></li>
+                    <li><a href="#">Contact Us</a></li>
                 </ul>
+                
             </div>
         </div>
     </div>
@@ -37,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Contoso University</p>
+            <p>&copy; @DateTime.Now.Year - Honeywell University</p>
         </footer>
     </div>
 
@@ -46,3 +52,11 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<script>
+    $(document).ready(function () {
+        $('a').click(function () {
+            $('a').removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+</script>

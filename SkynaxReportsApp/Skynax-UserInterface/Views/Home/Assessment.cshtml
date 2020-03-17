@@ -24,6 +24,9 @@
     .Radio-Input {
         margin: 0 0.5rem 0;
     }
+    .top-buffer {
+        margin-top: 20px;
+    }
 </style>
 <h2>Assessment</h2>
 <input type="hidden" id="trhidden" />
@@ -34,10 +37,13 @@
             <div class="col-md-12">
                 No of Questions to be Answered - <b>
                     @if (Model != null)
-                    {@Model.Count.ToString();}
+                    {@Model.Count.ToString();
+                }
                 </b>
             </div>
         </div>
+        <div class="row top-buffer"></div>
+
         <div class="row">
             <div class="col-md-12">
                 <table class="table table-hover" id="tablewithQuestions">
@@ -45,9 +51,9 @@
                         <tr>
                             <th>Question</th>
                             @*<th>Answer</th>
-                    <th>Type</th>
-                    <th>Answered</th>
-                    <th>Click</th>*@
+                                <th>Type</th>
+                                <th>Answered</th>
+                                <th>Click</th>*@
                             <th>Description</th>
                         </tr>
                     </thead>
@@ -57,23 +63,23 @@
                             <tr>
                                 <td class="questionclass" style="text-align:left">@item.Question</td>
                                 @*<td class="answerclass" style="text-align:left">@item.Answer</td>
-                        <td class="typeclass" style="text-align:center">@item.AnswerType</td>
-                        <td class="statusclass" style="text-align:center"> @{ string itemtext;
-                            switch (item.AnsweredStatus.ToString())
-                            {
-                                case "0":
-                                    itemtext = "No";
-                                    break;
-                                case "1":
-                                    itemtext = "Yes";
-                                    break;
-                                default:
-                                    itemtext = "No";
-                                    break;
-                            }}
-                        @itemtext
-                        </td>
-                        <td class="alnleft" style="text-align:left"><button class="popupbutton" id="test1"  onclick="getrowid(this)">Answer</button></td>*@
+                                    <td class="typeclass" style="text-align:center">@item.AnswerType</td>
+                                    <td class="statusclass" style="text-align:center"> @{ string itemtext;
+                                        switch (item.AnsweredStatus.ToString())
+                                        {
+                                            case "0":
+                                                itemtext = "No";
+                                                break;
+                                            case "1":
+                                                itemtext = "Yes";
+                                                break;
+                                            default:
+                                                itemtext = "No";
+                                                break;
+                                        }}
+                                    @itemtext
+                                    </td>
+                                    <td class="alnleft" style="text-align:left"><button class="popupbutton" id="test1"  onclick="getrowid(this)">Answer</button></td>*@
                                 <td><textarea name="" id="" cols="100" rows="5" style="max-width:3000px !important"></textarea></td>
                             </tr>
                         }
@@ -92,16 +98,16 @@
             </div>
 
         </div>
-       
+
     }
     else
     {
-    <div class="row">
-        <div class="col-md-12">No Questions to show</div>
-        <div class="col-md-12">N/A</div>
-    </div>
+        <div class="row">
+            <div class="col-md-12">No Questions to show</div>
+            <div class="col-md-12">N/A</div>
+        </div>
     }
-  
+
     @*<div class="row">
             <div class="col-md-12">
                 <dv class="col-md-6"><button class="btn btn-primary btn-responsive" id="Next">...</button></dv>
@@ -202,7 +208,7 @@ window.onclick = function ()
 }
 $(document).ready(function ()
 {
-
+    $('#tablewithQuestions').DataTable();
 
 });
 
