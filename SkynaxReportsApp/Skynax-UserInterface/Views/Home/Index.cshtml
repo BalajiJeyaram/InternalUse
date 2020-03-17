@@ -34,7 +34,7 @@
         <form class="modal-content animate">
                 
                 <div class="imgcontainer">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal" id="closebutton">&times;</span>
                     <img src="~/Content/images/img_avatar2.png" alt="Avatar" class="avatar">
                 </div>  
 
@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="container" style="background-color:#f1f1f1">
-                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" id="cancelbutton">Cancel</button>
                     <span class="psw">Forgot <a href="#">password?</a></span>
                 </div>
 
@@ -84,10 +84,21 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
-                alert(data.returnobject.username + " # " +
+                alert(data.returnobject.userName + " # " +
                     data.returnobject.password + " # " +
-                    data.returnobject.loginmessage + " # " +
-                    data.returnobject.Loginsuccess);
+                    data.returnobject.LoginMessage + " # " +
+                    data.returnobject.LoginSuccess);
+
+                if (data.returnobject.LoginSuccess == false) {
+                    alert(data.returnobject.LoginMessage);
+                    return false;
+                }
+                else if (data.returnobject.LoginSuccess == true)
+                {
+                    alert("Smile");
+                    $("#cancelbutton").click();
+                }
+     
             },
             error: function () { alert('Error - Ajax'); }
         });

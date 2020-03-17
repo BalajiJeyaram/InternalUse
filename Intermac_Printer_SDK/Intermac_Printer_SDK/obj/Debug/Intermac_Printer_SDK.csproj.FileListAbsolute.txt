@@ -1,0 +1,13 @@
+C:\Users\h387014\source\repos\Intermac_Printer_SDK\Intermac_Printer_SDK\bin\Debug\Intermac_Printer_SDK.exe.config
+C:\Users\h387014\source\repos\Intermac_Printer_SDK\Intermac_Printer_SDK\bin\Debug\Intermac_Printer_SDK.exe
+C:\Users\h387014\source\repos\Intermac_Printer_SDK\Intermac_Printer_SDK\bin\Debug\Intermac_Printer_SDK.pdb
+C:\Users\h387014\source\repos\Intermac_Printer_SDK\Intermac_Printer_SDK\bin\Debug\DatamaxONeilSDK_CS_WD.dll
+C:\Users\h387014\source\repos\Intermac_Printer_SDK\Intermac_Printer_SDK\obj\Debug\Intermac_Printer_SDK.csprojAssemblyReference.cache
+C:\Users\h387014\source\repos\Intermac_Printer_SDK\Intermac_Printer_SDK\obj\Debug\Intermac_Printer_SDK.csproj.CoreCompileInputs.cache
+C:\Users\h387014\source\repos\Intermac_Printer_SDK\Intermac_Printer_SDK\obj\Debug\Intermac_Printer_SDK.csproj.CopyComplete
+C:\Users\h387014\source\repos\Intermac_Printer_SDK\Intermac_Printer_SDK\obj\Debug\Intermac_Printer_SDK.exe
+C:\Users\h387014\source\repos\Intermac_Printer_SDK\Intermac_Printer_SDK\obj\Debug\Intermac_Printer_SDK.pdb
+C:\Users\h387014\source\repos\Intermac_Printer_SDK\Intermac_Printer_SDK\bin\Debug\InTheHand.Net.Personal.dll
+C:\Users\h387014\source\repos\Intermac_Printer_SDK\Intermac_Printer_SDK\bin\Debug\Newtonsoft.Json.dll
+C:\Users\h387014\source\repos\Intermac_Printer_SDK\Intermac_Printer_SDK\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\h387014\source\repos\Intermac_Printer_SDK\Intermac_Printer_SDK\bin\Debug\Newtonsoft.Json.xml

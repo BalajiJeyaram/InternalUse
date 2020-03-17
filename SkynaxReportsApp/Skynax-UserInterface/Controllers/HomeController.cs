@@ -62,7 +62,7 @@ namespace Skynax_UserInterface.Controllers
                 returnobject = checklogonuser;
             }
             else {
-                returnobject = new CheckUser() { userName = "admin",password="admin",LoginMessage="Invalid User/Password",LoginSuccess=false};
+                returnobject = new CheckUser() { userName = returnobject.userName, password= returnobject.password, LoginMessage="Invalid User/Password",LoginSuccess=false};
             }
             return Json(new { returnobject },JsonRequestBehavior.AllowGet); 
         }

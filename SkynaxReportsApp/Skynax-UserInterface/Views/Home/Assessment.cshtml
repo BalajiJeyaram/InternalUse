@@ -28,66 +28,80 @@
 <h2>Assessment</h2>
 <input type="hidden" id="trhidden" />
 <div class=".container-fluid">
-    <div class="row">
-        @if (Model != null)
-        {
-            <div class="panel panel-default col-md-12">
-                <div class="panel-heading" id="panelheadertext">
-                    No of Questions to be Answered - <b>
-                        @if (Model != null)
-                        {@Model.Count.ToString();
-                    }
-                    </b>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-hover" id="tablewithQuestions">
-                        <thead>
+    @if (Model != null)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                No of Questions to be Answered - <b>
+                    @if (Model != null)
+                    {@Model.Count.ToString();}
+                </b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover" id="tablewithQuestions">
+                    <thead>
+                        <tr>
+                            <th>Question</th>
+                            @*<th>Answer</th>
+                    <th>Type</th>
+                    <th>Answered</th>
+                    <th>Click</th>*@
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
                             <tr>
-                                <th>Question</th>
-                                <th>Answer</th>
-                                <th>Type</th>
-                                <th>Answered</th>
-                                <th>Click</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
+                                <td class="questionclass" style="text-align:left">@item.Question</td>
+                                @*<td class="answerclass" style="text-align:left">@item.Answer</td>
+                        <td class="typeclass" style="text-align:center">@item.AnswerType</td>
+                        <td class="statusclass" style="text-align:center"> @{ string itemtext;
+                            switch (item.AnsweredStatus.ToString())
                             {
-                                <tr>
-                                    <td class="questionclass" style="text-align:left">@item.Question</td>
-                                    <td class="answerclass" style="text-align:left">@item.Answer</td>
-                                    <td class="typeclass" style="text-align:center">@item.AnswerType</td>
-                                    <td class="statusclass" style="text-align:center"> @{ string itemtext;
-                                        switch (item.AnsweredStatus.ToString())
-                                        {
-                                            case "0":
-                                                itemtext = "No";
-                                                break;
-                                            case "1":
-                                                itemtext = "Yes";
-                                                break;
-                                            default:
-                                                itemtext = "No";
-                                                break;
-                                        }}
-                                    @itemtext
-                                    </td>
-                                    <td class="alnleft" style="text-align:left"><button class="popupbutton" id="test1"  onclick="getrowid(this)">Answer</button></td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
+                                case "0":
+                                    itemtext = "No";
+                                    break;
+                                case "1":
+                                    itemtext = "Yes";
+                                    break;
+                                default:
+                                    itemtext = "No";
+                                    break;
+                            }}
+                        @itemtext
+                        </td>
+                        <td class="alnleft" style="text-align:left"><button class="popupbutton" id="test1"  onclick="getrowid(this)">Answer</button></td>*@
+                                <td><textarea name="" id="" cols="100" rows="5" style="max-width:3000px !important"></textarea></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+
+                <button class="btn-danger" style="display:inline-block; float:left;">Clear All</button>
+                <button class="btn-primary" style="display:inline-block; float:right;">Submit</button>
             </div>
 
-
-        }
-        else
-        {
-            <div class="col-md-12">No Questions to show</div>
-            <div class="col-md-12">N/A</div>
-        }
+        </div>
+       
+    }
+    else
+    {
+    <div class="row">
+        <div class="col-md-12">No Questions to show</div>
+        <div class="col-md-12">N/A</div>
     </div>
+    }
+  
     @*<div class="row">
             <div class="col-md-12">
                 <dv class="col-md-6"><button class="btn btn-primary btn-responsive" id="Next">...</button></dv>
