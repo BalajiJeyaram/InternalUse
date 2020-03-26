@@ -23,7 +23,7 @@ textarea {
     max-width: 280px;
 }
 li {
-    padding: 8px;
+    /*padding: 8px;*/
 }
 
 a {
@@ -38,7 +38,7 @@ a {
     }
 
 .active {
-    font-size: 30px;
+    /*font-size: 30px;*/
     color: red;
     border-bottom: 5px solid red;
 }
