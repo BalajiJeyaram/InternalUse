@@ -96,7 +96,7 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <button class="btn btn-danger" style="display:inline-block; float:left;">Clear All</button>
-                <button class="btn btn-primary" style="display:inline-block; float:right;">Submit</button>
+                <button class="btn btn-primary" style="display:inline-block; float:right;" id="submitanswer">Submit</button>
             </div>
 
         </div>
@@ -228,5 +228,9 @@ $("#Next").click(function ()
             alert("Result: " + status + " " + xhr.status + " " + xhr.statusText)
         }
     });
+});
+
+    $("#submitanswer").click(function () {
+        window.location = "/Home/AssessmentResult";
 });
 </script>

@@ -67,6 +67,31 @@ namespace Skynax_UserInterface.Controllers
 
             return View(QAT);
         }
+        public ActionResult PracticalTest()
+        {
+            ViewBag.Message = "Pracical Test Page";
+
+            return View(QAT);
+        }
+        public ActionResult Courses()
+        {
+            ViewBag.Message = "Courses Page";
+
+            return View(QAT);
+        }
+        public ActionResult Help()
+        {
+            ViewBag.Message = "Help Page";
+
+            return View(QAT);
+        }
+        public ActionResult ContactUs()
+        {
+            ViewBag.Message = "Contact Us Page";
+
+            return View(QAT);
+        }
+
         public JsonResult GetQuestions()
         {
             ViewBag.Message = "GetQuestions Method";
@@ -84,6 +109,20 @@ namespace Skynax_UserInterface.Controllers
                 returnobject = new CheckUser() { userName = returnobject.userName, password= returnobject.password, LoginMessage="Invalid User/Password",LoginSuccess=false};
             }
             return Json(new { returnobject },JsonRequestBehavior.AllowGet); 
+        }
+        public ActionResult AssessmentResult()
+        {
+            ViewBag.Message = "Assessment Result Page";
+            return View();
+        }
+
+        public JsonResult GetResult()
+        {
+            return Json(new ResultModel() {answered=20,notanswered=5,passcore=100,
+                score =90,examstartdate=DateTime.Today.ToShortDateString(),
+                examstartendtime =DateTime.Today.ToShortTimeString(),
+                examenddate =DateTime.Today.ToShortDateString(),
+                examendtime =DateTime.Today.ToShortTimeString() },JsonRequestBehavior.AllowGet);
         }
     }
 }
