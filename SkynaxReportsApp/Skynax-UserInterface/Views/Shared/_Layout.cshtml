@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - Honeywell University</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/popupwindow.css" rel="stylesheet" />
+    <!--<link href="~/Content/popupwindow.css" rel="stylesheet" />-->
     <link href="~/Content/LoginPage.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/jquery")
 </head>
@@ -24,16 +24,17 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Assessment", "About", "Home")</li>
-                    <li>@Html.ActionLink("Practical Test", "Index", "Index")</li>
-                    <li>@Html.ActionLink("Courses", "Index", "Course")</li>
-                    <li>@Html.ActionLink("Help", "Index", "Department")</li>*@
+        <li>@Html.ActionLink("Assessment", "About", "Home")</li>
+        <li>@Html.ActionLink("Practical Test", "Index", "Index")</li>
+        <li>@Html.ActionLink("Courses", "Index", "Course")</li>
+        <li>@Html.ActionLink("Help", "Index", "Department")</li>*@
                     <li><a href="@Url.Action("Index","Home")">Home</a></li>
                     <li><a href="@Url.Action("Assessment","Home")">Assessment</a></li>
                     <li><a href="@Url.Action("PracticalTest","Home")">Practical Test</a></li>
                     <li><a href="@Url.Action("Courses","Home")">Courses</a></li>
                     <li><a href="@Url.Action("Help","Home")">Help</a></li>
                     <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
+                    <li><a href="@Url.Action("LogIn","Home")">Logout</a></li>
                 </ul>
                 
             </div>

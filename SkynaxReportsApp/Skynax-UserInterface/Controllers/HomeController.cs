@@ -46,6 +46,11 @@ namespace Skynax_UserInterface.Controllers
         {
             return View();
         }
+        public ActionResult LogIn()
+        {
+            Session["InvalidUser"]="Logged Out";
+            return View();
+        }
 
         public ActionResult About()
         {
@@ -63,27 +68,114 @@ namespace Skynax_UserInterface.Controllers
 
         public ActionResult Assessment()
         {
-            ViewBag.Message = "Assessment Page";
+            try
+            {
+                //throw new NullReferenceException("Test");
+                
+                if (Session["InvalidUser"].ToString() == "ValidUser")
+                {
+                    ViewBag.Message = "Assessment Page";
+                    return View(QAT);
+                }
+                else
+                {
+                    Session["InvalidUser"] = "You did not login yet!";
+                    return View("LogIn");
+                }
+            }
+            catch (NullReferenceException nullexp)
+            {
+                return RedirectToAction("Index", "Error",new { message=nullexp.StackTrace});
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Error", new { message = ex.StackTrace });
+            }
 
-            return View(QAT);
+
         }
         public ActionResult PracticalTest()
         {
-            ViewBag.Message = "Pracical Test Page";
+            //ViewBag.Message = "Pracical Test Page";
 
-            return View(QAT);
+            //return View(QAT);
+            try
+            {
+                if (Session["InvalidUser"].ToString() == "ValidUser")
+                {
+                    ViewBag.Message = "Pracical Test Page";
+                    return View(QAT);
+                }
+                else
+                {
+                    Session["InvalidUser"] = "You did not login yet!";
+                    return View("LogIn");
+                }
+            }
+            catch (NullReferenceException nullexp)
+            {
+                return RedirectToAction("Index", "Error", new { message = nullexp.StackTrace });
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Error", new { message = ex.StackTrace });
+            }
+
         }
         public ActionResult Courses()
         {
-            ViewBag.Message = "Courses Page";
+            //ViewBag.Message = "Courses Page";
 
-            return View(QAT);
+            //return View(QAT);
+            try
+            {
+                if (Session["InvalidUser"].ToString() == "ValidUser")
+                {
+                    ViewBag.Message = "Courses Page";
+                    return View(QAT);
+                }
+                else
+                {
+                    Session["InvalidUser"] = "You did not login yet!";
+                    return View("LogIn");
+                }
+            }
+            catch (NullReferenceException nullexp)
+            {
+                return RedirectToAction("Index", "Error", new { message = nullexp.StackTrace });
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Error", new { message = ex.StackTrace });
+            }
+
         }
         public ActionResult Help()
         {
-            ViewBag.Message = "Help Page";
+            //ViewBag.Message = "Help Page";
 
-            return View(QAT);
+            //return View(QAT);
+            try
+            {
+                if (Session["InvalidUser"].ToString() == "ValidUser")
+                {
+                    ViewBag.Message = "Help Page";
+                    return View(QAT);
+                }
+                else
+                {
+                    Session["InvalidUser"] = "You did not login yet!";
+                    return View("LogIn");
+                }
+            }
+            catch (NullReferenceException nullexp)
+            {
+                return RedirectToAction("Index", "Error", new { message = nullexp.StackTrace });
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Error", new { message = ex.StackTrace });
+            }
         }
         public ActionResult ContactUs()
         {
@@ -109,6 +201,21 @@ namespace Skynax_UserInterface.Controllers
                 returnobject = new CheckUser() { userName = returnobject.userName, password= returnobject.password, LoginMessage="Invalid User/Password",LoginSuccess=false};
             }
             return Json(new { returnobject },JsonRequestBehavior.AllowGet); 
+        }
+
+        public ActionResult ValidateUser(string login)
+        {
+            if (login == "admin") {
+                @Session["InvalidUser"] = "ValidUser";
+                return View("Index");
+            }
+                
+            else
+            {
+                Session["InvalidUser"] = "Invalid User";
+                return View("LogIn");
+            }
+                
         }
         public ActionResult AssessmentResult()
         {

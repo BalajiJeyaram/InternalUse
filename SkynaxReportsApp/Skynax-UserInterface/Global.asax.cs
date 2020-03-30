@@ -20,7 +20,19 @@ namespace Skynax_UserInterface
 
         void session_start(object sender, EventArgs e)
         {
+            Session.Timeout = 20;
+            //Application.Lock();
+            //Application["OnlineCount"] = Convert.ToInt32(Application["Onlinecount"]) + 1;
+            Session["InvalidUser"] = "InvalidUser";
+        }
 
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            var exception = Server.GetLastError();
+            if (exception != null)
+            {
+                Server.TransferRequest("~/Views/Error/Index.cshtml?message=" + exception.Message);
+            }
         }
     }
 }

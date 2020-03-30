@@ -27,19 +27,20 @@
     </div>
 </div>
 @*@if (Model==null || Model.LoginSuccess == false)
-    {*@ 
+    {
 <div class="row">
     <div class="col-md-5"></div>
     <div id="id01" class="col-md-2 modal">
-        <form class="modal-content animate">
-                
+        <div class="modal-dialog modal-lg">
+            <form class="modal-content animate">
+
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal" id="closebutton">&times;</span>
                     <img src="~/Content/images/img_avatar2.png" alt="Avatar" class="avatar">
-                </div>  
+                </div>
 
 
-                <div class="container">
+                <div class="container" style="width:750px!important">
                     <label for="uname"><b>Username</b></label>
                     @if (Model != null)
                     {
@@ -50,22 +51,23 @@
                     <label for="psw"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="psw" id="PasswordText" required style="max-width:100%">
 
-                    <button  id="btnsubmit">Login</button>
+                    <button id="btnsubmit">Login</button>
                     <label>
                         <input type="checkbox" checked="checked" name="remember"> Remember me
                     </label>
                 </div>
 
-                <div class="container" style="background-color:#f1f1f1">
+                <div class="container" style="background-color:#f1f1f1;width:750px!important">
                     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" id="cancelbutton">Cancel</button>
                     <span class="psw">Forgot <a href="#">password?</a></span>
                 </div>
 
-        </form>
+            </form>
+        </div>
     </div>
     <div class="col-md-5"></div>
 </div>
-@*}*@
+}*@
 <script>
     $(document).ready(function () {
         document.getElementById('id01').style.display = 'block';
