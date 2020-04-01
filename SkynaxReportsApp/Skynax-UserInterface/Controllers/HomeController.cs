@@ -19,7 +19,7 @@ namespace Skynax_UserInterface.Controllers
             QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "What would be the biggest restriction when creating a bar code on Enterprise Provisioner to download and then install an application into a device?" });
             QAT.Add(new QuestionAnswer() { Answer = "It is Honeywell Device#It is Operating System#It is Toothpaste", AnswerType = 1, Question = "Name 3 tasks you can perform with bar codes generated using Enterprise Provisione" });
             QAT.Add(new QuestionAnswer() { Answer = "It is Enterprise Application#It is a website where an enduser can buy product#It is thirdparty Website", AnswerType = 1, Question = "Normally licenses when generated are exported into two different type of files, which are these?" });
-            QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "Honeywell apps per platform (Windows/Android). Specify name of pack and apps on each pack" });
+            /*QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "Honeywell apps per platform (Windows/Android). Specify name of pack and apps on each pack" });
             QAT.Add(new QuestionAnswer() { Answer = "It is Honeywell Device#It is Operating System#It is Toothpaste", AnswerType = 1, Question = "What is the most effective and recommended way to recover information in our device when AppLock credentials have been forgotten?" });
             QAT.Add(new QuestionAnswer() { Answer = "It is a Honeywell Application#It is an Apple Product#It is an Amazon app", AnswerType = 1, Question = "What are the two ways to enable OCR?" });
             QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "What server instance is recommended to install alongside Staging Hub?" });
@@ -39,7 +39,7 @@ namespace Skynax_UserInterface.Controllers
             QAT.Add(new QuestionAnswer() { Answer = "It is Honeywell Device#It is Operating System#It is Toothpaste", AnswerType = 1, Question = "How does PIP (picture in picture) works?" });
             QAT.Add(new QuestionAnswer() { Answer = "It is Enterprise Application#It is a website where an enduser can buy product#It is thirdparty Website", AnswerType = 1, Question = "What tool inside Power Tools will let us know the IP Address, MAC Address, RSS of our device/connection?" });
             QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "What does the HUpgrader utility do?" });
-            checklogonuser = new CheckUser() { LoginMessage = "Welcome Admin", LoginSuccess = true, password = "admin", userName = "admin" };
+            checklogonuser = new CheckUser() { LoginMessage = "Welcome Admin", LoginSuccess = true, password = "admin", userName = "admin" };*/
         }
         
         public ActionResult Index()
@@ -229,7 +229,7 @@ namespace Skynax_UserInterface.Controllers
             return View();
         }
 
-        public ActionResult SubmitAssessment(QuestionAnswer data)
+        public ActionResult SubmitAssessment(List<QuestionAnswer> questionAnswer)
         {
 
             return View("AssessmentResult", new ResultModel()

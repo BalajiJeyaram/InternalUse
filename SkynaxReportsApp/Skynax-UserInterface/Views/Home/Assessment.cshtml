@@ -234,22 +234,25 @@ $("#Next").click(function ()
     $("#submitanswer").click(function () {
         var table = $('#tablewithQuestions').DataTable();
         var dd = table.rows().data().toArray();
-        var data = new Array();
+        var questionAnswer = new Array();
         var answerarea = 0;
         $.each(dd, function (index, value) {
-
-            var QuestionAnswer = {};
-            QuestionAnswer.Question = value[0];
-            QuestionAnswer.Answer = $("#answerarea" + answerarea).val();
-            QuestionAnswer.AnswerType = 0;
-            QuestionAnswer.AnsweredStatus = 1;
-            data.push(QuestionAnswer);
+            var item = {};
+            item.Question = value[0];
+            item.AnswerType = 0;
+            item.AnsweredStatus = 1;
+            item.Answer = $("#answerarea" + answerarea).val();
+            questionAnswer.push(item);
+            //alert(JSON.stringify(questionAnswer));
             answerarea = answerarea + 1;
         });    
+        //alert(JSON.stringify(data));
         $.ajax({
+            type:"POST",
             url: '/Home/SubmitAssessment',
-            contentType: "application/json;",
-            data:JSON.stringify(data),
+            //contentType: "application/json;",
+            //dataType: 'json',
+            data: { questionAnswer:questionAnswer } ,
             success: function () { alert('success') },
             error: function () { alert('failure'); }
         });
