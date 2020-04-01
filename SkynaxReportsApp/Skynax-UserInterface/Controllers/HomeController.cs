@@ -94,6 +94,7 @@ namespace Skynax_UserInterface.Controllers
 
 
         }
+
         public ActionResult PracticalTest()
         {
             //ViewBag.Message = "Pracical Test Page";
@@ -122,6 +123,7 @@ namespace Skynax_UserInterface.Controllers
             }
 
         }
+
         public ActionResult Courses()
         {
             //ViewBag.Message = "Courses Page";
@@ -150,6 +152,7 @@ namespace Skynax_UserInterface.Controllers
             }
 
         }
+
         public ActionResult Help()
         {
             //ViewBag.Message = "Help Page";
@@ -177,6 +180,7 @@ namespace Skynax_UserInterface.Controllers
                 return RedirectToAction("Index", "Error", new { message = ex.StackTrace });
             }
         }
+
         public ActionResult ContactUs()
         {
             ViewBag.Message = "Contact Us Page";
@@ -190,6 +194,7 @@ namespace Skynax_UserInterface.Controllers
 
             return Json(QAT, JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult CheckUser(CheckUser userparam)
         {
             var returnobject = userparam;
@@ -217,19 +222,35 @@ namespace Skynax_UserInterface.Controllers
             }
                 
         }
+
         public ActionResult AssessmentResult()
         {
             ViewBag.Message = "Assessment Result Page";
             return View();
         }
 
-        public JsonResult GetResult()
+        public ActionResult SubmitAssessment(QuestionAnswer data)
         {
-            return Json(new ResultModel() {answered=20,notanswered=5,passcore=100,
-                score =90,examstartdate=DateTime.Today.ToShortDateString(),
-                examstartendtime =DateTime.Today.ToShortTimeString(),
-                examenddate =DateTime.Today.ToShortDateString(),
-                examendtime =DateTime.Today.ToShortTimeString() },JsonRequestBehavior.AllowGet);
+
+            return View("AssessmentResult", new ResultModel()
+            {
+                answered = 20,
+                notanswered = 5,
+                passcore = 100,
+                score = 90,
+                examstartdate = DateTime.Today.ToShortDateString(),
+                examstartendtime = DateTime.Today.ToShortTimeString(),
+                examenddate = DateTime.Today.ToShortDateString(),
+                examendtime = DateTime.Today.ToShortTimeString()
+            });
+                //return Json(new ResultModel() {answered=20,notanswered=5,passcore=100,
+                //    score =90,examstartdate=DateTime.Today.ToShortDateString(),
+                //    examstartendtime =DateTime.Today.ToShortTimeString(),
+                //    examenddate =DateTime.Today.ToShortDateString(),
+                //    examendtime =DateTime.Today.ToShortTimeString() },JsonRequestBehavior.AllowGet);
         }
+
+
+
     }
 }
