@@ -31,7 +31,7 @@ namespace Skynax_UserInterface
             var exception = Server.GetLastError();
             if (exception != null)
             {
-                Server.TransferRequest("~/Views/Error/Index.cshtml?message=" + exception.Message);
+                Response.Redirect(string.Format("~/Error/Index/?message={0}",exception.Message));
             }
         }
     }
