@@ -52,6 +52,7 @@ namespace SkynaxEntities.DAL
             enrollments.ForEach(s => context.Enrollments.Add(s));
             context.SaveChanges();
 
+            base.Seed(context);
         }
     }
 }

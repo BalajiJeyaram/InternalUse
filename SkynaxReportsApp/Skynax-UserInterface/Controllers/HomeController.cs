@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Skynax_UserInterface.Models;
-
+using SkynaxEntities.DAL;
+using SkynaxEntities.Models;
 namespace Skynax_UserInterface.Controllers
 {
 
@@ -17,6 +18,23 @@ namespace Skynax_UserInterface.Controllers
         private CheckUser checklogonuser = new CheckUser();
         public HomeController()
         {
+            using (var context = new SchoolContext())
+            {
+                var conn = context.Database.Connection.ConnectionString;
+                
+                var user = new userprofile()
+                {
+                    iD = 1,
+                    UserName = "balajikj",
+                    Password = "password",
+                    ActiveUser = Convert.ToChar("Y"),
+                    CreatedDate = DateTime.Now,
+                    LastModifiedDate = DateTime.Now
+                };
+                context.UserProfile.Add(user);
+                context.SaveChanges();
+            }
+
             QAT.Add(new QuestionAnswer() { Answer = "It is Honeywell Device#It is Operating System#It is Toothpaste", AnswerType = 1, Question = "Practical. Configure EDA60 so that when reading a QR code it takes the first group of characters until it finds a comma, other characters are then discarded. This should work just for QR codes." });
             QAT.Add(new QuestionAnswer() { Answer = "It is a Honeywell Application#It is an Apple Product#It is an Amazon app", AnswerType = 1, Question = "Can you use cellular data when there is no Wi-Fi on a CN50 (32 GB, Numeric, WWAN)" });
             QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "What would be the biggest restriction when creating a bar code on Enterprise Provisioner to download and then install an application into a device?" });
