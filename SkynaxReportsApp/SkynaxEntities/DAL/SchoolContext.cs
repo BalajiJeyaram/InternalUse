@@ -1,5 +1,6 @@
 ﻿using SkynaxEntities.Models;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace SkynaxEntities.DAL
@@ -7,9 +8,9 @@ namespace SkynaxEntities.DAL
     public class SchoolContext: DbContext
     {
         
-        public SchoolContext() : base("AssessmentDB")
+        public SchoolContext() : base("Assessment")
         {
-            Database.SetInitializer<SchoolContext>(new CreateDatabaseIfNotExists<SchoolContext>());
+            //Database.SetInitializer<SchoolContext>(new CreateDatabaseIfNotExists<SchoolContext>());
 
             //Database.SetInitializer<SchoolDBContext>(new DropCreateDatabaseIfModelChanges<SchoolDBContext>());
             //Database.SetInitializer<SchoolDBContext>(new DropCreateDatabaseAlways<SchoolDBContext>());

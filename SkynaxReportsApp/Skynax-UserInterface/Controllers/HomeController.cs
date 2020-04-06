@@ -18,20 +18,19 @@ namespace Skynax_UserInterface.Controllers
         private CheckUser checklogonuser = new CheckUser();
         public HomeController()
         {
-            using (var context = new SchoolContext())
+
+            using (var context = new AssessmentContext())
             {
-                var conn = context.Database.Connection.ConnectionString;
-                
-                var user = new userprofile()
+                context.Database.Connection.Open();
+                var user = new testtable()
                 {
-                    iD = 1,
                     UserName = "balajikj",
                     Password = "password",
-                    ActiveUser = Convert.ToChar("Y"),
+                    ActiveUser = "Y",
                     CreatedDate = DateTime.Now,
                     LastModifiedDate = DateTime.Now
                 };
-                context.UserProfile.Add(user);
+                context.testtable.Add(user);
                 context.SaveChanges();
             }
 

@@ -12,12 +12,7 @@ namespace SkynaxEntities
     {
         static void Main(string[] args)
         {
-            using (var context = new SchoolContext())
-            {
-                var user = new userprofile() { iD = 1, UserName = "balajikj", Password = "password",
-                    ActiveUser = Convert.ToChar("Y"), CreatedDate = DateTime.Now,
-                    LastModifiedDate = DateTime.Now };
-            } 
+ 
         }
     }
 }
