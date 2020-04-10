@@ -19,20 +19,20 @@ namespace Skynax_UserInterface.Controllers
         public HomeController()
         {
 
-            using (var context = new AssessmentContext())
-            {
-                context.Database.Connection.Open();
-                var user = new testtable()
-                {
-                    UserName = "balajikj",
-                    Password = "password",
-                    ActiveUser = "Y",
-                    CreatedDate = DateTime.Now,
-                    LastModifiedDate = DateTime.Now
-                };
-                context.testtable.Add(user);
-                context.SaveChanges();
-            }
+            //using (var context = new AssessmentContext())
+            //{
+            //    context.Database.Connection.Open();
+            //    var user = new testtable()
+            //    {
+            //        UserName = "balajikj1",
+            //        Password = "password",
+            //        ActiveUser = "Y",
+            //        CreatedDate = DateTime.Now,
+            //        LastModifiedDate = DateTime.Now
+            //    };
+            //    context.testtable.Add(user);
+            //    context.SaveChanges();
+            //}
 
             QAT.Add(new QuestionAnswer() { Answer = "It is Honeywell Device#It is Operating System#It is Toothpaste", AnswerType = 1, Question = "Practical. Configure EDA60 so that when reading a QR code it takes the first group of characters until it finds a comma, other characters are then discarded. This should work just for QR codes." });
             QAT.Add(new QuestionAnswer() { Answer = "It is a Honeywell Application#It is an Apple Product#It is an Amazon app", AnswerType = 1, Question = "Can you use cellular data when there is no Wi-Fi on a CN50 (32 GB, Numeric, WWAN)" });
@@ -229,12 +229,14 @@ namespace Skynax_UserInterface.Controllers
             return Json(new { returnobject }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ValidateUser(string login)
+        public ActionResult ValidateUser(string login, string password)
         {
-            if (login == "admin")
+            //if (UserValidation.ValidateCredential(login, password))
+            if (UserValidation.ValidateCredential(login, password) == true)
             {
                 @Session["InvalidUser"] = "ValidUser";
-                return View("Index");
+                //return View("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             else
@@ -244,6 +246,8 @@ namespace Skynax_UserInterface.Controllers
             }
 
         }
+
+        
 
         public ActionResult AssessmentResult()
         {

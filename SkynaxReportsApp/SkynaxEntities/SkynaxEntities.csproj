@@ -65,8 +65,8 @@
     <Compile Include="DAL\ExamQ.cs" />
     <Compile Include="DAL\SchoolContext.cs" />
     <Compile Include="DAL\SchoolInitializer.cs" />
-    <Compile Include="DAL\testtable.cs" />
     <Compile Include="DAL\userprofile.cs" />
+    <Compile Include="DAL\UserValidation.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Enrollment.cs" />
     <Compile Include="Models\Student.cs" />

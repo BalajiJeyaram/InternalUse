@@ -8,7 +8,7 @@ namespace SkynaxEntities.DAL
         public AssessmentContext()
             : base("name=AssessmentContext")
         {
-            Database.SetInitializer<AssessmentContext>(new CreateDatabaseIfNotExists<AssessmentContext>());
+            //Database.SetInitializer<AssessmentContext>(new CreateDatabaseIfNotExists<AssessmentContext>());
         }
 
         public virtual DbSet<Assessment> Assessments { get; set; }
@@ -16,7 +16,6 @@ namespace SkynaxEntities.DAL
         public virtual DbSet<ExamM> ExamMs { get; set; }
         public virtual DbSet<ExamQ> ExamQs { get; set; }
         public virtual DbSet<userprofile> userprofiles { get; set; }
-        public virtual DbSet<testtable> testtable { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<assessmentanswer>()
