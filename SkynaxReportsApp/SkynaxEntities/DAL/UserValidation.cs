@@ -21,5 +21,32 @@ namespace SkynaxEntities.DAL
                 return userexists;
             }
         }
+
+        public static bool CreateStudent(studentprofile stuprofile)
+        {
+            using (var context = new AssessmentContext())
+            {
+                context.Database.Connection.Open();
+                stuprofile.CreatedDate = DateTime.Now;
+                stuprofile.LastModifiedDate = DateTime.Now;
+                context.studentprofile.Add(stuprofile);
+                context.SaveChanges();
+
+                var userexists = context.studentprofile.Select(x => x.FirstName == stuprofile.FirstName && x.LastName == stuprofile.LastName && x.DoB== stuprofile.DoB).FirstOrDefault();
+                return userexists;
+            }
+
+        }
+
+        public static int FindUserId(string user_name)
+        {
+            using (var context = new AssessmentContext())
+            {
+                var userexists = from userinfo in context.userprofiles 
+                                 where userinfo.UserName == user_name
+                                 select userinfo.iD;
+                return userexists.First();
+            }
+        }
     }
 }

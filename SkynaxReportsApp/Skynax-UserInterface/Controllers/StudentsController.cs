@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -40,7 +41,49 @@ namespace Skynax_UserInterface.Controllers
         // GET: Students/Create
         public ActionResult Create()
         {
-            return View();
+            try
+            {
+                //throw new NullReferenceException("Test");
+
+                if (Session["InvalidUser"].ToString() == "ValidUser")
+                {
+                    ViewBag.Message = "Assessment Page";
+                    return View();
+                }
+                else
+                {
+                    Session["InvalidUser"] = "You did not login yet!";
+                    return View("LogIn");
+                }
+            }
+            catch (NullReferenceException nullexp)
+            {
+                return RedirectToAction("Index", "Error", new { message = nullexp.StackTrace });
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Error", new { message = ex.StackTrace });
+            }
+
+            //return View();
+        }
+
+        public ActionResult SubmitStudent(string user_name,string first_name, string last_name, string dob, string email)
+        {
+            studentprofile sprofile = new studentprofile()
+            {
+                iD = 0,
+                FirstName = first_name,
+                LastName = last_name,
+                DoB = Convert.ToDateTime(dob),
+                Emailaddress = email,
+                Optional = "A",
+                useriD = UserValidation.FindUserId(user_name)
+
+            };
+
+            bool result = UserValidation.CreateStudent(sprofile);
+                return View("Create");
         }
 
         public ActionResult GetCourses()

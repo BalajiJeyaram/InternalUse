@@ -16,6 +16,7 @@ namespace SkynaxEntities.DAL
         public virtual DbSet<ExamM> ExamMs { get; set; }
         public virtual DbSet<ExamQ> ExamQs { get; set; }
         public virtual DbSet<userprofile> userprofiles { get; set; }
+        public virtual DbSet<studentprofile> studentprofile { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<assessmentanswer>()
