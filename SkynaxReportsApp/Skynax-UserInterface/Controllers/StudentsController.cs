@@ -13,6 +13,7 @@ namespace Skynax_UserInterface.Controllers
 {
     public class StudentsController : Controller
     {
+        private AssessmentContext assessmentdb = new AssessmentContext();
         private SchoolContext db = new SchoolContext();
         private static HttpClient client = new HttpClient();
         
@@ -20,7 +21,7 @@ namespace Skynax_UserInterface.Controllers
         // GET: Students
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            return View(assessmentdb.studentprofile.ToList());
         }
 
         // GET: Students/Details/5
