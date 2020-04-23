@@ -54,7 +54,8 @@ namespace Skynax_UserInterface.Controllers
                 else
                 {
                     Session["InvalidUser"] = "You did not login yet!";
-                    return View("LogIn");
+                    //return View("LogIn");
+                    return RedirectToAction("LogIn", "Home");
                 }
             }
             catch (NullReferenceException nullexp)
@@ -107,19 +108,19 @@ namespace Skynax_UserInterface.Controllers
         // POST: Students/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,LastName,FirstMidName,EnrollmentDate")] Student student)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Students.Add(student);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "ID,LastName,FirstMidName,EnrollmentDate")] Student student)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Students.Add(student);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(student);
-        }
+        //    return View(student);
+        //}
 
         // GET: Students/Edit/5
         public ActionResult Edit(int? id)
@@ -128,11 +129,12 @@ namespace Skynax_UserInterface.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            studentprofile student = assessmentdb.studentprofile.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
             }
+            student.username = UserValidation.FindUserName(student.useriD);
             return View(student);
         }
 

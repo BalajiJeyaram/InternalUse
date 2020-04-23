@@ -6,6 +6,7 @@ namespace SkynaxEntities.DAL
     {
         public int iD { get; set; }
         public int useriD { get; set; }
+        public string username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime? DoB { get; set; }

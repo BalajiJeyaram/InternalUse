@@ -48,5 +48,16 @@ namespace SkynaxEntities.DAL
                 return userexists.First();
             }
         }
+
+        public static string FindUserName(int useriD)
+        {
+            using (var context = new AssessmentContext())
+            {
+                var userexists = from userinfo in context.userprofiles
+                                 where userinfo.iD == useriD
+                                 select userinfo.UserName;
+                return userexists.First();
+            }
+        }
     }
 }

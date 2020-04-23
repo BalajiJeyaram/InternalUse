@@ -28,7 +28,8 @@ namespace Skynax_UserInterface
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/dataTables.bootstrap.min.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/Student.css"));
         }
     }
 }

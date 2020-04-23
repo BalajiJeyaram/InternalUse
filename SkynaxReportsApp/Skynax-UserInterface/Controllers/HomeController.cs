@@ -306,5 +306,14 @@ namespace Skynax_UserInterface.Controllers
             }
             return View();
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                //accessmentdb.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

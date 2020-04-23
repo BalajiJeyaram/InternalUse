@@ -154,6 +154,7 @@
     <Content Include="Content\images\img_avatar2.png" />
     <Content Include="Content\LoginPage.css" />
     <Content Include="Content\popupwindow.css" />
+    <Content Include="Content\Student.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -202,6 +203,7 @@
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Home\SendEmail.cshtml" />
     <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\Students\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

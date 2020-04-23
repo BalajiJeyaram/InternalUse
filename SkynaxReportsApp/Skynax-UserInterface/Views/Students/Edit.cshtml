@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model SkynaxEntities.DAL.studentprofile
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -17,15 +18,24 @@
             <div class="col-xs-6"><input type="text" class="form-control" name="first_name" placeholder="First Name" required="required"></div>
             <div class="col-xs-6"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
         </div>*@
-                <input type="text" class="form-control" name="user_name" placeholder="Assigned User Name" required="required">
-                <input type="text" class="form-control" name="first_name" placeholder="First Name" required="required">
+                @*<input type="text" class="form-control" name="user_name" placeholder="" required="required">*@
+                @Html.EditorFor(model=>model.username,
+                        new { htmlAttributes = new { @class="form-control", placeholder=Html.DisplayNameFor(m=>m.username)}})
+                @Html.EditorFor(model=>model.FirstName,
+                    new { htmlAttributes = new { @class="form-control", placeholder=Html.DisplayNameFor(m=>m.FirstName)}})
+                @Html.EditorFor(model=>model.LastName,
+                    new { htmlAttributes = new { @class="form-control", placeholder=Html.DisplayNameFor(m=>m.LastName)}})
+                @Html.EditorFor(model=>model.DoB,
+                    new { htmlAttributes = new { @class="form-control", placeholder=Html.DisplayNameFor(m=>m.DoB)}})
+
+                @*<input type="text" class="form-control" name="first_name" placeholder="First Name" required="required">
                 <input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required">
-                <input type="date" class="form-control" name="dob" placeholder="Date of Birth" required="required">
+                <input type="date" class="form-control" name="dob" placeholder="Date of Birth" required="required">*@
             </div>
             <div class="form-group">
                 <input type="email" class="form-control" name="email" placeholder="Email" required="required">
             </div>
-           
+
             <div class="form-group">
                 <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
             </div>
