@@ -88,6 +88,25 @@ namespace Skynax_UserInterface.Controllers
                 return View("Create");
         }
 
+        public ActionResult EditStudent(int id, string user_name, string first_name, string last_name, string dob, string email)
+        {
+
+            studentprofile sprofile = new studentprofile()
+            {
+                iD = id,
+                FirstName = first_name,
+                LastName = last_name,
+                DoB = DateTime.ParseExact(dob,"MM/dd/yyyy HH:mm:ss tt", null),
+                Emailaddress = email,
+                Optional = "A",
+                useriD = UserValidation.FindUserId(user_name)
+
+            };
+            
+            bool result = UserValidation.ModifyStudent(sprofile);
+            return View("Index", assessmentdb.studentprofile.ToList());
+
+        }
         public ActionResult GetCourses()
         {
             string path= "http://localhost:50079/api/courses";

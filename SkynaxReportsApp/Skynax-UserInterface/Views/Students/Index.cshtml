@@ -18,12 +18,13 @@
     <div class="row top-buffer"></div>
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-hover" id="tablewithQuestions">
+            <table class="table table-hover" id="studentrecords">
                 <thead>
                     <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>DoB</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,3 +47,10 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function ()
+{
+        $('#studentrecords').DataTable();
+
+});
+</script>

@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="signup-form">
-        <form action="@Url.Action("SubmitStudent", "Students")" method="post">
+        <form action="@Url.Action("EditStudent", "Students")" method="post">
             <h2>Register</h2>
             <p class="hint-text">Create your account. It's free and only takes a minute.</p>
             <div class="form-group">
@@ -19,21 +19,25 @@
             <div class="col-xs-6"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
         </div>*@
                 @*<input type="text" class="form-control" name="user_name" placeholder="" required="required">*@
+                @Html.EditorFor(model=>model.iD,
+                       new { htmlAttributes = new { @class="form-control",  placeholder=Html.DisplayNameFor(m=>m.iD), Name = "id" } })
                 @Html.EditorFor(model=>model.username,
-                        new { htmlAttributes = new { @class="form-control", placeholder=Html.DisplayNameFor(m=>m.username)}})
+                        new { htmlAttributes = new { @class="form-control", placeholder=Html.DisplayNameFor(m=>m.username), Name = "user_name" } })
                 @Html.EditorFor(model=>model.FirstName,
-                    new { htmlAttributes = new { @class="form-control", placeholder=Html.DisplayNameFor(m=>m.FirstName)}})
+                    new { htmlAttributes = new { @class="form-control", placeholder=Html.DisplayNameFor(m=>m.FirstName), Name= "first_name" } })
                 @Html.EditorFor(model=>model.LastName,
-                    new { htmlAttributes = new { @class="form-control", placeholder=Html.DisplayNameFor(m=>m.LastName)}})
+                    new { htmlAttributes = new { @class="form-control", placeholder=Html.DisplayNameFor(m=>m.LastName),Name= "last_name"}})
                 @Html.EditorFor(model=>model.DoB,
-                    new { htmlAttributes = new { @class="form-control", placeholder=Html.DisplayNameFor(m=>m.DoB)}})
+                    new { htmlAttributes = new { @class="form-control", placeholder=Html.DisplayNameFor(m=>m.DoB),Name= "dob"}})
 
                 @*<input type="text" class="form-control" name="first_name" placeholder="First Name" required="required">
-                <input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required">
-                <input type="date" class="form-control" name="dob" placeholder="Date of Birth" required="required">*@
+        <input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required">
+        <input type="date" class="form-control" name="dob" placeholder="Date of Birth" required="required">*@
             </div>
             <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+                @*<input type="email" class="form-control" name="email" placeholder="Email" required="required">*@
+                @Html.EditorFor(model=>model.Emailaddress,
+                   new { htmlAttributes = new { @class="form-control", placeholder=Html.DisplayNameFor(m=>m.Emailaddress),Name= "email" } })
             </div>
 
             <div class="form-group">

@@ -37,7 +37,33 @@ namespace SkynaxEntities.DAL
             }
 
         }
+        public static bool ModifyStudent(studentprofile stuprofile)
+        {
 
+            using (var context = new AssessmentContext())
+            {
+                try
+                {
+                    context.Database.Connection.Open();
+                    studentprofile studentPro = context.studentprofile.Where(x=>x.iD == stuprofile.iD).First();
+                    studentPro.FirstName = stuprofile.FirstName;
+                    studentPro.LastName = stuprofile.LastName;
+                    studentPro.DoB = stuprofile.DoB;
+                    studentPro.Emailaddress = stuprofile.Emailaddress;
+                    studentPro.LastModifiedDate = DateTime.Now;
+
+                    context.SaveChanges();
+                }
+                catch (System.Data.Entity.Core.OptimisticConcurrencyException)
+                {
+
+                }
+
+                var userexists = context.studentprofile.Select(x => x.FirstName == stuprofile.FirstName && x.LastName == stuprofile.LastName && x.DoB == stuprofile.DoB).FirstOrDefault();
+                return userexists;
+            }
+
+        }
         public static int FindUserId(string user_name)
         {
             using (var context = new AssessmentContext())
