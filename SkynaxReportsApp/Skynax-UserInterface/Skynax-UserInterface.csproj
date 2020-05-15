@@ -146,6 +146,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AutoCompleteStyle.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -159,6 +160,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\AutoCompleteSearch.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="SampleData\QuestionarioMobilityT2_ver1.docx" />
@@ -195,7 +197,7 @@
     <Content Include="Views\Students\Index.cshtml" />
     <Content Include="Views\Home\Assessment.cshtml" />
     <Content Include="Views\Home\AssessmentResult.cshtml" />
-    <Content Include="Views\Home\PracticalTest.cshtml" />
+    <Content Include="Views\Home\LabTest.cshtml" />
     <Content Include="Views\Home\Courses.cshtml" />
     <Content Include="Views\Home\Help.cshtml" />
     <Content Include="Views\Home\ContactUs.cshtml" />

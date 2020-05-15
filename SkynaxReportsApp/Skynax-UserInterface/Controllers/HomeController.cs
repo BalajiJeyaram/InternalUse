@@ -115,7 +115,7 @@ namespace Skynax_UserInterface.Controllers
 
         }
 
-        public ActionResult PracticalTest()
+        public ActionResult LabTest()
         {
             //ViewBag.Message = "Pracical Test Page";
 
