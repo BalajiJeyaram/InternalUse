@@ -1,0 +1,20 @@
+<HTML>
+<body>
+    <h1> Welcome to Worker Script Page </h1>
+    <h2>v1.3@Datetime<p>Date/Time: <span id="datetime"></span></p></h2>
+    <h4>WorkerScript Is Implemented</h4>
+    <script>
+        var dt = new Date();
+        document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('BalbaTestWorkerScript.js')
+                .then(function (reg) { console.log("SW Registered"); })
+                .catch(function (err) {
+                    console.error("SW registration failed with error " + err);
+                });
+        }
+    </script>
+</body>
+</HTML>

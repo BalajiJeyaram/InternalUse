@@ -1,0 +1,13 @@
+<HTML>
+<title>Sample Worker Script Page</title>
+<body> 
+<h1> Welcome to Worker Script Page </h1>
+</body>
+</HTML>
+<script>
+if('serviceWorker' in navigator) {
+    navigator.serviceWorker
+         .register('BalbaTestWorkerScript.js')
+         .then(function() { console.log("SW Registered"); });
+   }
+</script>
