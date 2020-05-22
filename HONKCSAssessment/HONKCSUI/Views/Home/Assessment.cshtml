@@ -1,0 +1,272 @@
+﻿@model List<HONKCSUI.Models.QuestionAnswer>
+<!doctype html>
+@{
+    ViewBag.Title = "Assessment";
+}
+<style>
+    .alnleft {
+        text-align: left;
+    }
+
+    .table-hover {
+        font-size: 15px;
+    }
+
+    .Radio {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .Radio--large {
+        font-size: 2rem;
+    }
+
+    .Radio-Input {
+        margin: 0 0.5rem 0;
+    }
+
+    .top-buffer {
+        margin-top: 20px;
+    }
+</style>
+<h2>Assessment</h2>
+<input type="hidden" id="trhidden" />
+<div class=".container-fluid">
+    @if (Model != null)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                No of Questions to be Answered - <b>
+                    @if (Model != null)
+                    {@Model.Count.ToString();
+                }
+                </b>
+            </div>
+        </div>
+        <div class="row top-buffer"></div>
+        int intTextarea = 0;
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover" id="tablewithQuestions">
+                    <thead>
+                        <tr>
+                            <th>Question</th>
+                            @*<th>Answer</th>
+                                <th>Type</th>
+                                <th>Answered</th>
+                                <th>Click</th>*@
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="questionclass" style="text-align:left">@item.Question</td>
+                                @*<td class="answerclass" style="text-align:left">@item.Answer</td>
+                                    <td class="typeclass" style="text-align:center">@item.AnswerType</td>
+                                    <td class="statusclass" style="text-align:center"> @{ string itemtext;
+                                        switch (item.AnsweredStatus.ToString())
+                                        {
+                                            case "0":
+                                                itemtext = "No";
+                                                break;
+                                            case "1":
+                                                itemtext = "Yes";
+                                                break;
+                                            default:
+                                                itemtext = "No";
+                                                break;
+                                        }}
+                                    @itemtext
+                                    </td>
+                                    <td class="alnleft" style="text-align:left"><button class="popupbutton" id="test1"  onclick="getrowid(this)">Answer</button></td>*@
+                                <td><textarea name="" id="answerarea@(intTextarea)" cols="100" rows="5" style="max-width:3000px !important">@item.Answer</textarea></td>
+                                @{
+                                    intTextarea = intTextarea + 1;
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button class="btn btn-danger" style="display:inline-block; float:left;">Clear All</button>
+                <button class="btn btn-primary" style="display:inline-block; float:right;" id="submitanswer">Submit</button>
+            </div>
+
+        </div>
+
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-12">No Questions to show</div>
+            <div class="col-md-12">N/A</div>
+        </div>
+    }
+
+    @*<div class="row">
+            <div class="col-md-12">
+                <dv class="col-md-6"><button class="btn btn-primary btn-responsive" id="Next">...</button></dv>
+                <dv class="col-md-6"><button class="btn btn-primary btn-responsive" style="align-content:center">Next</button></dv>
+            </div>
+        </div>*@
+    <!---Below code brings up pop window-->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h4>Answer Window</h4>
+            </div>
+            <div class="modal-body">
+                <div id="answertopopup"></div>
+            </div>
+            <div class="modal-footer">
+                @*<h3>Modal Footer</h3>*@
+                <button class="btn btn-primary btn-responsive" id="Next">Cancel</button>
+                <button class="btn btn-primary btn-responsive" style="align-content:center" onclick="assignvalue()">Submit</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function getrowid(element)
+    {
+        $("#trhidden").val(element.parentNode.parentNode.rowIndex);
+    }
+    var popmodal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+
+    function assignvalue()
+    {
+        //alert($("#trhidden").val());
+        $("#tablewithQuestions tr:eq(" + $('#trhidden').val() + ")").find('td:eq(3)').html('Yes');
+        popmodal.style.display = "none";
+    }
+    /*
+Having a .class selector for Event handler will result in bubbling of click event (sometimes to Parent element, sometimes to Children elements in DOM).
+event.StopPropagation() method ensures that event doesn't bubble to Parent elements, while event.StopImmediatePropagation()method ensures that event doesn't bubble to Children elements of desired class selector.
+*/
+    $(".popupbutton").on('click', function (event) {
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+    var itemQ = $(this).closest("tr")   // Finds the closest row <tr>
+        .find(".questionclass")     // Gets a descendent with class="nr"
+        .text();         // Retrieves the text within <td>
+
+    var itemA = $(this).closest("tr")   // Finds the closest row <tr>
+        .find(".answerclass")     // Gets a descendent with class="nr"
+        .text();
+
+    var itemT = $(this).closest("tr")
+        .find(".typeclass")
+        .text();
+
+    if (itemT == "1") {
+        var split = itemA.split("#");
+        var stritem = "";
+        var strhtml = "<fieldset><legend>"+itemQ+"</legend>";
+        $.each(split, function (key, value) {
+            stritem = stritem + "<input class='Radio-Input' type='radio' name='radio1' id='radio1'><label class='Radio Radio--large' for=''>"+ value +"</label><br>";
+        });
+        strhtml = strhtml + stritem + "</fieldset>";
+        document.getElementById('answertopopup').innerHTML = strhtml;
+    }
+    else if (itemT = "2") {
+        var strhtml = "<textarea rows=10 cols=1000>Description</textarea>";
+        document.getElementById('answertopopup').innerHTML = strhtml;
+    }
+
+    popmodal.style.display = "block";
+
+});
+
+
+span.onclick = function ()
+{
+
+    popmodal.style.display = "none";
+
+}
+
+//when user click anywhere outside of the popup window
+
+window.onclick = function ()
+{
+    if (event.target == popmodal) {
+        popmodal.style.display = "none";
+    }
+
+}
+$(document).ready(function ()
+{
+    $('#tablewithQuestions').DataTable();
+
+});
+
+$("#Next").click(function ()
+{
+        alert("clicked");
+    $.ajax({
+        url: "@Url.Action("GetQuestions","Home")",
+        success: function (data) {
+            $.each(data, function (i, dt) {
+                alert(dt.Question + ' - ' + dt.answers);
+            });
+            },
+        error: function () {
+            alert("Result: " + status + " " + xhr.status + " " + xhr.statusText)
+        }
+    });
+});
+
+    $("#submitanswer").click(function () {
+        var table = $('#tablewithQuestions').DataTable();
+        var dd = table.rows().data().toArray();
+        var questionAnswer = new Array();
+        var answerarea = 0;
+        $.each(dd, function (index, value) {
+            var item = {};
+            item.Question = value[0];
+            item.AnswerType = 0;
+            item.AnsweredStatus = 1;
+            item.Answer = $("#answerarea" + answerarea).val();
+            questionAnswer.push(item);
+            //alert(JSON.stringify(questionAnswer));
+            answerarea = answerarea + 1;
+        });    
+        //alert(JSON.stringify(data));
+        $.ajax({
+            type:"POST",
+            url: '/Home/SubmitAssessment',
+            //contentType: "application/json;",
+            //dataType: 'json',
+            data: { questionAnswer:questionAnswer } ,
+            success: function () { alert('success') },
+            error: function () { alert('failure'); }
+        });
+        window.location = "/Home/AssessmentResult";
+    });
+    function readDataTableContent()
+    {
+        var oTable = document.getElementById('tablewithQuestions');
+        var rowsl = oTable.rows.length;
+        alert(rowsl);
+        for (i = 0; i < rowsl; i++) {
+            var oCells = oTable.rows.items(i).cells;
+            alert(oCells.item(0).innerHTML);
+            alert(oCells.item(1).innerHTML);
+        }
+    }
+</script>
