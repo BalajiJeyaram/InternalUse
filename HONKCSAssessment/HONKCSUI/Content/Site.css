@@ -39,6 +39,6 @@ a {
 
 .active {
     /*font-size: 30px;*/
-    color: red;
-    border-bottom: 5px solid red;
+    color:black;
+    /*border-bottom: 5px solid red;*/
 }
