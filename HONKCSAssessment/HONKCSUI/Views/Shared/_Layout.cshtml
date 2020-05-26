@@ -1,6 +1,15 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <style>
+        .navbar-fixed-top {
+            background-color:white !important;
+            border-color:black;
+        }
+        .navbar-inverse .navbar-nav > li > a {
+            color:black !important;
+        }
+    </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Honeywell KCS Assessment</title>
@@ -21,7 +30,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Honeywell KCS Assessment", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="@Url.Action("Index","Home")"><img style="float:left" src="~/Content/images/HON_DWP-New-Logo.png" /></a>
+                @*@Html.ActionLink("Honeywell KCS Assessment", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -31,9 +41,10 @@
         <li>@Html.ActionLink("Courses", "Index", "Course")</li>
         <li>@Html.ActionLink("Help", "Index", "Department")</li>*@
                     <li><a href="@Url.Action("Index","Home")">Home</a></li>
-                    <li><a href="@Url.Action("Assessment","Home")">Assessment</a></li>
-                    <li><a href="@Url.Action("LabTest","Home")">Lab Test</a></li>
-                    <li><a href="@Url.Action("Courses","Home")">Courses</a></li>
+                    <li><a href="@Url.Action("Index","KCSAssessment")">Assessment</a></li>
+                    <li><a href="@Url.Action("Report","KCSAssessment")">Report</a></li>
+                    @*<li><a href="@Url.Action("LabTest","Home")">Lab Test</a></li>
+                    <li><a href="@Url.Action("Courses","Home")">Courses</a></li>*@
                     <li><a href="@Url.Action("Help","Home")">Help</a></li>
                     <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
                     <li><a href="@Url.Action("LogIn","Home")">Logout</a></li>
