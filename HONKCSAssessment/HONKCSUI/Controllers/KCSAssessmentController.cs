@@ -82,7 +82,7 @@ namespace HONKCSUI.Controllers
             };
 
             bool result = KCSAssessmentValidation.CreateKCSAssessment(kCSAssessment);
-            return RedirectToAction("SubmitAssessment", "Student");
+            return RedirectToAction("SubmitAssessment", "Home");
             //return View("Create");
             //return View();
         }
