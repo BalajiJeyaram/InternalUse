@@ -17,6 +17,7 @@ namespace KCSEntities.DAL
         public virtual DbSet<ExamQ> ExamQs { get; set; }
         public virtual DbSet<userprofile> userprofiles { get; set; }
         public virtual DbSet<studentprofile> studentprofile { get; set; }
+        public virtual DbSet<KCSAssessment> kcsassessment { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<assessmentanswer>()

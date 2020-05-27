@@ -20,3 +20,4 @@ C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\D
 C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Debug\KCSEntities.csproj.CopyComplete
 C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Debug\KCSEntities.dll
 C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Debug\KCSEntities.pdb
+C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Debug\KCSEntities.csprojAssemblyReference.cache

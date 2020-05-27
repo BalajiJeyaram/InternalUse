@@ -1,4 +1,4 @@
-﻿
+﻿@model KCSEntities.DAL.KCSAssessment
 @{
     ViewBag.Title = "Index";
 }
@@ -95,346 +95,446 @@
         background:#f1f5f6;
         color: #303136;
     }
+    .required:after {
+        content: " *";
+        color: red;
+    }
+    .validation {
+        color:red;
+    }
 </style>    
 <h2>KCS Assessment</h2>
 <div class=".container-fluid">
-    <div class="row">
-        <div id="exTab1" class="container">
-            <ul class="nav nav-pills">
-                <li class="active">
-                    <a href="#1a" data-toggle="tab">Assessment Information</a>
-                </li>
-                <li>
-                    <a href="#2a" data-toggle="tab">Process Integration</a>
-                </li>
-                <li>
-                    <a href="#3a" data-toggle="tab">Article Quality</a>
-                </li>
-            </ul>
+    <form action="@Url.Action("SubmitKCSAssessment", "KCSAssessment")" method="post">
+        <div class="row">
+            <div id="exTab1" class="container">
+                <ul class="nav nav-pills">
+                    <li class="active">
+                        <a href="#1a" data-toggle="tab">Assessment Information</a>
+                    </li>
+                    <li>
+                        <a href="#4a" data-toggle="tab">Link Accuracy</a>
+                    </li>
+                    <li>
+                        <a href="#2a" data-toggle="tab">Contribution Index</a>
+                    </li>
+                    <li>
+                        <a href="#3a" data-toggle="tab">Article Quality Index (AQI)</a>
+                    </li>
+                    <li>
+                        <a href="#5a" data-toggle="tab">Extra</a>
+                    </li>
+                </ul>
 
-            <div class="tab-content clearfix">
-                <div class="tab-pane active" id="1a">
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom">
-                            Date KCS assessment was performed
+                <div class="tab-content clearfix">
+                    <div class="tab-pane active" id="1a">
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom required">
+                                Date KCS assessment was performed
+                            </div>
+
+                            <div class="panel-body">
+                                <input type="date" class="form-control" name="AInfo1" id="AInfo1" aria-describedby="emailHelp" placeholder="Date KCS assessment was performed">
+                            </div>
                         </div>
+                        <div class="panel panel-default">
+                            <span class="validation">@Html.ValidationMessageFor(model => model.AInfo2)</span>
+                            <div class="panel-heading panel-heading-custom required">
+                                Business Name
+                            </div>
 
-                        <div class="panel-body">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Date KCS assessment was performed">
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="BusinessName1" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">IGS</label>
+                                    <input type="radio" class="custom-control-input" id="BusinessName2" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">Voice</label>
+                                    <input type="hidden" id="AInfo2" name="AInfo2"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom required">
+                                TSE's Name
+                            </div>
+
+                            <div class="panel-body">
+                                <input type="text" class="form-control" id="AInfo3" name="AInfo3" aria-describedby="emailHelp" placeholder="TSE Name">
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom required">
+                                Coach Name
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="BA" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Beatrice Ahmad</label>
+                                    <input type="radio" class="custom-control-input" id="GS" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">Gabriel Stefan</label>
+                                    <input type="radio" class="custom-control-input" id="PP" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Pamela Perez</label>
+                                    <input type="radio" class="custom-control-input" id="GP" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">Gabriel Perez</label>
+                                    <input type="radio" class="custom-control-input" id="SV" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">Sue Van Gelder</label>
+                                    <input type="hidden" id="AInfo4" name="AInfo4"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom required">
+                                Case Number
+                            </div>
+
+                            <div class="panel-body">
+                                <input type="text" class="form-control" id="AInfo5" name="AInfo5" aria-describedby="emailHelp" placeholder="Case Number">
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom required">
+                                Article Number
+                            </div>
+
+                            <div class="panel-body">
+                                <input type="text" class="form-control" id="AInfo6" name="AInfo6" aria-describedby="emailHelp" placeholder="Article Number">
+                            </div>
                         </div>
                     </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            TSE's Name
-                        </div>
-
-                        <div class="panel-body">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="TSE Name">
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Coach Name
-                        </div>
-
-                        <div class="panel-body">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Coach Name">
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Case Number
-                        </div>
-
-                        <div class="panel-body">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Case Number">
+                    <div class="tab-pane" id="4a">
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Is this Article attached/linked fully resolves the customer's question/problem?
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes 100%</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">Corrected 50%</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">No 0%</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Article Number
+                    <div class="tab-pane" id="2a">
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Oppertunity to line resolution article
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Agent Linked resolution article
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">N/A</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Oppertunity to modify existing article
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Agent modified existing attached article
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">N/A</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Oppertunity to create article
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Agent created new article
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">N/A</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultUnchecked">Duplicated</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="3a">
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Article is Unique
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">N/A +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Article written to be reused
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">N/A +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Article title and content are related
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">N/A +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Captured customer context and symptons
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">N/A +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Agent Add/capture the environment (including topics And categories)
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">N/A +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Audience Correct
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">N/A +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Formatting: steps, bullets,font, etc
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">N/A +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Link embedded and working (including files attached)
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">N/A +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Validate And Publishd the article (externally)
+                            </div>
+                            <div class="panel-body">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">N/A +20</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="5a">
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-heading-custom">
+                                Comments
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" maxlength="500"></textarea>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="panel-body">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Article Number">
-                        </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="2a">
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Opposite. to line resolution article
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Agent Linked resolution article
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultUnchecked">N/A</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Opposite. to modify existing article
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Agent modified existing attached article
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultUnchecked">N/A</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Opposite. to create article
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Agent created new article
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultUnchecked">N/A</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultUnchecked">Duplicated</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="3a">
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Article is Unique
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Article written to be reused
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Article title and content are related
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Captured customer context and symptons
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Agent Add/capture the environment (including topics And categories)
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Audience Correct
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Formatting: steps, bullets,font, etc
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Link embedded and working (including files attached)
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading panel-heading-custom"">
-                            Validate And Publishd the article (externally)
-                        </div>
-                        <div class="panel-body">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                                <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-4">
 
-        </div>
-        <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
 
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-danger" style="display:inline-block; float:left;">Clear All</button>
+                <button class="btn btn-primary" style="display:inline-block; float:right;" id="submitanswer" type="submit">Submit</button>
+            </div>
         </div>
-        <div class="col-md-4">
-            <button class="btn btn-danger" style="display:inline-block; float:left;">Clear All</button>
-            <button class="btn btn-primary" style="display:inline-block; float:right;" id="submitanswer">Submit</button>
-        </div>
-    </div>
+    </form>
 </div>
+<script>
+    //Business Name Fetch
+    $("#BusinessName1").click(function () {
+        $("#AInfo2").val("IGS");
+    });
+    $("#BusinessName2").click(function () {
+       
+        $("#AInfo2").val("Voice");
+    });
+    //Coach Name Fetch
+    $("#BA").click(function () {
+        $("#AInfo4").val("Beatrice Ahmad");
+    });
+    $("#GS").click(function () {
+        $("#AInfo4").val("Gabriel Stefan");
+    });
+    $("#PP").click(function () {
+        $("#AInfo4").val("Pamela Perez");
+    });
+    $("#GP").click(function () {
+        $("#AInfo4").val("Gabriel Perez");
+    });
+    $("#SV").click(function () {
+        $("#AInfo4").val("Sue Van Gelder");
+    });
+</script>

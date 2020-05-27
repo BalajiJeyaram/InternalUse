@@ -63,6 +63,8 @@
     <Compile Include="DAL\AssessmentContext.cs" />
     <Compile Include="DAL\ExamM.cs" />
     <Compile Include="DAL\ExamQ.cs" />
+    <Compile Include="DAL\KCSAssessmentEntity.cs" />
+    <Compile Include="DAL\KCSAssessmentValidation.cs" />
     <Compile Include="DAL\SchoolContext.cs" />
     <Compile Include="DAL\SchoolInitializer.cs" />
     <Compile Include="DAL\studentprofile.cs" />
