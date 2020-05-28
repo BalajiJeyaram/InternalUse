@@ -71,7 +71,7 @@ namespace KCSEntities.DAL
         public int AQIInfo9 { get; set; } = 10;
 
 
-        public string CoachComments { get; set; } = "Entered Default value from C#";
+        public string CoachComments { get; set; } = "Default value entered by C#";
 
 
         public DateTime CreatedDate { get; set; }

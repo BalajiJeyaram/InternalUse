@@ -209,6 +209,7 @@
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\KCSAssessment\Index.cshtml" />
     <Content Include="Views\KCSAssessment\Report.cshtml" />
+    <Content Include="Views\KCSAssessment\AssessmentList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -159,9 +159,9 @@
 
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="2">
-                                    <input type="radio" class="custom-control-input" id="BusinessName1" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="BusinessName1" name="BusinessName1">
                                     <label class="custom-control-label" for="defaultUnchecked">IGS</label>
-                                    <input type="radio" class="custom-control-input" id="BusinessName2" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="BusinessName2" name="BusinessName2">
                                     <label class="custom-control-label" for="defaultUnchecked">Voice</label>
                                     <input type="hidden" id="AInfo2" name="AInfo2" />
                                 </div>
@@ -184,15 +184,15 @@
 
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="4">
-                                    <input type="radio" class="custom-control-input" id="BA" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="BA" name="BA">
                                     <label class="custom-control-label" for="defaultUnchecked">Beatrice Ahmad</label>
-                                    <input type="radio" class="custom-control-input" id="GS" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="GS" name="GS">
                                     <label class="custom-control-label" for="defaultUnchecked">Gabriel Stefan</label>
-                                    <input type="radio" class="custom-control-input" id="PP" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="PP" name="PP">
                                     <label class="custom-control-label" for="defaultUnchecked">Pamela Perez</label>
-                                    <input type="radio" class="custom-control-input" id="GP" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="GP" name="GP">
                                     <label class="custom-control-label" for="defaultUnchecked">Gabriel Perez</label>
-                                    <input type="radio" class="custom-control-input" id="SV" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="SV" name="SV">
                                     <label class="custom-control-label" for="defaultUnchecked">Sue Van Gelder</label>
                                     <input type="hidden" id="AInfo4" name="AInfo4"/>
                                 </div>
@@ -205,7 +205,7 @@
 
                             <div class="panel-body">
                                 <input type="text" tabindex="5" class="form-control" id="AInfo5" name="AInfo5" aria-describedby="emailHelp" 
-                                       placeholder="Case Number" required required oninvalid="this.setCustomValidity('Case Number cannot be empty')" oninput="this.setCustomValidity('')">
+                                       placeholder="Case Number" required oninvalid="this.setCustomValidity('Case Number cannot be empty')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                         <div class="panel panel-default">
@@ -215,7 +215,7 @@
 
                             <div class="panel-body">
                                 <input type="text" tabindex="6" class="form-control" id="AInfo6" name="AInfo6" aria-describedby="emailHelp" 
-                                       placeholder="Article Number" required required oninvalid="this.setCustomValidity('Article Number cannot be empty')" oninput="this.setCustomValidity('')">
+                                       placeholder="Article Number" required oninvalid="this.setCustomValidity('Article Number cannot be empty')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                     </div>
@@ -226,12 +226,13 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="LInfo1Yes100" name="LInfo1Yes100">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes 100%</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="LInfo1Corrected50" name="LInfo1Corrected50">
                                     <label class="custom-control-label" for="defaultUnchecked">Corrected 50%</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="LInfo1No0" name="LInfo1No0">
                                     <label class="custom-control-label" for="defaultUnchecked">No 0%</label>
+                                    <input type="hidden" id="LInfo1" name="LInfo1" />
                                 </div>
                             </div>
                         </div>
@@ -242,11 +243,12 @@
                                 1. Oppertunity to line resolution article
                             </div>
                             <div class="panel-body">
-                                <div class="custom-control custom-radio"  tabindex="1">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                <div class="custom-control custom-radio" tabindex="1">
+                                    <input type="radio" class="custom-control-input" id="CInfo1Yes" name="CInfo1Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                                    <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="radio" class="custom-control-input" id="CInfo1No" name="CInfo1No">
+                                    <label class="custom-control-label" for="CInfo1No">No</label>
+                                    <input type="hidden" id="CInfo1" name="CInfo1" />
                                 </div>
                             </div>
                         </div>
@@ -255,13 +257,14 @@
                                 2. Agent Linked resolution article
                             </div>
                             <div class="panel-body">
-                                <div class="custom-control custom-radio"  tabindex="2">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                <div class="custom-control custom-radio" tabindex="2">
+                                    <input type="radio" class="custom-control-input" id="CInfo2Yes" name="CInfo2Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="CInfo2No" name="CInfo2No">
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="CInfo2NA" name="CInfo2NA">
                                     <label class="custom-control-label" for="defaultUnchecked">N/A</label>
+                                    <input type="hidden" id="CInfo2" name="CInfo2" />
                                 </div>
                             </div>
                         </div>
@@ -270,11 +273,12 @@
                                 3. Oppertunity to modify existing article
                             </div>
                             <div class="panel-body">
-                                <div class="custom-control custom-radio"  tabindex="3">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                <div class="custom-control custom-radio" tabindex="3">
+                                    <input type="radio" class="custom-control-input" id="CInfo3Yes" name="CInfo3Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="CInfo3No" name="CInfo3No">
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="hidden" id="CInfo3" name="CInfo3" />
                                 </div>
                             </div>
                         </div>
@@ -283,13 +287,14 @@
                                 4. Agent modified existing attached article
                             </div>
                             <div class="panel-body">
-                                <div class="custom-control custom-radio"  tabindex="4">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                <div class="custom-control custom-radio" tabindex="4">
+                                    <input type="radio" class="custom-control-input" id="CInfo4Yes" name="CInfo4Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="CInfo4No" name="CInfo4No">
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="CInfo4NA" name="CInfo4NA">
                                     <label class="custom-control-label" for="defaultUnchecked">N/A</label>
+                                    <input type="hidden" id="CInfo4" name="CInfo4" />
                                 </div>
                             </div>
                         </div>
@@ -298,11 +303,12 @@
                                 5. Oppertunity to create article
                             </div>
                             <div class="panel-body">
-                                <div class="custom-control custom-radio"  tabindex="5">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                <div class="custom-control custom-radio" tabindex="5">
+                                    <input type="radio" class="custom-control-input" id="CInfo5Yes" name="CInfo5Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="CInfo5No" name="CInfo5No">
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
+                                    <input type="hidden" id="CInfo5" name="CInfo5" />
                                 </div>
                             </div>
                         </div>
@@ -311,15 +317,16 @@
                                 6. Agent created new article
                             </div>
                             <div class="panel-body">
-                                <div class="custom-control custom-radio"  tabindex="6">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                <div class="custom-control custom-radio" tabindex="6">
+                                    <input type="radio" class="custom-control-input" id="CInfo6Yes" name="CInfo6Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="CInfo6No" name="CInfo6No">
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="CInfo6NA" name="CInfo6NA">
                                     <label class="custom-control-label" for="defaultUnchecked">N/A</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="CInfo6Duplicated" name="CInfo6Duplicated">
                                     <label class="custom-control-label" for="defaultUnchecked">Duplicated</label>
+                                    <input type="hidden" id="CInfo6" name="CInfo6" />
                                 </div>
                             </div>
                         </div>
@@ -330,17 +337,18 @@
                                 1. Article is Unique
                             </div>
                             <div class="panel-body">
-                                <div class="custom-control custom-radio"  tabindex="1">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                <div class="custom-control custom-radio" tabindex="1">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo1Yes" name="AQIInfo1Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo1NA" name="AQIInfo1NA">
                                     <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo1No" name="AQIInfo1No">
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo1Corrected" name="AQIInfo1Corrected">
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo1NoArticle" name="AQIInfo1NoArticle">
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                    <input type="hidden" id="AQIInfo1" name="AQIInfo1" />
                                 </div>
                             </div>
                         </div>
@@ -349,17 +357,18 @@
                                 2. Article written to be reused
                             </div>
                             <div class="panel-body">
-                                <div class="custom-control custom-radio"  tabindex="2">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                <div class="custom-control custom-radio" tabindex="2">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo2Yes" name="AQIInfo2Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo2NA" name="AQIInfo2NA">
                                     <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo2No" name="AQIInfo2No">
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo2Corrected" name="AQIInfo2Corrected">
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo2NoArticle" name="AQIInfo2NoArticle">
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                    <input type="hidden" id="AQIInfo2" name="AQIInfo2" />
                                 </div>
                             </div>
                         </div>
@@ -368,17 +377,18 @@
                                 3. Article title and content are related
                             </div>
                             <div class="panel-body">
-                                <div class="custom-control custom-radio"  tabindex="3">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                <div class="custom-control custom-radio" tabindex="3">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo3Yes" name="AQIInfo3Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo3NA" name="AQIInfo3NA">
                                     <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo3No" name="AQIInfo3No">
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo3Corrected" name="AQIInfo3Corrected">
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo3NoArticle" name="AQIInfo3NoArticle">
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                    <input type="hidden" id="AQIInfo3" name="AQIInfo3" />
                                 </div>
                             </div>
                         </div>
@@ -387,17 +397,18 @@
                                 4. Captured customer context and symptons
                             </div>
                             <div class="panel-body">
-                                <div class="custom-control custom-radio"  tabindex="4">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                <div class="custom-control custom-radio" tabindex="4">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo4Yes" name="AQIInfo4Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo4NA" name="AQIInfo4NA">
                                     <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo4No" name="AQIInfo4No">
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo4Corrected" name="AQIInfo4Corrected">
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo4NoArticle" name="AQIInfo4NoArticle">
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                    <input type="hidden" id="AQIInfo4" name="AQIInfo4" />
                                 </div>
                             </div>
                         </div>
@@ -406,17 +417,18 @@
                                 5. Agent Add/capture the environment (including topics And categories)
                             </div>
                             <div class="panel-body">
-                                <div class="custom-control custom-radio"  tabindex="5">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                <div class="custom-control custom-radio" tabindex="5">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo5Yes" name="AQIInfo5Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo5NA" name="AQIInfo5NA">
                                     <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo5No" name="AQIInfo5No">
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo5Corrected" name="AQIInfo5Corrected">
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo5NoArticle" name="AQIInfo5NoArticle">
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                    <input type="hidden" id="AQIInfo5" name="AQIInfo5" />
                                 </div>
                             </div>
                         </div>
@@ -426,16 +438,17 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="6">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo6Yes" name="AQIInfo6Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo6NA" name="AQIInfo6NA">
                                     <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo6No" name="AQIInfo6No">
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo6Corrected" name="AQIInfo6Corrected">
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo6NoArticle" name="AQIInfo6NoArticle">
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                    <input type="hidden" id="AQIInfo6" name="AQIInfo6" />
                                 </div>
                             </div>
                         </div>
@@ -444,17 +457,18 @@
                                 7. Formatting: steps, bullets,font, etc
                             </div>
                             <div class="panel-body">
-                                <div class="custom-control custom-radio"  tabindex="7">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                <div class="custom-control custom-radio" tabindex="7">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo7Yes" name="AQIInfo7Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo7NA" name="AQIInfo7NA">
                                     <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo7No" name="AQIInfo7No">
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo7Corrected" name="AQIInfo7Corrected">
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo7NoArticle" name="AQIInfo7NoArticle">
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                    <input type="hidden" id="AQIInfo7" name="AQIInfo7" />
                                 </div>
                             </div>
                         </div>
@@ -463,17 +477,18 @@
                                 8. Link embedded and working (including files attached)
                             </div>
                             <div class="panel-body">
-                                <div class="custom-control custom-radio"  tabindex="8">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                <div class="custom-control custom-radio" tabindex="8">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo8Yes" name="AQIInfo8Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo8NA" name="AQIInfo8NA">
                                     <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo8No" name="AQIInfo8No">
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo8Corrected" name="AQIInfo8Corrected">
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo8NoArticle" name="AQIInfo8NoArticle">
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                    <input type="hidden" id="AQIInfo8" name="AQIInfo8" />
                                 </div>
                             </div>
                         </div>
@@ -482,17 +497,18 @@
                                 9. Validate And Publishd the article (externally)
                             </div>
                             <div class="panel-body">
-                                <div class="custom-control custom-radio"  tabindex="9">
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                <div class="custom-control custom-radio" tabindex="9">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo9Yes" name="AQIInfo9Yes">
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo9NA" name="AQIInfo9NA">
                                     <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo9No" name="AQIInfo9No">
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
+                                    <input type="radio" class="custom-control-input" id="AQIInfo9Corrected" name="AQIInfo9Corrected">
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo9NoArticle" name="AQIInfo9NoArticle">
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
+                                    <input type="hidden" id="AQIInfo9" name="AQIInfo9" />
                                 </div>
                             </div>
                         </div>
@@ -504,7 +520,7 @@
                             </div>
                             <div class="panel-body">
                                 <div class="form-group">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" maxlength="500"></textarea>
+                                    <textarea class="form-control" id="CoachComments" name ="CoachComments" rows="10" maxlength="500"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -555,11 +571,299 @@
         $("#AInfo4").val("Sue Van Gelder");
     });
 
+    //Link Accuracy Fetch
+    $("#LInfo1Yes100").click(function () {
+        $("#LInfo1").val("100");
+    });
+    $("#LInfo1Corrected50").click(function () {
+        $("#LInfo1").val("50");
+    });
+    $("#LInfo1No0").click(function () {
+        $("#LInfo1").val("0");
+    });
+
+    //Contribution Index Fetch
+    $("#CInfo1Yes").click(function () {
+        $("#CInfo1").val("Yes");
+    });
+    $("#CInfo1No").click(function () {
+        $("#CInfo1").val("No");
+    });
+    $("#CInfo2Yes").click(function () {
+        $("#CInfo2").val("Yes");
+    });
+    $("#CInfo2No").click(function () {
+        $("#CInfo2").val("No");
+    });
+    $("#CInfo2NA").click(function () {
+        $("#CInfo2").val("N/A");
+    });
+    $("#CInfo3Yes").click(function () {
+        $("#CInfo3").val("Yes");
+    });
+    $("#CInfo3No").click(function () {
+        $("#CInfo3").val("No");
+    });
+    $("#CInfo4Yes").click(function () {
+        $("#CInfo4").val("Yes");
+    });
+    $("#CInfo4No").click(function () {
+        $("#CInfo4").val("No");
+    });
+    $("#CInfo4NA").click(function () {
+        $("#CInfo4").val("N/A");
+    });
+    $("#CInfo5Yes").click(function () {
+        $("#CInfo5").val("Yes");
+    });
+    $("#CInfo5No").click(function () {
+        $("#CInfo5").val("No");
+    });
+    $("#CInfo6Yes").click(function () {
+        $("#CInfo6").val("Yes");
+    });
+    $("#CInfo6No").click(function () {
+        $("#CInfo6").val("No");
+    });
+    $("#CInfo6NA").click(function () {
+        $("#CInfo6").val("N/A");
+    });
+    $("#CInfo6Duplicated").click(function () {
+        $("#CInfo6").val("Duplicated");
+    });
+    //AQI Index Fetch
+    $("#AQIInfo1Yes").click(function () {
+        $("#AQIInfo1").val("20");
+    });
+    $("#AQIInfo1NA").click(function () {
+        $("#AQIInfo1").val("20");
+    });
+    $("#AQIInfo1No").click(function () {
+        $("#AQIInfo1").val("0");
+    });
+    $("#AQIInfo1Corrected").click(function () {
+        $("#AQIInfo1").val("10");
+    });
+    $("#AQIInfo1NoArticle").click(function () {
+        $("#AQIInfo1").val("0");
+    });
+
+    $("#AQIInfo2Yes").click(function () {
+        $("#AQIInfo2").val("20");
+    });
+    $("#AQIInfo2NA").click(function () {
+        $("#AQIInfo2").val("20");
+    });
+    $("#AQIInfo2No").click(function () {
+        $("#AQIInfo2").val("0");
+    });
+    $("#AQIInfo2Corrected").click(function () {
+        $("#AQIInfo2").val("10");
+    });
+    $("#AQIInfo2NoArticle").click(function () {
+        $("#AQIInfo2").val("0");
+    });
+
+    $("#AQIInfo3Yes").click(function () {
+        $("#AQIInfo3").val("20");
+    });
+    $("#AQIInfo3NA").click(function () {
+        $("#AQIInfo3").val("20");
+    });
+    $("#AQIInfo3No").click(function () {
+        $("#AQIInfo3").val("0");
+    });
+    $("#AQIInfo3Corrected").click(function () {
+        $("#AQIInfo3").val("10");
+    });
+    $("#AQIInfo3NoArticle").click(function () {
+        $("#AQIInfo3").val("0");
+    });
+
+    $("#AQIInfo4Yes").click(function () {
+        $("#AQIInfo4").val("20");
+    });
+    $("#AQIInfo4NA").click(function () {
+        $("#AQIInfo4").val("20");
+    });
+    $("#AQIInfo4No").click(function () {
+        $("#AQIInfo4").val("0");
+    });
+    $("#AQIInfo4Corrected").click(function () {
+        $("#AQIInfo4").val("10");
+    });
+    $("#AQIInfo4NoArticle").click(function () {
+        $("#AQIInfo4").val("0");
+    });
+
+    $("#AQIInfo5Yes").click(function () {
+        $("#AQIInfo5").val("20");
+    });
+    $("#AQIInfo5NA").click(function () {
+        $("#AQIInfo5").val("20");
+    });
+    $("#AQIInfo5No").click(function () {
+        $("#AQIInfo5").val("0");
+    });
+    $("#AQIInfo5Corrected").click(function () {
+        $("#AQIInfo5").val("10");
+    });
+    $("#AQIInfo5NoArticle").click(function () {
+        $("#AQIInfo5").val("0");
+    });
+
+    $("#AQIInfo6Yes").click(function () {
+        $("#AQIInfo6").val("20");
+    });
+    $("#AQIInfo6NA").click(function () {
+        $("#AQIInfo6").val("20");
+    });
+    $("#AQIInfo6No").click(function () {
+        $("#AQIInfo6").val("0");
+    });
+    $("#AQIInfo6Corrected").click(function () {
+        $("#AQIInfo6").val("10");
+    });
+    $("#AQIInfo6NoArticle").click(function () {
+        $("#AQIInfo6").val("0");
+    });
+
+    $("#AQIInfo7Yes").click(function () {
+        $("#AQIInfo7").val("20");
+    });
+    $("#AQIInfo7NA").click(function () {
+        $("#AQIInfo7").val("20");
+    });
+    $("#AQIInfo7No").click(function () {
+        $("#AQIInfo7").val("0");
+    });
+    $("#AQIInfo7Corrected").click(function () {
+        $("#AQIInfo7").val("10");
+    });
+    $("#AQIInfo7NoArticle").click(function () {
+        $("#AQIInfo7").val("0");
+    });
+
+    $("#AQIInfo8Yes").click(function () {
+        $("#AQIInfo8").val("20");
+    });
+    $("#AQIInfo8NA").click(function () {
+        $("#AQIInfo8").val("20");
+    });
+    $("#AQIInfo8No").click(function () {
+        $("#AQIInfo8").val("0");
+    });
+    $("#AQIInfo8Corrected").click(function () {
+        $("#AQIInfo8").val("10");
+    });
+    $("#AQIInfo8NoArticle").click(function () {
+        $("#AQIInfo8").val("0");
+    });
+
+    $("#AQIInfo9Yes").click(function () {
+        $("#AQIInfo9").val("20");
+    });
+    $("#AQIInfo9NA").click(function () {
+        $("#AQIInfo9").val("20");
+    });
+    $("#AQIInfo9No").click(function () {
+        $("#AQIInfo9").val("0");
+    });
+    $("#AQIInfo9Corrected").click(function () {
+        $("#AQIInfo9").val("10");
+    });
+    $("#AQIInfo9NoArticle").click(function () {
+        $("#AQIInfo9").val("0");
+    });
+
     function validateFields() {
         if ($("#AInfo2").val() == '')
         {
-            alert("select Business Type");
+            alert("Business Name cannot be empty!");
             return false;
         }
+
+        if ($("#AInfo4").val() == '')
+        {
+            alert("Coach Name cannot be empty!");
+            return false;
+        }
+
+        if ($("#LInfo1").val() == '')
+        {
+            alert('Link Accuracy cannot be empty!');
+            return false;
+        }
+
+        if ($("#CInfo1").val() == '')
+        {
+            alert('Oppertunity to link resolution cannot be empty!');
+            return false;
+        }
+
+        if ($("#CInfo2").val() == '') {
+            alert('Agent linked resolution article cannot be empty!');
+            return false;
+        }
+
+        if ($("#CInfo3").val() == '') {
+            alert('Oppertunity to modify existing article cannot be empty!');
+            return false;
+        }
+
+        if ($("#CInfo4").val() == '') {
+            alert('Agent modified existing attached article cannot be empty!');
+            return false;
+        }
+        if ($("#CInfo5").val() == '') {
+            alert('Oppertunity to create article cannot be empty!');
+            return false;
+        }
+
+        if ($("#CInfo6").val() == '') {
+            alert('Agent created a new article cannot be empty!');
+            return false;
+        }
+
+        if ($("#AQIInfo1").val() == '')
+        {
+            alert("Article is Unique cannot be empty!");
+            return false;
+        }
+
+        if ($("#AQIInfo2").val() == '') {
+            alert("Article written to be reused cannot be empty!");
+            return false;
+        }
+
+        if ($("#AQIInfo3").val() == '') {
+            alert("Article title and content are related cannot be empty!");
+            return false;
+        }
+        if ($("#AQIInfo4").val() == '') {
+            alert("Captured customer context and symptons cannot be empty!");
+            return false;
+        }
+        if ($("#AQIInfo5").val() == '') {
+            alert("Agent add/capture the environment (including topics & categories) cannot be empty!");
+            return false;
+        }
+        if ($("#AQIInfo6").val() == '') {
+            alert("Audience Correct cannot be empty!");
+            return false;
+        }
+        if ($("#AQIInfo7").val() == '') {
+            alert("Formatting: steps, bullets, font, etc cannot be empty!");
+            return false;
+        }
+        if ($("#AQIInfo8").val() == '') {
+            alert("Links embedded and working(including files attached) cannot be empty!");
+            return false;
+        }
+        if ($("#AQIInfo9").val() == '') {
+            alert("Validate & Published the article(externally) cannot be empty!");
+            return false;
+        }
+
     }
 </script>
