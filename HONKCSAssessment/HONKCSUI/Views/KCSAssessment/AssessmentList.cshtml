@@ -1,16 +1,14 @@
-﻿
+﻿@model IList<KCSEntities.DAL.KCSAssessment>
 @{
     ViewBag.Title = "AssessmentList";
 }
 
-<h2>AssessmentList</h2>
-
-
+<h2></h2>
 <div class="panel panel-info">
-    <div class="panel-heading">Panel with panel-info class</div>
+    <div class="panel-heading">Assessment Completed List</div>
     <div class="panel-body">
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped" id="assessmentList">
                 <thead>
                     <tr>
                         <th>KCS Date</th>
@@ -23,18 +21,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>05-29-2020</td>
-                        <td>IGT</td>
-                        <td>Beatrice Ahmad</td>
-                        <td>Balaji KJ</td>
-                        <td>0987654</td>
-                        <td>123456</td>
-                        <td><a href="/KCSAssessment/Index/">Review</a></td>
-                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.AInfo1</td>
+                            <td>@item.AInfo2</td>
+                            <td>@item.AInfo4</td>
+                            <td>@item.AInfo3</td>
+                            <td>@item.AInfo5</td>
+                            <td>@item.AInfo6</td>
+                            <td><a href="/KCSAssessment/Index/">Review</a></td>
+                        </tr>
+                    }
+
                 </tbody>
             </table>
         </div>
 
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#assessmentList").DataTable();
+    });
+    
+</script>

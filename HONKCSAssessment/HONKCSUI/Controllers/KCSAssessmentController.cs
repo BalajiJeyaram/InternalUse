@@ -126,17 +126,7 @@ namespace HONKCSUI.Controllers
 
         public ActionResult AssessmentList(List<KCSAssessment> kcsassessmentlist)
         {
-
-            return View("AssessmentResult", new KCSAssessment()
-            {
-                AInfo1=Convert.ToDateTime("05-29-2020"),
-                AInfo2="IGT",
-                AInfo3="Balaji",
-                AInfo4="BS",
-                AInfo5="09876543",
-                AInfo6="1234"
-            });
-
+            return View("AssessmentList", kcsassessmentlist == null ? dbcontext.kcsassessment.ToList() : kcsassessmentlist);
         }
     }
 }
