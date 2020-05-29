@@ -1,0 +1,12 @@
+C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\bin\Release\KCSEntities.dll.config
+C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\bin\Release\KCSEntities.dll
+C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\bin\Release\KCSEntities.pdb
+C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\bin\Release\EntityFramework.dll
+C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\bin\Release\EntityFramework.xml
+C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Release\KCSEntities.csprojAssemblyReference.cache
+C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Release\KCSEntities.csproj.CoreCompileInputs.cache
+C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Release\KCSEntities.csproj.CopyComplete
+C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Release\KCSEntities.dll
+C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Release\KCSEntities.pdb

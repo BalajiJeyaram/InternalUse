@@ -29,7 +29,8 @@ namespace HONKCSUI
                       "~/Content/bootstrap.css",
                       "~/Content/dataTables.bootstrap.min.css",
                       "~/Content/site.css",
-                      "~/Content/Student.css"));
+                      "~/Content/Student.css",
+                      "~/Content/Contactus.css"));
         }
     }
 }

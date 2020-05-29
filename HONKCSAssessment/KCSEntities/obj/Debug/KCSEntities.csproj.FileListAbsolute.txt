@@ -16,8 +16,8 @@ C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\bin\D
 C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\bin\Debug\EntityFramework.xml
 C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Debug\KCSEntities.csprojAssemblyReference.cache
 C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Debug\KCSEntities.csproj.CoreCompileInputs.cache
 C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Debug\KCSEntities.csproj.CopyComplete
 C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Debug\KCSEntities.dll
 C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Debug\KCSEntities.pdb
-C:\Users\h387014\Documents\GitHub\InternalUse\HONKCSAssessment\KCSEntities\obj\Debug\KCSEntities.csprojAssemblyReference.cache

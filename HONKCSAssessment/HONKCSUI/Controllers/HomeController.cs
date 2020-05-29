@@ -13,6 +13,7 @@ namespace HONKCSUI.Controllers
 
     public class HomeController : Controller
     {
+        private AssessmentContext dbcontext = new AssessmentContext();
         private List<QuestionAnswer> QAT = new List<QuestionAnswer>();
         private CheckUser checklogonuser = new CheckUser();
         public HomeController()
@@ -38,27 +39,6 @@ namespace HONKCSUI.Controllers
             QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "What would be the biggest restriction when creating a bar code on Enterprise Provisioner to download and then install an application into a device?" });
             QAT.Add(new QuestionAnswer() { Answer = "It is Honeywell Device#It is Operating System#It is Toothpaste", AnswerType = 1, Question = "Name 3 tasks you can perform with bar codes generated using Enterprise Provisione" });
             QAT.Add(new QuestionAnswer() { Answer = "It is Enterprise Application#It is a website where an enduser can buy product#It is thirdparty Website", AnswerType = 1, Question = "Normally licenses when generated are exported into two different type of files, which are these?" });
-            /*QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "Honeywell apps per platform (Windows/Android). Specify name of pack and apps on each pack" });
-            QAT.Add(new QuestionAnswer() { Answer = "It is Honeywell Device#It is Operating System#It is Toothpaste", AnswerType = 1, Question = "What is the most effective and recommended way to recover information in our device when AppLock credentials have been forgotten?" });
-            QAT.Add(new QuestionAnswer() { Answer = "It is a Honeywell Application#It is an Apple Product#It is an Amazon app", AnswerType = 1, Question = "What are the two ways to enable OCR?" });
-            QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "What server instance is recommended to install alongside Staging Hub?" });
-            QAT.Add(new QuestionAnswer() { Answer = "It is Honeywell Device#It is Operating System#It is Toothpaste", AnswerType = 1, Question = "What is the wild card character usable in white listing URL to add subsequent URLs?" });
-            QAT.Add(new QuestionAnswer() { Answer = "It is Enterprise Application#It is a website where an enduser can buy product#It is thirdparty Website", AnswerType = 1, Question = "Encryption method used to encrypt Enterprise Browser and Launcher passwords?" });
-            QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "What type of reset must be performed if the Dubai terminal is downgraded from Android O to Android N?" });
-
-            QAT.Add(new QuestionAnswer() { Answer = "It is Honeywell Device#It is Operating System#It is Toothpaste", AnswerType = 1, Question = "Applications built for Android P can use either HTTP or HTTPS for browsing?" });
-            QAT.Add(new QuestionAnswer() { Answer = "It is a Honeywell Application#It is an Apple Product#It is an Amazon app", AnswerType = 1, Question = "Which two imagers will be available for the EDA71?" });
-            QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "EDA71 offers a WWAN radio option?" });
-            QAT.Add(new QuestionAnswer() { Answer = "It is Honeywell Device#It is Operating System#It is Toothpaste", AnswerType = 1, Question = "CK65 scan engines available are:" });
-            QAT.Add(new QuestionAnswer() { Answer = "It is Enterprise Application#It is a website where an enduser can buy product#It is thirdparty Website", AnswerType = 1, Question = "What would happen if you remove the battery of a CK65 while using Honeywell Enterprise Browser?" });
-            QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "What is PCAP feature on a touchscreen?" });
-            QAT.Add(new QuestionAnswer() { Answer = "It is Honeywell Device#It is Operating System#It is Toothpaste", AnswerType = 1, Question = "How many multi-touch points does PCAP support?" });
-            QAT.Add(new QuestionAnswer() { Answer = "It is a Honeywell Application#It is an Apple Product#It is an Amazon app", AnswerType = 1, Question = "What is the maximum size for a SD Card in a VM1A?" });
-            QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "Name 3 new features on Android 8." });
-            QAT.Add(new QuestionAnswer() { Answer = "It is Honeywell Device#It is Operating System#It is Toothpaste", AnswerType = 1, Question = "How does PIP (picture in picture) works?" });
-            QAT.Add(new QuestionAnswer() { Answer = "It is Enterprise Application#It is a website where an enduser can buy product#It is thirdparty Website", AnswerType = 1, Question = "What tool inside Power Tools will let us know the IP Address, MAC Address, RSS of our device/connection?" });
-            QAT.Add(new QuestionAnswer() { Answer = "Description...", AnswerType = 2, Question = "What does the HUpgrader utility do?" });
-            checklogonuser = new CheckUser() { LoginMessage = "Welcome Admin", LoginSuccess = true, password = "admin", userName = "admin" };*/
         }
 
         public ActionResult Index()
@@ -202,9 +182,47 @@ namespace HONKCSUI.Controllers
 
         public ActionResult ContactUs()
         {
-            ViewBag.Message = "Contact Us Page";
+            if (Session["InvalidUser"].ToString() == "ValidUser")
+            {
+                return View(QAT);
+            }
+            else
+            {
+                Session["InvalidUser"] = "You did not login yet!";
+                return RedirectToAction("LogIn", "Home");
+            }
 
-            return View(QAT);
+        }
+        public ActionResult SubmitContactUs(string Firstname, string Lastname, string Email, string Subject)
+        {
+            try
+            {
+                if (Session["InvalidUser"].ToString() == "ValidUser")
+                {
+                    
+                    Contact cont = new Contact() { Firstname = Firstname, Lastname = Lastname, Email = Email, Subject = Subject };
+                    dbcontext.contactus.Add(cont);
+                    int i = dbcontext.SaveChanges();
+                    ViewBag.Message = i >= 1 ? "We've received it! Someone from Honeywell Tech Support team will be in touch base with you." : "zero record saved";
+                    return View("ContactUs");
+                }
+                else
+                {
+                    Session["InvalidUser"] = "You did not login yet!";
+                    return RedirectToAction("LogIn", "Home");
+                }
+            }
+            catch (NullReferenceException nullexp)
+            {
+                return RedirectToAction("Index", "Error", new { message = nullexp.StackTrace });
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Error", new { message = ex.StackTrace });
+            }
+
+
+
         }
 
         public JsonResult GetQuestions()

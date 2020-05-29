@@ -152,6 +152,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Contactus.css" />
     <Content Include="Content\dataTables.bootstrap.min.css" />
     <Content Include="Content\images\img_avatar2.png" />
     <Content Include="Content\LoginPage.css" />

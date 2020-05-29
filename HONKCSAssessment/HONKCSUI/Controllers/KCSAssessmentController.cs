@@ -169,6 +169,13 @@ namespace HONKCSUI.Controllers
             {
                 if (Session["InvalidUser"].ToString() == "ValidUser")
                 {
+                    KCSAssessment kcsass = dbcontext.kcsassessment.Where(x => x.iD == iD).FirstOrDefault();
+                    if (kcsass != null)
+                    {
+                        dbcontext.kcsassessment.Remove(kcsass);
+                        dbcontext.SaveChanges();
+                    }
+
                     KCSAssessment kCSAssessment = new KCSAssessment()
                     {
                         //iD = 1,

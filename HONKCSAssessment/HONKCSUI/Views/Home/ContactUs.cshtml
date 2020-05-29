@@ -2,10 +2,84 @@
 @{
     ViewBag.Title = "ContactUs";
 }
+<style>
+    .label {
+        color: white;
+        padding: 8px;
+        font-family: Arial;
+    }
 
-<h2>ContactUs</h2>
-
-<div class="panel panel-info">
-    <div class="panel-heading">Panel with panel-info class</div>
-    <div class="panel-body">Panel-Content</div>
+    .success {
+        background-color: #4CAF50;
+    }
+    /* Green */
+    .info {
+        background-color: #2196F3;
+    }
+    /* Blue */
+    .warning {
+        background-color: #ff9800;
+    }
+    /* Orange */
+    .danger {
+        background-color: #f44336;
+    }
+    /* Red */
+    .other {
+        background-color: #e7e7e7;
+        color: black;
+    }
+    /* Gray */
+    .form-control {
+        padding: 12px 20px;
+        margin: 8px 0;
+        background-color: #f1f1f1;
+    }
+</style>
+<div style="text-align:center">
+    <h2>Contact Us</h2>
+    <p>Swing by for a cup of coffee, or leave us a message:</p>
+    <span class="label info">@ViewBag.Message</span>
 </div>
+<div class="row">
+    <div class="column">
+        <img src="~/Content/images/map.jpg" style="width:100%">
+    </div>
+    <div class="column">
+        <form action="@Url.Action("SubmitContactUs", "Home")" method="post" onsubmit="return validateFields();">
+            <label for="fname">First Name</label>
+            <input type="text" id="Firstname" name="Firstname" placeholder="Your name.." class="form-control" required>
+            <label for="lname">Last Name</label>
+            <input type="text" id="Lastname" name="Lastname" placeholder="Your last name.." class="form-control" required>
+            @*<label for="country">Country</label>
+        <select id="country" name="country">
+            <option value="australia">Australia</option>
+            <option value="canada">Canada</option>
+            <option value="usa">USA</option>
+        </select>*@
+            <label for="country">Email</label>
+            <input type="email" class="form-control" id="Email" name="Email" required="required">
+            <label for="subject">Subject</label>
+            <textarea id="Subject" name="Subject" placeholder="Write something.." style="height:170px"></textarea>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+<script>
+    function validateFields()
+    {
+        if ($("#Firstname").val() == '')
+        {
+            alert("FirstName cannot be empty");
+            return false;
+        }
+        if ($("#Lastname").val() == '') {
+            alert("LastName cannot be empty");
+            return false;
+        }
+        if ($("#Email").val() == '') {
+            alert("Email Address cannot be empty");
+            return false;
+        }
+    }
+</script>
