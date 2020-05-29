@@ -24,6 +24,7 @@ namespace HONKCSUI
             //Application.Lock();
             //Application["OnlineCount"] = Convert.ToInt32(Application["Onlinecount"]) + 1;
             Session["InvalidUser"] = "InvalidUser";
+            Session["LoginedUser"] = "";
         }
 
         protected void Application_Error(object sender, EventArgs e)

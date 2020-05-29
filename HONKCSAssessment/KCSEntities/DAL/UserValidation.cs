@@ -17,8 +17,8 @@ namespace KCSEntities.DAL
             using (var context = new AssessmentContext())
             {
                 context.Database.Connection.Open();
-                var userexists = context.userprofiles.Select(x => x.UserName == uname && x.Password == upass).FirstOrDefault();
-                return userexists;
+                var userexists = context.userprofiles.Where(x => x.UserName == uname && x.Password == upass).FirstOrDefault();
+                return userexists!=null?true:false;
             }
         }
 

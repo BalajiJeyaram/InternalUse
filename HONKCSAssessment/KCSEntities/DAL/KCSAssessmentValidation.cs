@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace KCSEntities.DAL
 {
@@ -15,6 +16,8 @@ namespace KCSEntities.DAL
                 context.Database.Connection.Open();
                 kcsAssessment.CreatedDate = DateTime.Now;
                 kcsAssessment.LastModifiedDate = DateTime.Now;
+                kcsAssessment.CreatedBy = UserValidation.FindUserId(HttpContext.Current.Session["LoginedUser"].ToString());
+                kcsAssessment.LastModifiedBy = UserValidation.FindUserId(HttpContext.Current.Session["LoginedUser"].ToString());
                 context.kcsassessment.Add(kcsAssessment);
                 context.SaveChanges();
 

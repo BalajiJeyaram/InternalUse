@@ -233,7 +233,8 @@ namespace HONKCSUI.Controllers
             //if (UserValidation.ValidateCredential(login, password))
             if (UserValidation.ValidateCredential(login, password) == true)
             {
-                @Session["InvalidUser"] = "ValidUser";
+                Session["InvalidUser"] = "ValidUser";
+                Session["LoginedUser"] = login;
                 //return View("Index");
                 return RedirectToAction("Index", "Home");
             }
@@ -241,6 +242,7 @@ namespace HONKCSUI.Controllers
             else
             {
                 Session["InvalidUser"] = "Invalid User";
+                Session["LoginedUser"] = "";
                 return View("LogIn");
             }
 
