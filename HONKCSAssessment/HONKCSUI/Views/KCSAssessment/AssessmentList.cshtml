@@ -11,6 +11,7 @@
             <table class="table table-striped" id="assessmentList">
                 <thead>
                     <tr>
+                        <th>iD</th>
                         <th>KCS Date</th>
                         <th>Business</th>
                         <th>Coach</th>
@@ -24,13 +25,14 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <id>@item.iD</id>
                             <td>@item.AInfo1</td>
                             <td>@item.AInfo2</td>
                             <td>@item.AInfo4</td>
                             <td>@item.AInfo3</td>
                             <td>@item.AInfo5</td>
                             <td>@item.AInfo6</td>
-                            <td><a href="/KCSAssessment/Index/">Review</a></td>
+                            <td><a href="@Url.Action("EditPage","KCSAssessment",new {iD=item.iD })">Review</a></td>
                         </tr>
                     }
 

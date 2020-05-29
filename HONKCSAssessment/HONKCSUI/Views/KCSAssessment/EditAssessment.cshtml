@@ -1,13 +1,17 @@
 ﻿@model KCSEntities.DAL.KCSAssessment
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "EditAssessment";
 }
+
+<h2>EditAssessment</h2>
+@Model.iD.ToString()
+@Model.AInfo1.ToShortDateString();
 <style>
-  
+
     body {
         padding: 10px;
     }
-  
+
     #exTab1 .tab-content {
         color: white;
         /*background-color: #428bca;*/
@@ -37,6 +41,7 @@
         /*background-color: #428bca;*/
         padding: 5px 15px;
     }
+
     .nav-tabs {
         background-color: #161616;
     }
@@ -57,25 +62,31 @@
             border-radius: 0;
             color: #fff;
         }
+
     label {
         font-weight: normal;
     }
+
     .panel-default {
-        border:none;
+        border: none;
     }
+
     .panel-info {
-        border:none;
+        border: none;
     }
+
     .panel-default > .panel-heading-custom {
-        background:#f1f5f6;
+        background: #f1f5f6;
         color: #303136;
     }
+
     .required:after {
         content: " *";
         color: red;
     }
+
     .validation {
-        color:red;
+        color: red;
     }
 
     .numberCircle {
@@ -89,7 +100,7 @@
         text-align: center;
         font: 10px Arial, sans-serif;
     }
-</style>    
+</style>
 <h2>KCS Assessment</h2>
 <div class=".container-fluid">
     <form action="@Url.Action("SubmitKCSAssessment", "KCSAssessment")" method="post" onsubmit="return validateFields();">
@@ -116,27 +127,26 @@
                 <div class="tab-content clearfix">
                     <div class="tab-pane active" id="1a">
                         <div class="panel panel-default">
+                            <input type="hidden" id="iD" name="iD" value="@Model.iD">
                             <div class="panel-heading panel-heading-custom required">
-                                <span class="validation">@Html.ValidationMessageFor(model => model.AInfo1)</span>
                                 1. Date KCS assessment was performed
                             </div>
 
                             <div class="panel-body">
-                                <input type="date" tabindex="1" class="form-control" name="AInfo1" id="AInfo1" aria-describedby="emailHelp" 
+                                <input type="date" tabindex="1" class="form-control" name="AInfo1" id="AInfo1" aria-describedby="emailHelp" value="@string.Format("{0:yyyy-MM-dd}", Model.AInfo1)"
                                        placeholder="Date KCS assessment was performed" required oninvalid="this.setCustomValidity('KCS Date was performed cannot be empty')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                         <div class="panel panel-default">
-                            <span class="validation">@Html.ValidationMessageFor(model => model.AInfo2)</span>
                             <div class="panel-heading panel-heading-custom required">
                                 2. Business Name
                             </div>
 
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="2">
-                                    <input type="radio" class="custom-control-input" id="BusinessName1" name="BusinessName">
+                                    <input type="radio" class="custom-control-input" id="BusinessName1" name="BusinessName" @(Model.AInfo2=="IGS"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">IGS</label>
-                                    <input type="radio" class="custom-control-input" id="BusinessName2" name="BusinessName">
+                                    <input type="radio" class="custom-control-input" id="BusinessName2" name="BusinessName"  @(Model.AInfo2=="Voice"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Voice</label>
                                     <input type="hidden" id="AInfo2" name="AInfo2" />
                                 </div>
@@ -148,8 +158,8 @@
                             </div>
 
                             <div class="panel-body">
-                                <input type="text" tabindex="3"  class="form-control" id="AInfo3" name="AInfo3" aria-describedby="emailHelp" 
-                                       placeholder="TSE Name" required  oninvalid="this.setCustomValidity('TSE Name cannot be empty')" oninput="this.setCustomValidity('')">
+                                <input type="text" tabindex="3" class="form-control" id="AInfo3" name="AInfo3" aria-describedby="emailHelp" value="@Model.AInfo3"
+                                       placeholder="TSE Name" required oninvalid="this.setCustomValidity('TSE Name cannot be empty')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                         <div class="panel panel-default">
@@ -159,17 +169,17 @@
 
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="4">
-                                    <input type="radio" class="custom-control-input" id="BA" name="CoachName">
+                                    <input type="radio" class="custom-control-input" id="BA" name="CoachName" @(Model.AInfo4=="Beatrice Ahmad"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Beatrice Ahmad</label>
-                                    <input type="radio" class="custom-control-input" id="GS" name="CoachName">
+                                    <input type="radio" class="custom-control-input" id="GS" name="CoachName" @(Model.AInfo4=="Gabriel Stefan"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Gabriel Stefan</label>
-                                    <input type="radio" class="custom-control-input" id="PP" name="CoachName">
+                                    <input type="radio" class="custom-control-input" id="PP" name="CoachName" @(Model.AInfo4=="Pamela Perez"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Pamela Perez</label>
-                                    <input type="radio" class="custom-control-input" id="GP" name="CoachName">
+                                    <input type="radio" class="custom-control-input" id="GP" name="CoachName" @(Model.AInfo4=="Gabriel Perez"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Gabriel Perez</label>
-                                    <input type="radio" class="custom-control-input" id="SV" name="CoachName">
+                                    <input type="radio" class="custom-control-input" id="SV" name="CoachName" @(Model.AInfo4=="Sue Van Gelder"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Sue Van Gelder</label>
-                                    <input type="hidden" id="AInfo4" name="AInfo4"/>
+                                    <input type="hidden" id="AInfo4" name="AInfo4" />
                                 </div>
                             </div>
                         </div>
@@ -179,7 +189,7 @@
                             </div>
 
                             <div class="panel-body">
-                                <input type="text" tabindex="5" class="form-control" id="AInfo5" name="AInfo5" aria-describedby="emailHelp" 
+                                <input type="text" tabindex="5" class="form-control" id="AInfo5" name="AInfo5" aria-describedby="emailHelp" value="@Model.AInfo5"
                                        placeholder="Case Number" required oninvalid="this.setCustomValidity('Case Number cannot be empty')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
@@ -189,23 +199,23 @@
                             </div>
 
                             <div class="panel-body">
-                                <input type="text" tabindex="6" class="form-control" id="AInfo6" name="AInfo6" aria-describedby="emailHelp" 
+                                <input type="text" tabindex="6" class="form-control" id="AInfo6" name="AInfo6" aria-describedby="emailHelp" value="@Model.AInfo6"
                                        placeholder="Article Number" required oninvalid="this.setCustomValidity('Article Number cannot be empty')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="4a">
                         <div class="panel panel-default">
-                            <div class="panel-heading panel-heading-custom" >
+                            <div class="panel-heading panel-heading-custom">
                                 1. Is this Article attached/linked fully resolves the customer's question/problem?
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="LInfo1Yes100" name="LInfo1Article">
+                                    <input type="radio" class="custom-control-input" id="LInfo1Yes100" name="LInfo1Article" @(Model.LInfo1==100?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes 100%</label>
-                                    <input type="radio" class="custom-control-input" id="LInfo1Corrected50" name="LInfo1Article">
+                                    <input type="radio" class="custom-control-input" id="LInfo1Corrected50" name="LInfo1Article"  @(Model.LInfo1==50?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Corrected 50%</label>
-                                    <input type="radio" class="custom-control-input" id="LInfo1No0" name="LInfo1Article">
+                                    <input type="radio" class="custom-control-input" id="LInfo1No0" name="LInfo1Article"  @(Model.LInfo1==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No 0%</label>
                                     <input type="hidden" id="LInfo1" name="LInfo1" />
                                 </div>
@@ -219,9 +229,9 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="1">
-                                    <input type="radio" class="custom-control-input" id="CInfo1Yes" name="CInfo1ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo1Yes" name="CInfo1ContributionIndex" @(Model.CInfo1=="Yes"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                    <input type="radio" class="custom-control-input" id="CInfo1No" name="CInfo1ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo1No" name="CInfo1ContributionIndex" @(Model.CInfo1=="No"?"checked":"")>
                                     <label class="custom-control-label" for="CInfo1No">No</label>
                                     <input type="hidden" id="CInfo1" name="CInfo1" />
                                 </div>
@@ -233,11 +243,11 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="2">
-                                    <input type="radio" class="custom-control-input" id="CInfo2Yes" name="CInfo2ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo2Yes" name="CInfo2ContributionIndex" @(Model.CInfo2=="Yes"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                    <input type="radio" class="custom-control-input" id="CInfo2No" name="CInfo2ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo2No" name="CInfo2ContributionIndex" @(Model.CInfo2=="No"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="CInfo2NA" name="CInfo2ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo2NA" name="CInfo2ContributionIndex" @(Model.CInfo2=="N/A"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">N/A</label>
                                     <input type="hidden" id="CInfo2" name="CInfo2" />
                                 </div>
@@ -249,9 +259,9 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="3">
-                                    <input type="radio" class="custom-control-input" id="CInfo3Yes" name="CInfo3ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo3Yes" name="CInfo3ContributionIndex" @(Model.CInfo3=="Yes"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                    <input type="radio" class="custom-control-input" id="CInfo3No" name="CInfo3ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo3No" name="CInfo3ContributionIndex" @(Model.CInfo3=="No"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
                                     <input type="hidden" id="CInfo3" name="CInfo3" />
                                 </div>
@@ -263,11 +273,11 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="4">
-                                    <input type="radio" class="custom-control-input" id="CInfo4Yes" name="CInfo4ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo4Yes" name="CInfo4ContributionIndex" @(Model.CInfo4=="Yes"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                    <input type="radio" class="custom-control-input" id="CInfo4No" name="CInfo4ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo4No" name="CInfo4ContributionIndex" @(Model.CInfo4=="No"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="CInfo4NA" name="CInfo4ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo4NA" name="CInfo4ContributionIndex" @(Model.CInfo4=="N/A"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">N/A</label>
                                     <input type="hidden" id="CInfo4" name="CInfo4" />
                                 </div>
@@ -279,9 +289,9 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="5">
-                                    <input type="radio" class="custom-control-input" id="CInfo5Yes" name="CInfo5ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo5Yes" name="CInfo5ContributionIndex"  @(Model.CInfo5=="Yes"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                    <input type="radio" class="custom-control-input" id="CInfo5No" name="CInfo5ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo5No" name="CInfo5ContributionIndex"  @(Model.CInfo5=="No"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
                                     <input type="hidden" id="CInfo5" name="CInfo5" />
                                 </div>
@@ -293,13 +303,13 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="6">
-                                    <input type="radio" class="custom-control-input" id="CInfo6Yes" name="CInfo6ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo6Yes" name="CInfo6ContributionIndex"  @(Model.CInfo6=="Yes"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes</label>
-                                    <input type="radio" class="custom-control-input" id="CInfo6No" name="CInfo6ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo6No" name="CInfo6ContributionIndex"  @(Model.CInfo6=="No"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="CInfo6NA" name="CInfo6ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo6NA" name="CInfo6ContributionIndex"  @(Model.CInfo6=="N/A"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">N/A</label>
-                                    <input type="radio" class="custom-control-input" id="CInfo6Duplicated" name="CInfo6ContributionIndex">
+                                    <input type="radio" class="custom-control-input" id="CInfo6Duplicated" name="CInfo6ContributionIndex"  @(Model.CInfo6=="Duplicated"?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Duplicated</label>
                                     <input type="hidden" id="CInfo6" name="CInfo6" />
                                 </div>
@@ -313,15 +323,15 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="1">
-                                    <input type="radio" class="custom-control-input" id="AQIInfo1Yes" name="AQIInfo1AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo1Yes" name="AQIInfo1AQI"  @(Model.AQIInfo1==20?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +20</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo1NA" name="AQIInfo1AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo1NA" name="AQIInfo1AQI" @(Model.AQIInfo1==20?"checked":"")> 
                                     <label class="custom-control-label" for="defaultChecked">N/A +20</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo1No" name="AQIInfo1AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo1No" name="AQIInfo1AQI" @(Model.AQIInfo1==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo1Corrected" name="AQIInfo1AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo1Corrected" name="AQIInfo1AQI" @(Model.AQIInfo1==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo1NoArticle" name="AQIInfo1AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo1NoArticle" name="AQIInfo1AQI" @(Model.AQIInfo1==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
                                     <input type="hidden" id="AQIInfo1" name="AQIInfo1" />
                                 </div>
@@ -333,15 +343,15 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="2">
-                                    <input type="radio" class="custom-control-input" id="AQIInfo2Yes" name="AQIInfo2AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo2Yes" name="AQIInfo2AQI" @(Model.AQIInfo2==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo2NA" name="AQIInfo2AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo2NA" name="AQIInfo2AQI" @(Model.AQIInfo2==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">N/A +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo2No" name="AQIInfo2AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo2No" name="AQIInfo2AQI" @(Model.AQIInfo2==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo2Corrected" name="AQIInfo2AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo2Corrected" name="AQIInfo2AQI" @(Model.AQIInfo2==5?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +5</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo2NoArticle" name="AQIInfo2AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo2NoArticle" name="AQIInfo2AQI" @(Model.AQIInfo2==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
                                     <input type="hidden" id="AQIInfo2" name="AQIInfo2" />
                                 </div>
@@ -353,15 +363,15 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="3">
-                                    <input type="radio" class="custom-control-input" id="AQIInfo3Yes" name="AQIInfo3AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo3Yes" name="AQIInfo3AQI" @(Model.AQIInfo3==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo3NA" name="AQIInfo3AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo3NA" name="AQIInfo3AQI" @(Model.AQIInfo3==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">N/A +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo3No" name="AQIInfo3AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo3No" name="AQIInfo3AQI" @(Model.AQIInfo3==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo3Corrected" name="AQIInfo3AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo3Corrected" name="AQIInfo3AQI" @(Model.AQIInfo3==5?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +5</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo3NoArticle" name="AQIInfo3AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo3NoArticle" name="AQIInfo3AQI" @(Model.AQIInfo3==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
                                     <input type="hidden" id="AQIInfo3" name="AQIInfo3" />
                                 </div>
@@ -373,15 +383,15 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="4">
-                                    <input type="radio" class="custom-control-input" id="AQIInfo4Yes" name="AQIInfo4AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo4Yes" name="AQIInfo4AQI" @(Model.AQIInfo4==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo4NA" name="AQIInfo4AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo4NA" name="AQIInfo4AQI" @(Model.AQIInfo4==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">N/A +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo4No" name="AQIInfo4AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo4No" name="AQIInfo4AQI" @(Model.AQIInfo4==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo4Corrected" name="AQIInfo4AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo4Corrected" name="AQIInfo4AQI" @(Model.AQIInfo4==5?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +5</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo4NoArticle" name="AQIInfo4AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo4NoArticle" name="AQIInfo4AQI" @(Model.AQIInfo4==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
                                     <input type="hidden" id="AQIInfo4" name="AQIInfo4" />
                                 </div>
@@ -393,15 +403,15 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="5">
-                                    <input type="radio" class="custom-control-input" id="AQIInfo5Yes" name="AQIInfo5AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo5Yes" name="AQIInfo5AQI" @(Model.AQIInfo5==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo5NA" name="AQIInfo5AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo5NA" name="AQIInfo5AQI" @(Model.AQIInfo5==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">N/A +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo5No" name="AQIInfo5AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo5No" name="AQIInfo5AQI" @(Model.AQIInfo5==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo5Corrected" name="AQIInfo5AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo5Corrected" name="AQIInfo5AQI" @(Model.AQIInfo5==5?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +5</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo5NoArticle" name="AQIInfo5AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo5NoArticle" name="AQIInfo5AQI" @(Model.AQIInfo5==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
                                     <input type="hidden" id="AQIInfo5" name="AQIInfo5" />
                                 </div>
@@ -413,15 +423,15 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="6">
-                                    <input type="radio" class="custom-control-input" id="AQIInfo6Yes" name="AQIInfo6AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo6Yes" name="AQIInfo6AQI" @(Model.AQIInfo6==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo6NA" name="AQIInfo6AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo6NA" name="AQIInfo6AQI" @(Model.AQIInfo6==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">N/A +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo6No" name="AQIInfo6AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo6No" name="AQIInfo6AQI" @(Model.AQIInfo6==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo6Corrected" name="AQIInfo6AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo6Corrected" name="AQIInfo6AQI" @(Model.AQIInfo6==5?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +5</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo6NoArticle" name="AQIInfo6AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo6NoArticle" name="AQIInfo6AQI" @(Model.AQIInfo6==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
                                     <input type="hidden" id="AQIInfo6" name="AQIInfo6" />
                                 </div>
@@ -433,15 +443,15 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="7">
-                                    <input type="radio" class="custom-control-input" id="AQIInfo7Yes" name="AQIInfo7AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo7Yes" name="AQIInfo7AQI" @(Model.AQIInfo7==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo7NA" name="AQIInfo7AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo7NA" name="AQIInfo7AQI" @(Model.AQIInfo7==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">N/A +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo7No" name="AQIInfo7AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo7No" name="AQIInfo7AQI" @(Model.AQIInfo7==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo7Corrected" name="AQIInfo7AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo7Corrected" name="AQIInfo7AQI" @(Model.AQIInfo7==5?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +5</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo7NoArticle" name="AQIInfo7AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo7NoArticle" name="AQIInfo7AQI" @(Model.AQIInfo7==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
                                     <input type="hidden" id="AQIInfo7" name="AQIInfo7" />
                                 </div>
@@ -453,15 +463,15 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="8">
-                                    <input type="radio" class="custom-control-input" id="AQIInfo8Yes" name="AQIInfo8AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo8Yes" name="AQIInfo8AQI" @(Model.AQIInfo8==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo8NA" name="AQIInfo8AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo8NA" name="AQIInfo8AQI" @(Model.AQIInfo8==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">N/A +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo8No" name="AQIInfo8AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo8No" name="AQIInfo8AQI" @(Model.AQIInfo8==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo8Corrected" name="AQIInfo8AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo8Corrected" name="AQIInfo8AQI" @(Model.AQIInfo8==5?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +5</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo8NoArticle" name="AQIInfo8AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo8NoArticle" name="AQIInfo8AQI" @(Model.AQIInfo8==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
                                     <input type="hidden" id="AQIInfo8" name="AQIInfo8" />
                                 </div>
@@ -473,15 +483,15 @@
                             </div>
                             <div class="panel-body">
                                 <div class="custom-control custom-radio" tabindex="9">
-                                    <input type="radio" class="custom-control-input" id="AQIInfo9Yes" name="AQIInfo9AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo9Yes" name="AQIInfo9AQI" @(Model.AQIInfo9==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">Yes +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo9NA" name="AQIInfo9AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo9NA" name="AQIInfo9AQI"  @(Model.AQIInfo9==10?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">N/A +10</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo9No" name="AQIInfo9AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo9No" name="AQIInfo9AQI"  @(Model.AQIInfo9==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo9Corrected" name="AQIInfo9AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo9Corrected" name="AQIInfo9AQI"  @(Model.AQIInfo9==5?"checked":"")>
                                     <label class="custom-control-label" for="defaultChecked">Yes, Corrected +5</label>
-                                    <input type="radio" class="custom-control-input" id="AQIInfo9NoArticle" name="AQIInfo9AQI">
+                                    <input type="radio" class="custom-control-input" id="AQIInfo9NoArticle" name="AQIInfo9AQI"  @(Model.AQIInfo9==0?"checked":"")>
                                     <label class="custom-control-label" for="defaultUnchecked">No Article(s) attached</label>
                                     <input type="hidden" id="AQIInfo9" name="AQIInfo9" />
                                 </div>
@@ -495,7 +505,7 @@
                             </div>
                             <div class="panel-body">
                                 <div class="form-group">
-                                    <textarea class="form-control" id="CoachComments" name ="CoachComments" rows="10" maxlength="500"></textarea>
+                                    <textarea class="form-control" id="CoachComments" name="CoachComments" rows="10" maxlength="500" >@Model.CoachComments</textarea>
                                 </div>
                             </div>
                         </div>
@@ -526,7 +536,7 @@
         $("#AInfo2").val("IGS");
     });
     $("#BusinessName2").click(function () {
-       
+
         $("#AInfo2").val("Voice");
     });
     //Coach Name Fetch

@@ -31,8 +31,13 @@ namespace HONKCSUI
             var exception = Server.GetLastError();
             if (exception != null)
             {
-                Response.Redirect(string.Format("~/Error/Index/?message={0}",exception.Message));
+                Response.Redirect(string.Format("~/Error/Index/?message={0}-{1}",exception.Message,exception.StackTrace));
             }
+        }
+
+        protected void Application_AuthenticateRequest(object sender, EventArgs e)
+        {
+            
         }
     }
 }

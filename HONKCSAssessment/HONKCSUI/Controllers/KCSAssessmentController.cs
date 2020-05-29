@@ -128,5 +128,36 @@ namespace HONKCSUI.Controllers
         {
             return View("AssessmentList", kcsassessmentlist == null ? dbcontext.kcsassessment.ToList() : kcsassessmentlist);
         }
+
+        [HttpGet]
+        public ActionResult EditPage(int iD)
+        {
+            try
+            {
+                if (Session["InvalidUser"].ToString() == "ValidUser")
+                {
+                    return View("EditAssessment", dbcontext.kcsassessment.Where(x => x.iD == iD).FirstOrDefault());
+                }
+                else
+                {
+                    Session["InvalidUser"] = "You did not login yet!";
+                    return RedirectToAction("LogIn", "Home");
+                }
+            }
+            catch (NullReferenceException nullexp)
+            {
+                return RedirectToAction("Index", "Error", new { message = nullexp.StackTrace });
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Error", new { message = ex.StackTrace });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditAssessment(KCSAssessment kcsAssessment)
+        {
+            return View();
+        }
     }
 }
