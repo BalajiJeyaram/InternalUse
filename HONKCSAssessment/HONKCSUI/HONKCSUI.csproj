@@ -212,6 +212,7 @@
     <Content Include="Views\KCSAssessment\Report.cshtml" />
     <Content Include="Views\KCSAssessment\AssessmentList.cshtml" />
     <Content Include="Views\KCSAssessment\EditAssessment.cshtml" />
+    <Content Include="Views\KCSAssessment\AssessmentByBusiness.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -223,5 +223,30 @@ namespace HONKCSUI.Controllers
                 return RedirectToAction("Index", "Error", new { message = ex.StackTrace });
             }
         }
+
+
+        public ActionResult AssessmentByBusiness()
+        {
+            try
+            {
+                if (Session["InvalidUser"].ToString() == "ValidUser")
+                {
+                    return View();
+                }
+                else
+                {
+                    Session["InvalidUser"] = "You did not login yet!";
+                    return RedirectToAction("LogIn", "Home");
+                }
+            }
+            catch (NullReferenceException nullexp)
+            {
+                return RedirectToAction("Index", "Error", new { message = nullexp.StackTrace });
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Error", new { message = ex.StackTrace });
+            }
+        }
     }
 }
