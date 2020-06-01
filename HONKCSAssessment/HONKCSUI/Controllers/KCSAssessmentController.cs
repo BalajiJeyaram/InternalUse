@@ -231,7 +231,10 @@ namespace HONKCSUI.Controllers
             {
                 if (Session["InvalidUser"].ToString() == "ValidUser")
                 {
-                    return View();
+                    IList<KCSAssessment> IGSList = dbcontext.kcsassessment.Where(x => x.AInfo2 == "IGS").ToList();
+                    IList<KCSAssessment> VoiceList = dbcontext.kcsassessment.Where(x => x.AInfo2 == "Voice").ToList();
+                    var TupleModel = new Tuple<IList<KCSAssessment>, IList<KCSAssessment>>(IGSList,VoiceList);
+                    return View(TupleModel);
                 }
                 else
                 {

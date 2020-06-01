@@ -1,8 +1,12 @@
-﻿
+﻿@model Tuple<IList<KCSEntities.DAL.KCSAssessment>,IList<KCSEntities.DAL.KCSAssessment>>
 @{
     ViewBag.Title = "AssessmentByBusiness";
 }
-
+<style>
+    button {
+        width: 100%!important;
+    }
+</style>
 <h2>AssessmentByBusiness</h2>
 
 <div class="panel-group" id="accordion">
@@ -16,10 +20,36 @@
         </div>
         <div id="collapse1" class="panel-collapse collapse in">
             <div class="panel-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
+                <div class="table-responsive">
+                    <table class="table table-striped" id="IGSList">
+                        <thead>
+                            <tr>
+                                <th>iD</th>
+                                <th>KCS Date</th>
+                                <th>Business</th>
+                                <th>Coach</th>
+                                <th>TSE</th>
+                                <th>Case</th>
+                                <th>Article</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Item1)
+                            {
+                                <tr>
+                                    <td>@item.iD</td>
+                                    <td>@item.AInfo1</td>
+                                    <td>@item.AInfo2</td>
+                                    <td>@item.AInfo4</td>
+                                    <td>@item.AInfo3</td>
+                                    <td>@item.AInfo5</td>
+                                    <td>@item.AInfo6</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -33,28 +63,65 @@
         </div>
         <div id="collapse2" class="panel-collapse collapse">
             <div class="panel-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
-            </div>
-        </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                    Collapsible Group 3
-                </a>
-            </h4>
-        </div>
-        <div id="collapse3" class="panel-collapse collapse">
-            <div class="panel-body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
+                <div class="table-responsive">
+                    <table class="table table-striped" id="VoiceList">
+                        <thead>
+                            <tr>
+                                <th>iD</th>
+                                <th>KCS Date</th>
+                                <th>Business</th>
+                                <th>Coach</th>
+                                <th>TSE</th>
+                                <th>Case</th>
+                                <th>Article</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Item2)
+                            {
+                                <tr>
+                                    <td>@item.iD</td>
+                                    <td>@item.AInfo1</td>
+                                    <td>@item.AInfo2</td>
+                                    <td>@item.AInfo4</td>
+                                    <td>@item.AInfo3</td>
+                                    <td>@item.AInfo5</td>
+                                    <td>@item.AInfo6</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#IGSList").DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'pdfHtml5',
+                    text:'<span class="glyphicon glyphicon-export"></span>',
+                    messageTop: 'List of Assessment conducted for IGS Business.',
+                    titleAttr: 'PDF'
+                    
+                }
+            ]
+        });
+        $("#VoiceList").DataTable({
+            dom:'Bfrtip',
+            buttons: [
+                {
+                    extend: 'pdfHtml5',
+                    text: '<span class="glyphicon glyphicon-export"></span>',
+                    messageTop: 'List of Assessment conducted for Voice Business.',
+                    titleAttr: 'PDF'
+                }
+            ]
+        });
+    });
+
+</script>
