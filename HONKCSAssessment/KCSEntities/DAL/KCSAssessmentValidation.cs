@@ -26,5 +26,18 @@ namespace KCSEntities.DAL
             }
 
         }
+        public static bool CIDevision(string CInfo1, string CInfo2, string CInfo3, string CInfo4, string CInfo5, string CInfo6)
+        {
+            bool returnvalue = false;
+            CInfo1 = CInfo1.ToUpper();
+            CInfo2 = CInfo2.ToUpper();
+            CInfo3 = CInfo3.ToUpper();
+            CInfo4 = CInfo4.ToUpper();
+            CInfo5 = CInfo5.ToUpper();
+            CInfo6 = CInfo6.ToUpper();
+
+
+            return returnvalue;
+        }
     }
 }
