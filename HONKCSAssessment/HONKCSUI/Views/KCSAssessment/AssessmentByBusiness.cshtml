@@ -31,20 +31,25 @@
                                 <th>TSE</th>
                                 <th>Case</th>
                                 <th>Article</th>
+                                <th>CI-Decision</th>
+                                <th>AQI-Points</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model.Item1)
                             {
-                                <tr>
-                                    <td>@item.iD</td>
-                                    <td>@item.AInfo1</td>
-                                    <td>@item.AInfo2</td>
-                                    <td>@item.AInfo4</td>
-                                    <td>@item.AInfo3</td>
-                                    <td>@item.AInfo5</td>
-                                    <td>@item.AInfo6</td>
-                                </tr>
+                            <tr>
+                                <td>@item.iD</td>
+                                <td>@item.AInfo1</td>
+                                <td>@item.AInfo2</td>
+                                <td>@item.AInfo4</td>
+                                <td>@item.AInfo3</td>
+                                <td>@item.AInfo5</td>
+                                <td>@item.AInfo6</td>
+                                <td>@item.CIIndex</td>
+                                <td>@item.AQIIndex</td>
+
+                            </tr>
                             }
 
                         </tbody>
@@ -74,20 +79,25 @@
                                 <th>TSE</th>
                                 <th>Case</th>
                                 <th>Article</th>
+                                <th>CI-Decision</th>
+                                <th>AQI-Points</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model.Item2)
                             {
-                                <tr>
-                                    <td>@item.iD</td>
-                                    <td>@item.AInfo1</td>
-                                    <td>@item.AInfo2</td>
-                                    <td>@item.AInfo4</td>
-                                    <td>@item.AInfo3</td>
-                                    <td>@item.AInfo5</td>
-                                    <td>@item.AInfo6</td>
-                                </tr>
+                            <tr>
+                                <td>@item.iD</td>
+                                <td>@item.AInfo1</td>
+                                <td>@item.AInfo2</td>
+                                <td>@item.AInfo4</td>
+                                <td>@item.AInfo3</td>
+                                <td>@item.AInfo5</td>
+                                <td>@item.AInfo6</td>
+                                <td>@item.CIIndex</td>
+                                <td>@item.AQIIndex</td>
+
+                            </tr>
                             }
 
                         </tbody>

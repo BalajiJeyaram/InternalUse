@@ -73,10 +73,12 @@ namespace KCSEntities.DAL
 
         public string CoachComments { get; set; } = "Default value entered by C#";
 
+        public string CIIndex { get; set; } = "KCS Incorrectly Applied";
+
+        public int AQIIndex { get; set; } = 0;
 
         public DateTime CreatedDate { get; set; }
-
-
+    
         public DateTime LastModifiedDate { get; set; }
 
         public int CreatedBy { get; set; }
