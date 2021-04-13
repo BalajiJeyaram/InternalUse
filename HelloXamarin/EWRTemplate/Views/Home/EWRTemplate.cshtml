@@ -1,0 +1,141 @@
+﻿@model EWRTemplate.Models.EWRTemplate_Model
+@{
+    ViewBag.Title = "EWRTemplate";
+}
+
+<h2>EWRTemplate</h2>
+<!---<form>-->
+@using (Html.BeginForm("ViewEWRTemplate", "Home", FormMethod.Post))
+
+{
+    @Html.ValidationSummary();
+    @Html.AntiForgeryToken();
+    <div class="form-row">
+        <label for="inputUsecase" class="col-md-6 col-form-control">Customer Use Case:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="inputusecase" name="inputusecase" placeholder="Customer Use Case">
+        </div>
+    </div>
+    <div class="form-row">
+        <label for="inputproblemstatement" class="col-md-6 col-form-control">Problem Statement:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class=" form-control" id="inputproblemstatement" name="inputproblemstatement" placeholder="Problem Statement">
+        </div>
+        <label for="inputdesiredbehaviour" class="col-md-6 col-form-control">Desired Behavior:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="inputdesiredbehaviour" name="inputdesiredbehaviour" placeholder="Desired Behavior">
+        </div>
+        <label for="inputcurrentdbehaviour" class="col-md-6 col-form-control">Current Behavior:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="inputcurrentbehaviour" name="inputcurrentbehaviour" placeholder="Current Behavior">
+        </div>
+    </div>
+    <div class="form-row">
+        <label for="inputcaseno" class="col-md-6 col-form-control">Case Number:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class=" form-control" id="inputcaseno" name="inputcaseno" placeholder="Case Number">
+        </div>
+        <label for="inputarealldevicesaffected" class="col-md-6 col-form-control">Are all devices affected?:</label>
+        <div class="form-group col-md-6">
+            <select class="form-control form-control-sm" id="drpinputarealldevicesaffected" name="drpinputarealldevicesaffected">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+        <label for="inputwhatpercentage" class="col-md-6 col-form-control">if not, What % of devices affected:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="inputwhatpercentage" name="inputwhatpercentage" placeholder="What % of devices affected">
+        </div>
+        <label for="inputareallallsiteaffected" class="col-md-6 col-form-control">Are all site affected?:</label>
+        <div class="form-group col-md-6">
+            <select class="form-control form-control-sm" id="drpinputareallallsiteaffected" name="drpinputareallallsiteaffected">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+        <label for="inputcompetitive" class="col-md-6 col-form-control">Competetitive devices functioning:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class=" form-control" id="inputcompetitivefunctioning"  name = "inputcompetitivefunctioning" placeholder="Describe how competitive devices are performing comparatively">
+        </div>
+        <label for="inputwasitworking" class="col-md-6 col-form-control">Was it working previously?:</label>
+        <div class="form-group col-md-6">
+            <select class="form-control form-control-sm" id="drpinputwasitworking" name="drpinputwasitworking">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+        <label for="inputwhatrecentlychanged" class="col-md-6 col-form-control">If Yes, what recently changed?:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class=" form-control" id="inputwhatrecentlychanged" name="inputwhatrecentlychanged" placeholder="Explain the changes (e.g customer upgraded from MR1 to MR2) ">
+        </div>
+    </div>
+    <div class="form-row">
+        <label for="inputdeviceinfo" class="col-md-6 col-form-control">Device Information:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class=" form-control" id="inputdeviceInfo" name="inputdeviceInfo" placeholder="Provide Devise information (SKU #, OS version, Build number etc)">
+        </div>
+    </div>
+    <div class="form-row">
+        <label for="inputspecificreq" class="col-md-6 col-form-control">Device Behavior/Specific request of Engineering:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class=" form-control" id="inputspecificreq" name = "inputspecificreq" placeholder="Describe desired behavior and what is the request for engineering.">
+        </div>
+    </div>
+    <div class="form-row">
+        <label for="inputSAT3" class="col-md-6 col-form-control">SA/T3 reproduce the problem within Honeywell?:</label>
+        <div class="form-group col-md-6">
+            <select class="form-control form-control-sm"  id="inputSAT3" name="inputSAT3">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <label for="inputnologs" class="col-md-6 col-form-control">If No, Logs colleceted from customer and attached to EWR:</label>
+        <div class="form-group col-md-6" >
+            <select class="form-control form-control-sm" id="inputnologs" name="inputnologs">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+        <label for="inputyeslogs" class="col-md-6 col-form-control">If Yes, did logs show any issue in the logs:</label>
+        <div class="form-group col-md-6">
+            <select class="form-control form-control-sm"  id="inputyeslogs" name="inputyeslogs">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+        <label for="inputbriefexp" class="col-md-6 col-form-control">If Yes - briefly explain:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class=" form-control" id="inputbriefexplain" name="inputbriefexplain" placeholder="If yes, briefly explain or copy log snippet.">
+        </div>
+        <label for="inputHwshipment" class="col-md-6 col-form-control">Hardware Shipment:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class=" form-control" id="inputhwshipment" name="inputhwshipment" placeholder="Provide hardware, if issue only happens on specific hardware. (Delivery leader can advise where to ship)">
+        </div>
+        <label for="inputtools" class="col-md-6 col-form-control">Access to customer tools/applications:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class=" form-control" id="inputtools" name="inputtools" placeholder="Describe customer tools/apps we need to access with credentials. E.g Demo applications links with credentials. Attach the required apps and tools to EWR. ">
+        </div>
+    </div>
+    <div class="form-row">
+        <label for="inputenv" class="col-md-6 col-form-control">Environment Details:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class=" form-control" id="inputenv" name="inputenv" placeholder="Additional environment details.">
+        </div>
+        <label for="inputreproduction" class="col-md-6 col-form-control">Reproduction Steps:</label>
+        <div class="form-group col-md-6">
+            <input type="text" class=" form-control" id="inputreproduction" name="inputreproduction" placeholder="Detailed Repro steps (Step by Step Instructions).">
+        </div>
+    </div>
+    <div class="form-row">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+                }
+<!--</form>-->
+
+<script>
+    function Validation() {
+        if 
+    }
+</script>
