@@ -1,8 +1,48 @@
-﻿
+﻿@model EWRTemplate.Models.EWRTemplate_Model
 @{
     ViewBag.Title = "ViewEWRTemplate";
 }
 
 <h2>ViewEWRTemplate</h2>
 <h3>@ViewBag.Message</h3>
+<div class="panel panel-default">
+    <div class="panel-heading">Panel Heading</div>
+    <div class="panel-body">
+        <b>Customer Usecase:</b><p>@Model.usecase</p>
+        <hr/>
+        <b>Problem Statement (s):</b><p>@Model.problemstatement</p> <br />
+        <b>Desired Behaviour:</b><p>@Model.desiredbehavior</p> <br />
+        <b>Current Behaviour:</b><p>@Model.currentbehavior</p>
+        <hr/>
+        <b>Case Number:</b><p>@Model.casenumber</p> <br />
+        <b>Are all devices affected:</b><p>@Model.arealldeviceaffected</p> <br />
+        <b>If no, what % of devices are affected:</b><p>@Model.devicesaffectedpercentage</p> <br />
+        <b>Are all sites affected:</b><p>@Model.areallsiteaffected</p> <br />
+        <b>Competitive devices functioning:</b><p>@Model.competitivedevicefunctioning</p> <br />
+        <b>Was it working previously:</b><p>@Model.wasitworkingpreviosuly</p> <br />
+        <b>If yes, what recently changed:</b><p>@Model.wasitrecentlychanged</p>
+        <hr/>
+        <b>Device Information:</b><p>@Model.DeviceInformation</p>
+        <hr />
+        <b>Desired Behaviour/Specific request of Engineering:</b><p>@Model.specificrequestofengineering</p>
+        <hr/>
+        <b>SA/T3 reproduce the problem within Honeywell :</b><p>@Model.reproducewithinhoneywell</p> <br />
+        <b>If no, Logs collected from customer and attach to EWR:</b><p>@Model.logscolletedfromcustomer</p> <br />
+        <b>If yes, did logs show any issue in the logs :</b><p>@Model.didlogshowanyissue </p> <br />
+        <b>Hardware Shipment:</b><p>@Model.hardwareshipment</p> <br />
+        <b>Access to customer tools/applications :</b><p>@Model.accesstocustomertool </p>
+        <hr/>
+
+        <b><u>EWR Reproduction Steps :</u></b> <br />
+        <b>Environment Details:</b><p>@Model.environmentdetails</p> <br />
+        <b>Reproduction Steps:</b><p>@Model.reproductionsteps</p> <br />
+
+
+
+    </div>
+    <div class="panel-footer">
+
+    </div>
+
+</div>
 

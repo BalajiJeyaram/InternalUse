@@ -47,7 +47,9 @@ namespace EWRTemplate.Controllers
             string inputyeslogs, string inputbriefexplain, string inputhwshipment, string inputtools, string inputenv, string inputreproduction)
         {
             ViewBag.Message = inputcaseno;
-            return View();
+
+            EWRTemplate_Model ewr = new EWRTemplate_Model() { usecase = inputusecase };
+            return View(ewr);
         }
     }
 }
