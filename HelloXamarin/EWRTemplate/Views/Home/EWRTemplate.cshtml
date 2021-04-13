@@ -84,7 +84,7 @@
     <div class="form-row">
         <label for="inputSAT3" class="col-md-6 col-form-control">SA/T3 reproduce the problem within Honeywell?:</label>
         <div class="form-group col-md-6">
-            <select class="form-control form-control-sm"  id="inputSAT3" name="inputSAT3">
+            <select class="form-control form-control-sm"  id="drpinputSAT3" name="drpinputSAT3">
                 <option>Yes</option>
                 <option>No</option>
             </select>
@@ -93,14 +93,14 @@
     <div class="form-row">
         <label for="inputnologs" class="col-md-6 col-form-control">If No, Logs colleceted from customer and attached to EWR:</label>
         <div class="form-group col-md-6" >
-            <select class="form-control form-control-sm" id="inputnologs" name="inputnologs">
+            <select class="form-control form-control-sm" id="drpinputnologs" name="drpinputnologs">
                 <option>Yes</option>
                 <option>No</option>
             </select>
         </div>
         <label for="inputyeslogs" class="col-md-6 col-form-control">If Yes, did logs show any issue in the logs:</label>
         <div class="form-group col-md-6">
-            <select class="form-control form-control-sm"  id="inputyeslogs" name="inputyeslogs">
+            <select class="form-control form-control-sm"  id="drpinputyeslogs" name="drpinputyeslogs">
                 <option>Yes</option>
                 <option>No</option>
             </select>
@@ -125,7 +125,8 @@
         </div>
         <label for="inputreproduction" class="col-md-6 col-form-control">Reproduction Steps:</label>
         <div class="form-group col-md-6">
-            <input type="text" class=" form-control" id="inputreproduction" name="inputreproduction" placeholder="Detailed Repro steps (Step by Step Instructions).">
+            <!--<input type="text" class=" form-control" id="inputreproduction" name="inputreproduction" placeholder="Detailed Repro steps (Step by Step Instructions).">-->
+            <textarea class=" form-control" id="inputreproduction" name="inputreproduction" placeholder="Detailed Repro steps (Step by Step Instructions)." rows="5" cols="20"></textarea>
         </div>
     </div>
     <div class="form-row">

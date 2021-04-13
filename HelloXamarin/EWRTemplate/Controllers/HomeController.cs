@@ -43,12 +43,16 @@ namespace EWRTemplate.Controllers
         [HttpPost]
         public ActionResult ViewEWRTemplate(string inputusecase, string inputproblemstatement, string inputdesiredbehaviour,string inputcurrentbehaviour,
            string inputcaseno, string drpinputarealldevicesaffected, string inputwhatpercentage, string drpinputareallallsiteaffected, string inputcompetitivefunctioning,
-            string drpinputwasitworking, string inputwhatrecentlychanged, string inputdeviceInfo, string inputspecificreq, string inputSAT3, string inputnologs, 
-            string inputyeslogs, string inputbriefexplain, string inputhwshipment, string inputtools, string inputenv, string inputreproduction)
+            string drpinputwasitworking, string inputwhatrecentlychanged, string inputdeviceInfo, string inputspecificreq, string drpinputSAT3, string drpinputnologs, 
+            string drpinputyeslogs, string inputbriefexplain, string inputhwshipment, string inputtools, string inputenv, string inputreproduction)
         {
             ViewBag.Message = inputcaseno;
 
-            EWRTemplate_Model ewr = new EWRTemplate_Model() { usecase = inputusecase };
+            EWRTemplate_Model ewr = new EWRTemplate_Model() { usecase = inputusecase, problemstatement = inputproblemstatement, desiredbehavior = inputdesiredbehaviour, currentbehavior = inputcurrentbehaviour,
+            casenumber = inputcaseno, arealldeviceaffected = drpinputareallallsiteaffected, devicesaffectedpercentage= inputwhatpercentage, areallsiteaffected = drpinputareallallsiteaffected, competitivedevicefunctioning = inputcompetitivefunctioning,
+            wasitworkingpreviosuly = drpinputwasitworking, wasitrecentlychanged = inputwhatrecentlychanged, DeviceInformation = inputdeviceInfo,
+            specificrequestofengineering = inputspecificreq, reproducewithinhoneywell = drpinputSAT3, logscolletedfromcustomer = drpinputnologs,
+            didlogshowanyissue = drpinputyeslogs, hardwareshipment = inputhwshipment, accesstocustomertool = inputtools, environmentdetails = inputenv, reproductionsteps = inputreproduction};
             return View(ewr);
         }
     }
