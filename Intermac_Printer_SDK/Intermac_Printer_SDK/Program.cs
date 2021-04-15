@@ -106,6 +106,23 @@ namespace Intermac_Printer_SDK
             }
             return imageBytes;
         }
+
+        private static byte[] PDFToByteArray(string pdffile)
+        {
+            byte[] pdfBytes;
+            using (Image image = Image.FromFile(pdffile))
+            {
+                using (var ms = new MemoryStream())
+                {
+                    image.Save(ms, image.RawFormat);
+                    pdfBytes = new byte[ms.Length];
+                    pdfBytes = ms.ToArray();
+
+                }
+            }
+            return pdfBytes;
+        }
+
         static void SendDPLCommandsToPrinter()
         {
 
@@ -118,6 +135,8 @@ namespace Intermac_Printer_SDK
             PrinterStatus_DPL statusdpl = new PrinterStatus_DPL(conn);
             Images_DPL imagedpl = new Images_DPL(conn);
             DocumentDPL dpl = new DocumentDPL();
+            //Document doc = new Document();
+            //byte[] by = doc.GetDocumentData();
             
             Console.WriteLine("Enter 1 to start printing...");
             var input = Console.ReadLine();
@@ -140,6 +159,8 @@ namespace Intermac_Printer_SDK
                     send_text += "E" + CR;
                     conn.Write(send_text);
                     //conn.Write(ImageToByteArray(@"C:\Users\h387014\Documents\Cases\1_Monochrome.bmp"), 1, 10000);
+                    conn.Write(PDFToByteArray(@"C:\Users\h387014\Documents\Cases\1_Monochrome.bmp"), 1, 10000);
+
                     statusdpl.Update(3000);
                     List<string> printerstatusstring = statusdpl.QueryResults();
 
