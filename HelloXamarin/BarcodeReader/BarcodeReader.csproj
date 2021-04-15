@@ -58,22 +58,20 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BarcodeReader.html" />
-    <Content Include="js\BarcodeReader\BarcodeReader-Ajax.js" />
-    <Content Include="js\BarcodeReader\BarcodeReader-Swift-Win.js" />
-    <Content Include="js\BarcodeReader\BarcodeReader-SwiftSettings.js" />
-    <Content Include="js\BarcodeReader\BarcodeReader-WinRingSettings.js" />
-    <Content Include="js\BarcodeReader\BarcodeReader.js" />
-    <Content Include="js\Printer\Printer.js" />
-    <Content Include="js\Printer\printer_profiles.js" />
+    <Content Include="TestJs\BarcodeReader.html" />
+    <Content Include="TestJs\js\BarcodeReader\BarcodeReader-Ajax.js" />
+    <Content Include="TestJs\js\BarcodeReader\BarcodeReader-Swift-Win.js" />
+    <Content Include="TestJs\js\BarcodeReader\BarcodeReader-SwiftSettings.js" />
+    <Content Include="TestJs\js\BarcodeReader\BarcodeReader-WinRingSettings.js" />
+    <Content Include="TestJs\js\BarcodeReader\BarcodeReader.js" />
+    <Content Include="TestJs\js\Printer\Printer.js" />
+    <Content Include="TestJs\js\Printer\printer_profiles.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TestJs\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

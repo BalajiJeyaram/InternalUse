@@ -41,8 +41,29 @@
 
     </div>
     <div class="panel-footer">
-        <button type="button" class="btn btn-primary">Send</button>
+        <button type="button" class="btn btn-primary" id="btnsend">Send</button>
     </div>
 
 </div>
+<script>
+    $(document).ready(function () {
+
+        $("#btnsend").click(function () {
+            alert('clicked');
+            $.ajax({
+                type: "POST",
+                url: "home/SendEmail",
+                data: {
+                    ewr:"ewr"},
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    alert(msg);
+                }
+            });
+
+        });
+    });
+</script>
+
 
