@@ -9,6 +9,9 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -35,11 +38,9 @@
             <p><i class="glyphicon glyphicon-user"></i> @User.Identity.Name.Substring(7)</p>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
-       
+
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
 </body>
 </html>

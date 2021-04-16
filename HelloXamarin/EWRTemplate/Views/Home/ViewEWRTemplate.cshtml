@@ -8,57 +8,75 @@
 <div class="panel panel-default">
     <div class="panel-heading">Panel Heading</div>
     <div class="panel-body">
-        <b>Customer Usecase:</b><p>@Model.usecase</p>
-        <hr/>
-        <b>Problem Statement (s):</b><p>@Model.problemstatement</p> <br />
-        <b>Desired Behaviour:</b><p>@Model.desiredbehavior</p> <br />
-        <b>Current Behaviour:</b><p>@Model.currentbehavior</p>
-        <hr/>
-        <b>Case Number:</b><p>@Model.casenumber</p> <br />
-        <b>Are all devices affected:</b><p>@Model.arealldeviceaffected</p> <br />
-        <b>If no, what % of devices are affected:</b><p>@Model.devicesaffectedpercentage</p> <br />
-        <b>Are all sites affected:</b><p>@Model.areallsiteaffected</p> <br />
-        <b>Competitive devices functioning:</b><p>@Model.competitivedevicefunctioning</p> <br />
-        <b>Was it working previously:</b><p>@Model.wasitworkingpreviosuly</p> <br />
-        <b>If yes, what recently changed:</b><p>@Model.wasitrecentlychanged</p>
-        <hr/>
-        <b>Device Information:</b><p>@Model.DeviceInformation</p>
+        <b>Customer Usecase:</b><p id="usecase">@Model.usecase</p>
         <hr />
-        <b>Desired Behaviour/Specific request of Engineering:</b><p>@Model.specificrequestofengineering</p>
-        <hr/>
-        <b>SA/T3 reproduce the problem within Honeywell :</b><p>@Model.reproducewithinhoneywell</p> <br />
-        <b>If no, Logs collected from customer and attach to EWR:</b><p>@Model.logscolletedfromcustomer</p> <br />
-        <b>If yes, did logs show any issue in the logs :</b><p>@Model.didlogshowanyissue </p> <br />
-        <b>Hardware Shipment:</b><p>@Model.hardwareshipment</p> <br />
-        <b>Access to customer tools/applications :</b><p>@Model.accesstocustomertool </p>
-        <hr/>
+        <b>Problem Statement (s):</b><p id="problemstatement">@Model.problemstatement</p> <br />
+        <b>Desired Behaviour:</b><p id="desiredbehavior">@Model.desiredbehavior</p> <br />
+        <b>Current Behaviour:</b><p id="currentbehavior">@Model.currentbehavior</p>
+        <hr />
+        <b>Case Number:</b><p id="casenumber">@Model.casenumber</p> <br />
+        <b>Are all devices affected:</b><p id="arealldeviceaffected">@Model.arealldeviceaffected</p> <br />
+        <b>If no, what % of devices are affected:</b><p id="devicesaffectedpercentage">@Model.devicesaffectedpercentage</p> <br />
+        <b>Are all sites affected:</b><p id="areallsiteaffected">@Model.areallsiteaffected</p> <br />
+        <b>Competitive devices functioning:</b><p id="competitivedevicefunctioning">@Model.competitivedevicefunctioning</p> <br />
+        <b>Was it working previously:</b><p id="wasitworkingpreviosuly">@Model.wasitworkingpreviosuly</p> <br />
+        <b>If yes, what recently changed:</b><p id="wasitrecentlychanged">@Model.wasitrecentlychanged</p>
+        <hr />
+        <b>Device Information:</b><p id="DeviceInformation">@Model.DeviceInformation</p>
+        <hr />
+        <b>Desired Behaviour/Specific request of Engineering:</b><p id="specificrequestofengineering">@Model.specificrequestofengineering</p>
+        <hr />
+        <b>SA/T3 reproduce the problem within Honeywell :</b><p id="reproducewithinhoneywell">@Model.reproducewithinhoneywell</p> <br />
+        <b>If no, Logs collected from customer and attach to EWR:</b><p id="logscolletedfromcustomer">@Model.logscolletedfromcustomer</p> <br />
+        <b>If yes, did logs show any issue in the logs :</b><p id="didlogshowanyissue">@Model.didlogshowanyissue </p> <br />
+        <b>Hardware Shipment:</b><p id="hardwareshipment">@Model.hardwareshipment</p> <br />
+        <b>Access to customer tools/applications :</b><p id="accesstocustomertool">@Model.accesstocustomertool </p>
+        <hr />
 
         <b><u>EWR Reproduction Steps :</u></b> <br />
-        <b>Environment Details:</b><p>@Model.environmentdetails</p> <br />
-        <b>Reproduction Steps:</b><p>@Model.reproductionsteps</p> <br />
+        <b>Environment Details:</b><p id="environmentdetails">@Model.environmentdetails</p> <br />
+        <b>Reproduction Steps:</b><p id="reproductionstep">@Model.reproductionsteps</p> <br />
 
 
 
     </div>
+
     <div class="panel-footer">
-        <button type="button" class="btn btn-primary" id="btnsend">Send</button>
-    </div>
+    <button type="button" class="btn btn-primary" id="btnsend">Send</button>
+        <!-- <div class="input-group mb-12">
+         <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+         <div class="input-group-append">
+             <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+         </div>
+     </div>-->
 
+    </div>
+    <div class="progress" id="pbar" style="display:none">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+    </div>
 </div>
 <script>
     $(document).ready(function () {
 
+        var model = {
+            usecase: $("#usecase").text(), problemstatement: $("#problemstatement").text(), desiredbehavior: $("#desiredbehavior").text(), currentbehavior: $("#currentbehavior").text(), casenumber: $("#casenumber").text(), arealldeviceaffected: $("#arealldeviceaffected").text(),
+            devicesaffectedpercentage: $("#devicesaffectedpercentage").text(), areallsiteaffected: $("#areallsiteaffected").text(), competitivedevicefunctioning: $("#competitivedevicefunctioning").text(), wasitworkingpreviosuly: $("#wasitworkingpreviosuly").text(),
+            wasitrecentlychanged: $("#wasitrecentlychanged").text(), DeviceInformation: $("#DeviceInformation").text(), specificrequestofengineering: $("#specificrequestofengineering").text(), reproducewithinhoneywell: $("#reproducewithinhoneywell").text(),
+            logscolletedfromcustomer: $("#logscolletedfromcustomer").text(), didlogshowanyissue: $("#didlogshowanyissue").text(), hardwareshipment: $("#hardwareshipment").text(), accesstocustomertool: $("#accesstocustomertool").text(), environmentdetails: $("#environmentdetails").text(),
+            reproductionsteps: $("#reproductionstep").text()
+        }
         $("#btnsend").click(function () {
-            alert('clicked');
+           $("#pbar").show();
             $.ajax({
                 type: "POST",
-                url: "home/SendEmail",
-                data: {
-                    ewr:"ewr"},
+                url: "/Home/SendEmail",
+                data: JSON.stringify(model) ,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (msg) {
-                    alert(msg);
+                    alert("Email successfully sent");
+                    $("#pbar").hide();
                 }
             });
 

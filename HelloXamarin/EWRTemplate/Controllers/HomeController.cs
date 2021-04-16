@@ -13,10 +13,10 @@ namespace EWRTemplate.Controllers
 {
     public class HomeController : Controller
     {
-
+       // EWRTemplate_Model ewrtemplate = new EWRTemplate_Model();
         public HomeController()
         {
-            EWRTemplate_Model ewrtemplate = new EWRTemplate_Model();
+
         }
 
         public ActionResult Index()
@@ -61,7 +61,7 @@ namespace EWRTemplate.Controllers
         }
 
 
-        public async Task<JsonResult> SendEmail() 
+        public JsonResult  SendEmail(EWRTemplate_Model model) 
         {
             //EWRTemplate_Model ewrmodel = new EWRTemplate_Model();
             //string outresult = string.Empty;
@@ -70,12 +70,12 @@ namespace EWRTemplate.Controllers
             string result = string.Empty;
             if (ModelState.IsValid)
             {
-                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+                //var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
                 var message = new MailMessage();
-                message.To.Add(new MailAddress(""));  // replace with valid value 
-                message.From = new MailAddress("");  // replace with valid value
+                message.To.Add(new MailAddress("balaji.kj@honeywell.com"));  // replace with valid value 
+                message.From = new MailAddress("balaji.kj@honeywell.com");  // replace with valid value
                 message.Subject = "Your email subject";
-                message.Body = string.Format(body, "Balaji KJ", "", "This is test email sent from ASP.Net MVC application");
+                message.Body = CreateBody(model) ;
                 message.IsBodyHtml = true;
 
                 using (var smtp = new SmtpClient())
@@ -85,12 +85,20 @@ namespace EWRTemplate.Controllers
                         UserName = "h387014",  // replace with valid value
                         Password = "April2020&#"  // replace with valid value
                     };
-                    smtp.Credentials = credential;
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.Port = 587;
+                    //smtp.Credentials = credential;
+                    smtp.Host = "smtp.honeywell.com";
+                    smtp.Port = 25;
                     smtp.EnableSsl = true;
-                    await smtp.SendMailAsync(message);
-                    //return RedirectToAction("Sent");
+                    smtp.UseDefaultCredentials = false;
+                    string eusername = "h387014";//GlobalVariables.EmailUsername;// ReturnConfigValue("EmailUserName");
+                    string epassword = "April2020&$";// GlobalVariables.EmailPassword;// ReturnConfigValue("EmailPassword");
+
+                    smtp.Credentials = new NetworkCredential(eusername, epassword);
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtp.Send(message);
+                    //exception = "Success";
+
+                    result = "Email successfully sent to: balaji.kj@honeywell.com";
 
                     return Json(result, JsonRequestBehavior.AllowGet);
                 }
@@ -191,14 +199,27 @@ namespace EWRTemplate.Controllers
             using (StreamReader reader = new StreamReader(filename))
                 returvalue = reader.ReadToEnd();
 
-            returvalue = returvalue.Replace("{TSEName}", "ewr.AInfo3");
-            returvalue = returvalue.Replace("{Coach}", "ewr.AInfo4");
-            returvalue = returvalue.Replace("{Case}", "ewr.AInfo5");
-            returvalue = returvalue.Replace("{CaseTitle}", "ewr.AInfo8");
-            returvalue = returvalue.Replace("{Article}", "ewr.AInfo6");
-            returvalue = returvalue.Replace("{CIIndex}", "ewr.CIIndex");
-            returvalue = returvalue.Replace("{AQIIndex}", "ewr.AQIIndex.ToString()");
-            returvalue = returvalue.Replace("{Comments}", "ewr.CoachComments");
+            returvalue = returvalue.Replace("{Usecase}", ewr.usecase);
+            returvalue = returvalue.Replace("{problemstatement}", ewr.problemstatement);
+            returvalue = returvalue.Replace("{desiredbehaviour}", ewr.desiredbehavior);
+            returvalue = returvalue.Replace("{currentbehaviour}", ewr.currentbehavior);
+            returvalue = returvalue.Replace("{casenumber}", ewr.casenumber);
+            returvalue = returvalue.Replace("{devicesaffected}", ewr.arealldeviceaffected);
+            returvalue = returvalue.Replace("{whatpercentage}", ewr.devicesaffectedpercentage);
+            returvalue = returvalue.Replace("{sitesaffected}", ewr.areallsiteaffected);
+            returvalue = returvalue.Replace("{competitivedevice}", ewr.competitivedevicefunctioning);
+            returvalue = returvalue.Replace("{workingpreviously}", ewr.wasitworkingpreviosuly);
+            returvalue = returvalue.Replace("{recentlychanged}", ewr.wasitrecentlychanged);
+            returvalue = returvalue.Replace("{deviceinformation}", ewr.DeviceInformation);
+            returvalue = returvalue.Replace("{specificrequest}", ewr.specificrequestofengineering);
+            returvalue = returvalue.Replace("{SAreproduce}", ewr.reproducewithinhoneywell);
+            returvalue = returvalue.Replace("{logscollected}", ewr.logscolletedfromcustomer);
+            returvalue = returvalue.Replace("{logshow}", ewr.didlogshowanyissue);
+            returvalue = returvalue.Replace("{hardwareshipment}", ewr.hardwareshipment);
+            returvalue = returvalue.Replace("{customertools}", ewr.accesstocustomertool);
+            returvalue = returvalue.Replace("{environment}", ewr.environmentdetails);
+            returvalue = returvalue.Replace("{reproductionsteps}", ewr.reproductionsteps);
+
 
             return returvalue;
         }
