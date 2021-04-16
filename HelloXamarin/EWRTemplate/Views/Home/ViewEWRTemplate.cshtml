@@ -42,6 +42,7 @@
     </div>
 
     <div class="panel-footer">
+    <input type="text" id="ToEmailAddress" placeholder="Enter To Email Address"/>
     <button type="button" class="btn btn-primary" id="btnsend">Send</button>
         <!-- <div class="input-group mb-12">
          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -71,11 +72,11 @@
             $.ajax({
                 type: "POST",
                 url: "/Home/SendEmail",
-                data: JSON.stringify(model) ,
+                data: JSON.stringify({ model: model, toemailaddress: $("#ToEmailAddress").val() }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (msg) {
-                    alert("Email successfully sent");
+                    alert(msg);
                     $("#pbar").hide();
                 }
             });

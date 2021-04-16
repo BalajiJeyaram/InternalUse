@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -61,7 +63,7 @@ namespace EWRTemplate.Controllers
         }
 
 
-        public JsonResult  SendEmail(EWRTemplate_Model model) 
+        public JsonResult  SendEmail(EWRTemplate_Model model, string toemailaddress) 
         {
             //EWRTemplate_Model ewrmodel = new EWRTemplate_Model();
             //string outresult = string.Empty;
@@ -70,36 +72,40 @@ namespace EWRTemplate.Controllers
             string result = string.Empty;
             if (ModelState.IsValid)
             {
-                //var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
-                var message = new MailMessage();
-                message.To.Add(new MailAddress("balaji.kj@honeywell.com"));  // replace with valid value 
-                message.From = new MailAddress("balaji.kj@honeywell.com");  // replace with valid value
-                message.Subject = "Your email subject";
-                message.Body = CreateBody(model) ;
-                message.IsBodyHtml = true;
 
-                using (var smtp = new SmtpClient())
+                if (IsValidEmail(toemailaddress) == false)
+                    result = "Invalid email address";
+                else
                 {
-                    var credential = new NetworkCredential
+                    var message = new MailMessage();
+                    message.To.Add(new MailAddress(toemailaddress));  // replace with valid value 
+                    message.From = new MailAddress("balaji.kj@honeywell.com");  // replace with valid value
+                    message.Subject = "EWR Template Case Number:" + model.casenumber;
+                    message.Body = CreateBody(model) ;
+                    message.IsBodyHtml = true;
+
+                    using (var smtp = new SmtpClient())
                     {
-                        UserName = "h387014",  // replace with valid value
-                        Password = "April2020&#"  // replace with valid value
-                    };
-                    //smtp.Credentials = credential;
-                    smtp.Host = "smtp.honeywell.com";
-                    smtp.Port = 25;
-                    smtp.EnableSsl = true;
-                    smtp.UseDefaultCredentials = false;
-                    string eusername = "h387014";//GlobalVariables.EmailUsername;// ReturnConfigValue("EmailUserName");
-                    string epassword = "April2020&$";// GlobalVariables.EmailPassword;// ReturnConfigValue("EmailPassword");
+                        var credential = new NetworkCredential
+                        {
+                            UserName = "h387014",  // replace with valid value
+                            Password = "April2020&#"  // replace with valid value
+                        };
+                        //smtp.Credentials = credential;
+                        smtp.Host = "smtp.honeywell.com";
+                        smtp.Port = 25;
+                        smtp.EnableSsl = true;
+                        smtp.UseDefaultCredentials = false;
+                        string eusername = "h387014";//GlobalVariables.EmailUsername;// ReturnConfigValue("EmailUserName");
+                        string epassword = "April2020&$";// GlobalVariables.EmailPassword;// ReturnConfigValue("EmailPassword");
 
-                    smtp.Credentials = new NetworkCredential(eusername, epassword);
-                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    smtp.Send(message);
-                    //exception = "Success";
+                        smtp.Credentials = new NetworkCredential(eusername, epassword);
+                        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                        smtp.Send(message);
+                        //exception = "Success";
 
-                    result = "Email successfully sent to: balaji.kj@honeywell.com";
-
+                        result = "Email successfully sent to " + toemailaddress;
+                    }
                     return Json(result, JsonRequestBehavior.AllowGet);
                 }
             }
@@ -109,6 +115,52 @@ namespace EWRTemplate.Controllers
         }
 
         #region sendemail
+
+        public bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            try
+            {
+                // Normalize the domain
+                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+
+                // Examines the domain part of the email and normalizes it.
+                string DomainMapper(Match match)
+                {
+                    // Use IdnMapping class to convert Unicode domain names.
+                    var idn = new IdnMapping();
+
+                    // Pull out and process domain name (throws ArgumentException on invalid)
+                    var domainName = idn.GetAscii(match.Groups[2].Value);
+
+                    return match.Groups[1].Value + domainName;
+                }
+            }
+            catch (RegexMatchTimeoutException e)
+            {
+                return false;
+            }
+            catch (ArgumentException e)
+            {
+                return false;
+            }
+
+            try
+            {
+                return Regex.IsMatch(email,
+                    @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+
         public static bool SendEmail(EWRTemplate_Model ewr, out string exception)
         {
             try
