@@ -1,3 +1,10 @@
+//********* Following script to load Ajax, Swift, SwiftSettings and WinRingSettings from BarcodeReader folder  **************
+var scripts = document.currentScript;
+var fullpath = scripts.src;
+fullpath = fullpath.substring(0,fullpath.lastIndexOf("/")+1);
+//alert(fullpath);
+//********* above script to load Ajax, Swift, SwiftSettings and WinRingSettings from BarcodeReader folder  **************
+
 var HoneywellBarcodeReaderUtils = {
     BRIDGE_TYPE_AJAX: "AJAX", BRIDGE_TYPE_NATIVE_WINRT_OBJECT: "NativeWinRTObject", BRIDGE_TYPE_NPAPI: "NPAPI", BRIDGE_TYPE_NONE: "None", DECODER_TYPE_SWIFT: "Swift", DECODER_TYPE_INTERMEC: "In2Decode", MSG_OPERATION_COMPLETED: "Operation completed successfully.", embedNode: null, bridgeType: null, bcrPlugin: null, barcodeReaderObjName: null, checkNpapiPlugin: function () {
         if (!this.embedNode) try {
@@ -38,7 +45,7 @@ var HoneywellBarcodeReaderUtils = {
     }, getSymbologyName: function (a, d) { var e = "", g = HoneywellSymbologyIDTable.length, c, h = 0; if (!a) return e; for (c = 0; c < g; c++)if (a === HoneywellSymbologyIDTable[c].honeywellId) { e = HoneywellSymbologyIDTable[c].name; h = c; break } if (e && d && "j" === a) for (c = h; c < g; c++)if (1 === d.indexOf(HoneywellSymbologyIDTable[c].aimId, 1)) { e = HoneywellSymbologyIDTable[c].name; break } return e }, hasJsonRpcError: function (a) {
         return "object" === typeof a && a.hasOwnProperty("error") && a.error ?
             a.error.hasOwnProperty("code") && a.error.hasOwnProperty("message") : !1
-    }, hasProperty: function (a, d, e) { return "object" === typeof a && a.hasOwnProperty(d) ? e ? null !== a[d] : !0 : !1 }, isFunction: function (a) { return typeof a == typeof Function }, loadJavaScript: function (a, d) { var e = document.createElement("script"); e.setAttribute("type", "text/javascript"); e.setAttribute("src", a); this.isFunction(d) && (e.onload = d); document.getElementsByTagName("head")[0].appendChild(e) }, sendJsonRpcRequestSubSys: function (a, d, e) {
+    }, hasProperty: function (a, d, e) { return "object" === typeof a && a.hasOwnProperty(d) ? e ? null !== a[d] : !0 : !1 }, isFunction: function (a) { return typeof a == typeof Function }, loadJavaScript: function (a, d) { var e = document.createElement("script"); e.setAttribute("type", "text/javascript"); e.setAttribute("src", fullpath+a); this.isFunction(d) && (e.onload = d); document.getElementsByTagName("head")[0].appendChild(e) }, sendJsonRpcRequestSubSys: function (a, d, e) {
         var g = this, c, h =
             this.getRandomInt(1E4, 99999); d.id = h; d.jsonrpc = "2.0"; if (window.XMLHttpRequest) c = new XMLHttpRequest, c.onreadystatechange = function () {
                 if (4 == c.readyState) if (200 == c.status) { var b; try { b = JSON.parse(c.responseText) } catch (a) { g.isFunction(e) && (b = { jsonrpc: "2.0" }, b.id = h, b.error = {}, b.error.code = HoneywellBarcodeReaderErrors.JSON_PARSE_ERROR, b.error.message = "JSON-RPC parsing error in response.", setTimeout(function () { e(b) }, 0)); return } h == b.id && g.isFunction(e) && setTimeout(function () { e(b) }, 0) } else g.isFunction(e) && (b =

@@ -58,7 +58,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BarcodeReader.html" />
+    <Content Include="TestJs\Testjs1\BarcodeReader.html" />
     <Content Include="js\BarcodeReader\BarcodeReader-Ajax.js" />
     <Content Include="js\BarcodeReader\BarcodeReader-Swift-Win.js" />
     <Content Include="js\BarcodeReader\BarcodeReader-SwiftSettings.js" />
@@ -71,9 +71,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TestJs\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
