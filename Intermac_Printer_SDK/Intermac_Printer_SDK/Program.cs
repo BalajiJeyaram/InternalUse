@@ -159,7 +159,7 @@ namespace Intermac_Printer_SDK
                     send_text += "E" + CR;
                     conn.Write(send_text);
                     //conn.Write(ImageToByteArray(@"C:\Users\h387014\Documents\Cases\1_Monochrome.bmp"), 1, 10000);
-                    conn.Write(PDFToByteArray(@"C:\Users\h387014\Documents\Cases\1_Monochrome.bmp"), 1, 10000);
+                    conn.Write(PDFToByteArray(@"C:\Users\h387014\Downloads\DPL PatronTicket__POSTickets.pdf"), 1, 10000);
 
                     statusdpl.Update(3000);
                     List<string> printerstatusstring = statusdpl.QueryResults();
