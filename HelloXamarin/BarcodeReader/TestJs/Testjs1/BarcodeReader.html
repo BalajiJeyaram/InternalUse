@@ -41,7 +41,6 @@ Notes:
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="../../js/BarcodeReader/BarcodeReader.js"></script>
- 
 
 
     <script type="text/javascript">
@@ -151,7 +150,15 @@ Notes:
 
         // Handle barcode data when available
         function onBarcodeDataReady(data, type, time) {
-            barcodeDataText.value = data;
+
+            if (type == 'DATAMATRIX') {
+                var sample = data;
+                sample = sample.substring(0,29) +'~'+ sample.substring(0,30) +'~' + sample.substring(31);
+                barcodeDataText.value = sample.substring(7); 
+            }
+            else
+                barcodeDataText.value = data;
+
             symbTypeText.value = type;
             readTimeText.value = time;
         }
