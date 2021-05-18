@@ -1299,13 +1299,13 @@ var HowneywellBarcodeReaderSwiftSettings =
         "value": [""],
         "command": "DPR_SUFFIX"
         },
-
         {
             "family": "DecodeSecurity",
             "key": "",
             "option": "CenterDecoding",
-            "valueType": "map",
-            "valueMap": [{ "true": true }, { "false": false }],
-            "command": "DEC_WINDOW_MODE"
+            "valueType": "string",
+            "value": [""],
+            "command": "DPR_SUFFIX"
         }
+
 ];

@@ -45,18 +45,18 @@
         }, clearBuffer: function () { this.batchGetBuffer.length = 0; this.batchSetBuffer.length = 0 }, close: function (a) {
             var c = this; if (null === this.sessionId) HoneywellBarcodeReaderUtils.isFunction(a) && setTimeout(function () { a({ status: 0, message: "BarcodeReader already closed" }) },
                 0); else {
-                    var e = { method: "scanner.release", params: {} }; e.params.session = c.sessionId; HoneywellBarcodeReaderUtils.sendJsonRpcRequestSubSys("datacollection", e, function (e) {
-                        HoneywellBarcodeReaderUtils.stdErrorCheck(e, function (d) {
-                            if (0 === d.status) {
-                                c.filter = null; var e = { method: "scanner.disconnect", params: {} }; e.params.session = c.sessionId; HoneywellBarcodeReaderUtils.sendJsonRpcRequestSubSys("datacollection", e, function (b) {
-                                    HoneywellBarcodeReaderUtils.stdErrorCheck(b, function (b) {
-                                        0 === b.status && (c.sessionId = null, c.eventDispatcher &&
-                                            c.eventDispatcher.stopSession()); HoneywellBarcodeReaderUtils.isFunction(a) && setTimeout(function () { a(b) }, 0)
-                                    })
+                var e = { method: "scanner.release", params: {} }; e.params.session = c.sessionId; HoneywellBarcodeReaderUtils.sendJsonRpcRequestSubSys("datacollection", e, function (e) {
+                    HoneywellBarcodeReaderUtils.stdErrorCheck(e, function (d) {
+                        if (0 === d.status) {
+                            c.filter = null; var e = { method: "scanner.disconnect", params: {} }; e.params.session = c.sessionId; HoneywellBarcodeReaderUtils.sendJsonRpcRequestSubSys("datacollection", e, function (b) {
+                                HoneywellBarcodeReaderUtils.stdErrorCheck(b, function (b) {
+                                    0 === b.status && (c.sessionId = null, c.eventDispatcher &&
+                                        c.eventDispatcher.stopSession()); HoneywellBarcodeReaderUtils.isFunction(a) && setTimeout(function () { a(b) }, 0)
                                 })
-                            } else HoneywellBarcodeReaderUtils.isFunction(a) && setTimeout(function () { a(d) }, 0)
-                        })
+                            })
+                        } else HoneywellBarcodeReaderUtils.isFunction(a) && setTimeout(function () { a(d) }, 0)
                     })
+                })
             }
         }, commitBuffer: function (a) {
             function c() {
@@ -79,19 +79,19 @@
                 }
             } else if (0 === this.batchSetBuffer.length && 0 === this.batchGetBuffer.length) HoneywellBarcodeReaderUtils.isFunction(a) && (b = {}, b.status = HoneywellBarcodeReaderErrors.EMPTY_COMMIT_BUFFER, b.message = "The commit buffer is empty, nothing to commit.", b.method = null, b.family = null, b.key = null, b.option = null, k.push(b), setTimeout(function () { a(k) },
                 0)); else {
-                    for (var g = 0, m = e.batchSetBuffer.length; g < m; g++) { var h = e.batchSetBuffer[g]; 0 === h.status ? f.push(h) : (b = { method: "setBuffered" }, b.family = h.family, b.key = h.key, b.option = h.option, b.status = h.status, b.message = h.message, k.push(b)) } g = 0; for (m = e.batchGetBuffer.length; g < m; g++)h = e.batchGetBuffer[g], 0 === h.status ? d.push(h) : (b = { method: "getBuffered" }, b.family = h.family, b.key = h.key, b.option = h.option, b.status = h.status, b.message = h.message, k.push(b)); if (0 < f.length) {
-                        var l = [], b = { method: "scanner.setProperties", params: {} };
-                        b.params.session = e.sessionId; b.params.values = {}; g = 0; for (m = f.length; g < m; g++)h = f[g], b.params.values[h.command] = h.value, l.push(h.command); e.logVar("Batch set request.params.values", b.params.values, !1); HoneywellBarcodeReaderUtils.sendJsonRpcRequestSubSys("datacollection", b, function (b) {
-                            if (HoneywellBarcodeReaderUtils.isFunction(a)) if (HoneywellBarcodeReaderUtils.hasProperty(b, "result", !1)) b = { method: "scanner.getProperties", params: {} }, b.params.session = e.sessionId, b.params.names = l, HoneywellBarcodeReaderUtils.sendJsonRpcRequestSubSys("datacollection",
-                                b, function (a) {
-                                    e.logVar("Batch set's get response", a, !1); if (HoneywellBarcodeReaderUtils.hasProperty(a, "result", !0) && HoneywellBarcodeReaderUtils.hasProperty(a.result, "values", !0)) for (var b = 0, d = f.length; b < d; b++) {
-                                        var g = f[b], h = { method: "setBuffered" }; h.family = g.family; h.key = g.key; h.option = g.option; HoneywellBarcodeReaderUtils.hasProperty(a.result.values, g.command, !0) ? a.result.values[g.command] === g.value ? (h.status = 0, h.message = HoneywellBarcodeReaderUtils.MSG_OPERATION_COMPLETED) : (h.status = HoneywellBarcodeReaderErrors.INVALID_SETTING_VALUE,
-                                            h.message = "Scanner rejects the setting value.") : (h.status = HoneywellBarcodeReaderErrors.INVALID_PARAMETER, h.message = "Invalid scanner property: " + g.command); k.push(h)
-                                    } else HoneywellBarcodeReaderUtils.hasJsonRpcError(a) ? (h = { method: "setBuffered", family: null, key: null, option: null }, h.status = a.error.code, h.message = a.error.message) : (h = { method: "setBuffered", family: null, key: null, option: null }, h.status = HoneywellBarcodeReaderErrors.JSON_PARSE_ERROR, h.message = "JSON-RPC parsing error in response."), k.push(h); c()
-                                });
-                            else { if (HoneywellBarcodeReaderUtils.hasJsonRpcError(b)) { var d = { method: "setBuffered", family: null, key: null, option: null }; d.status = b.error.code; d.message = b.error.message } else d = { method: "setBuffered", family: null, key: null, option: null }, d.status = HoneywellBarcodeReaderErrors.JSON_PARSE_ERROR, d.message = "JSON-RPC parsing error in response."; k.push(d); c() }
-                        })
-                    } else c()
+                for (var g = 0, m = e.batchSetBuffer.length; g < m; g++) { var h = e.batchSetBuffer[g]; 0 === h.status ? f.push(h) : (b = { method: "setBuffered" }, b.family = h.family, b.key = h.key, b.option = h.option, b.status = h.status, b.message = h.message, k.push(b)) } g = 0; for (m = e.batchGetBuffer.length; g < m; g++)h = e.batchGetBuffer[g], 0 === h.status ? d.push(h) : (b = { method: "getBuffered" }, b.family = h.family, b.key = h.key, b.option = h.option, b.status = h.status, b.message = h.message, k.push(b)); if (0 < f.length) {
+                    var l = [], b = { method: "scanner.setProperties", params: {} };
+                    b.params.session = e.sessionId; b.params.values = {}; g = 0; for (m = f.length; g < m; g++)h = f[g], b.params.values[h.command] = h.value, l.push(h.command); e.logVar("Batch set request.params.values", b.params.values, !1); HoneywellBarcodeReaderUtils.sendJsonRpcRequestSubSys("datacollection", b, function (b) {
+                        if (HoneywellBarcodeReaderUtils.isFunction(a)) if (HoneywellBarcodeReaderUtils.hasProperty(b, "result", !1)) b = { method: "scanner.getProperties", params: {} }, b.params.session = e.sessionId, b.params.names = l, HoneywellBarcodeReaderUtils.sendJsonRpcRequestSubSys("datacollection",
+                            b, function (a) {
+                                e.logVar("Batch set's get response", a, !1); if (HoneywellBarcodeReaderUtils.hasProperty(a, "result", !0) && HoneywellBarcodeReaderUtils.hasProperty(a.result, "values", !0)) for (var b = 0, d = f.length; b < d; b++) {
+                                    var g = f[b], h = { method: "setBuffered" }; h.family = g.family; h.key = g.key; h.option = g.option; HoneywellBarcodeReaderUtils.hasProperty(a.result.values, g.command, !0) ? a.result.values[g.command] === g.value ? (h.status = 0, h.message = HoneywellBarcodeReaderUtils.MSG_OPERATION_COMPLETED) : (h.status = HoneywellBarcodeReaderErrors.INVALID_SETTING_VALUE,
+                                        h.message = "Scanner rejects the setting value.") : (h.status = HoneywellBarcodeReaderErrors.INVALID_PARAMETER, h.message = "Invalid scanner property: " + g.command); k.push(h)
+                                } else HoneywellBarcodeReaderUtils.hasJsonRpcError(a) ? (h = { method: "setBuffered", family: null, key: null, option: null }, h.status = a.error.code, h.message = a.error.message) : (h = { method: "setBuffered", family: null, key: null, option: null }, h.status = HoneywellBarcodeReaderErrors.JSON_PARSE_ERROR, h.message = "JSON-RPC parsing error in response."), k.push(h); c()
+                            });
+                        else { if (HoneywellBarcodeReaderUtils.hasJsonRpcError(b)) { var d = { method: "setBuffered", family: null, key: null, option: null }; d.status = b.error.code; d.message = b.error.message } else d = { method: "setBuffered", family: null, key: null, option: null }, d.status = HoneywellBarcodeReaderErrors.JSON_PARSE_ERROR, d.message = "JSON-RPC parsing error in response."; k.push(d); c() }
+                    })
+                } else c()
             }
         }, enableTrigger: function (a, c) {
             if (this.verifyActiveConnection(c) && HoneywellBarcodeReaderUtils.stdParamCheck(a, "enabled", "boolean", c)) {

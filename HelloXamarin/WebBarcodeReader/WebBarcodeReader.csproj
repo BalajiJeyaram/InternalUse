@@ -6,20 +6,22 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B734E7D3-45F8-49BC-97F4-76C11811EB2C}</ProjectGuid>
+    <ProjectGuid>{FC21517E-7C92-45EB-A436-982FB2B951FF}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BarcodeReader</RootNamespace>
-    <AssemblyName>BarcodeReader</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <RootNamespace>WebBarcodeReader</RootNamespace>
+    <AssemblyName>WebBarcodeReader</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44311</IISExpressSSLPort>
+    <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
@@ -39,14 +42,37 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.html" />
+    <Content Include="js\BarcodeReader\BarcodeReader-Ajax.js" />
+    <Content Include="js\BarcodeReader\BarcodeReader-Swift-Win.js" />
+    <Content Include="js\BarcodeReader\BarcodeReader-SwiftSettings.js" />
+    <Content Include="js\BarcodeReader\BarcodeReader-WinRingSettings.js" />
+    <Content Include="js\BarcodeReader\BarcodeReader.js" />
+    <Content Include="js\Printer\Printer.js" />
+    <Content Include="js\Printer\printer_profiles.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\BarcodeReader20210317171603 - Web Deploy.pubxml" />
@@ -57,22 +83,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="TestJs\Testjs1\BarcodeReader.html" />
-    <Content Include="js\BarcodeReader\BarcodeReader-Ajax.js" />
-    <Content Include="js\BarcodeReader\BarcodeReader-Swift-Win.js" />
-    <Content Include="js\BarcodeReader\BarcodeReader-SwiftSettings.js" />
-    <Content Include="js\BarcodeReader\BarcodeReader-WinRingSettings.js" />
-    <Content Include="js\BarcodeReader\BarcodeReader.js" />
-    <Content Include="js\Printer\Printer.js" />
-    <Content Include="js\Printer\printer_profiles.js" />
-    <Content Include="Web.config" />
-    <Content Include="js\BarcodeReader\_default.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -86,9 +96,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>63469</DevelopmentServerPort>
+          <DevelopmentServerPort>51534</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44311/</IISUrl>
+          <IISUrl>http://localhost:51534/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

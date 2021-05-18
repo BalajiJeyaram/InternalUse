@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="js/BarcodeReader/BarcodeReader.js"></script>
+</head>
+<body>
+    <button onclick="CenterDecode()" >Center Decode</button>
+
+</body>
+</html>
+<script>
+
+    
+
+    function CenterDecode() {
+        alert('CenterDecode clicked');
+        var defaultScanner = new BarcodeReader(null, onBarcodeReaderComplete);
+
+        function onBarcodeReaderComplete(result) {
+            if (result.status == 0) {
+                defaultScanner.set("DecodeSecurity", "", "CenterDecoding",
+                    "true", onSetComplete);
+            }
+            else {
+                defaultScanner = null;
+                alert('Failed to create BarcodeReader, ' + result.message);
+            }
+        }
+
+        function onSetComplete(result) {
+            if (result.status != 0) // Set failed.
+            {
+                alert("Failed to set Family: " + result.family + " Key: " +
+                    result.key + " Option: " + result.option +
+                    ", error: " + result.message);
+            }
+        }
+
+    }
+</script>

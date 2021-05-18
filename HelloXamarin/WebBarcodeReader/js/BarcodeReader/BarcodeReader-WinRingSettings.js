@@ -330,6 +330,5 @@ var HowneywellBarcodeReaderRingSettings =
         "valueType" : "map",
         "valueMap" : [{"true" : 1}, {"false" : 0}],
         "command" : "T39ENA"
-    }
-        
+    },
 ];

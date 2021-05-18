@@ -38,14 +38,12 @@ Notes:
             padding: 1px 0px 1px 0px;
         }
     </style>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="../../js/BarcodeReader/BarcodeReader.js"></script>
+    <script type="text/javascript" src="BarcodeReader.js"></script>
 
 
     <script type="text/javascript">
-        var readers, barcodeReader, readerAutoClosed = false;
-        var defaultScanner;
+        var readers, defaultscanner, barcodeReader, readerAutoClosed = false;
         var logMsgElement, readerSelect, openButton, closeButton, activateButton, deactivateButton, addEventListenerButton, enableTriggerButton, clearLogButton;
         var barcodeDataText, symbTypeText, readTimeText;
         var hidden, visibilityChange;
@@ -65,8 +63,8 @@ Notes:
             readTimeText = document.getElementById("ReadTime");
 
             // Create a BarcodeReaders object to query the list of available readers later.
-            readers = new BarcodeReaders(onBarcodeReaderComplete);
-            defaultScanner = new BarcodeReader(null, onBarcodeReaderComplete);
+            readers = new BarcodeReaders(onBarcodeReadersComplete);
+            defaultscanner = new BarcodeReader(null, onBarcodeReadersComplete);
 
             // Check whether the browser supports detection of the web page visibility.
             if (typeof document.webkitHidden !== "undefined") { // Android 4.4 Chrome
@@ -86,12 +84,10 @@ Notes:
         }
 
         function onBarcodeReadersComplete(result) {
-            if (result.status == 0) {
-                //added on 05/06/2021
-
-                barcodeReader.set("DecodeSecurity", "", "CenterDecoding", "true", onSetComplete)
-                //defaultScanner.set("DecodeSecurity", "", "CenterDecoding", "true", onBarcodeReaderComplete);
+            if (result.status === 0) {
                 readers.getAvailableBarcodeReaders(onGetAvailableBarcodeReadersComplete);
+                defaultscanner.set("DecodeSecurity", "", "CenterDecoding", "true", onSetComplete);
+
             }
             else {
                 logMsgElement.innerHTML = "<p style=\"color:red\">Failed to create BarcodeReaders, status: " +
@@ -104,33 +100,31 @@ Notes:
             {
                 alert("Failed to set Family: " + result.family + " Key: " +
                     result.key + " Option: " + result.option +
-                    ", error: " + result.message);
+                    ", error: " + result.message + " from onSetComplete" );
+
+                logMsgElement.innerHTML = "<p style=\"color:red\">Failed to create BarcodeReaders, status: " +
+                    result.status + ", message: " + result.message + " Key:" + result.key + " Option:" + result.option + " error:" + result.message + " from OnSetComplete</p>";
+
+
             }
         }
 
         // After BarcodeReader object is created we can configure our symbologies and add our event listener
-        function onBarcodeReaderCompleteNouse(result) {
+        function onBarcodeReaderComplete(result) {
             if (result.status === 0) {
                 // BarcodeReader object was successfully created
                 logMsgElement.innerHTML = "BarcodeReader object successfully created";
                 updateUI(true, true);
 
-                //barcodeReader.set("");
                 // Configure the symbologies needed. Buffer the settings and commit them at once.
-               /* barcodeReader.setBuffered("Symbology", "Code39", "Enable", "true", onSetBufferedComplete);
+                barcodeReader.setBuffered("Symbology", "Code39", "FullAsciiEnabled", "true", onSetBufferedComplete);
                 barcodeReader.setBuffered("Symbology", "Code128", "EnableCode128", "true", onSetBufferedComplete);
                 barcodeReader.setBuffered("Symbology", "EANUPC", "EnableEAN13", "true", onSetBufferedComplete);
-                barcodeReader.setBuffered("Symbology", "QRCode", "Enable", "true", onSetBufferedComplete);
-                barcodeReader.setBuffered("BarcodeReader", "Settings", "Window_Mode", "true", onSetBufferedComplete);
-                barcodeReader.setBuffered("BarcodeReader", "Settings", "Window_Left", "48", onSetBufferedComplete);
-                barcodeReader.setBuffered("BarcodeReader", "Settings", "Window_Top", "48", onSetBufferedComplete);
-                barcodeReader.setBuffered("BarcodeReader", "Settings", "Window_Right", "52", onSetBufferedComplete);
-                barcodeReader.setBuffered("BarcodeReader", "Settings", "Window_Bottom", "52", onSetBufferedComplete);
-                //barcodeReader.setBuffered("BarcodeReader", "Settings", "CenterDecode", onSetBufferedComplete);
-                barcodeReader.commitBuffer(onCommitComplete); */
+                barcodeReader.setBuffered("Symbology", "QRCode", "MaxLen", "true", onSetBufferedComplete);
+                //barcodeReader.setBuffered("DecodeSecurity", "1234", "CenterDecoding", "true", onSetBufferedComplete);
 
-                //barcodeReader.getlicenseinformation(onLicenseInfoComplete);
-             
+                barcodeReader.commitBuffer(onCommitComplete);
+
                 // Add an event handler to receive barcode data
                 addRemoveBarcodeListener(true);
                 // Add an event handler for the window's beforeunload event
@@ -144,36 +138,6 @@ Notes:
             }
         }
 
-        function onLicenseInfoComplete(lic) {
-            if (lic.status === 0) {
-                alert('Inside LicenseInforComplete');
-                // Display the license information.
-                document.getElementById("licInfoElement").innerHTML += "<br>License status: " + lic.licenseStatus;
-                if (typeof (lic.expirationDate) != 'undefined') {
-                    document.getElementById("licInfoElement").innerHTML += "<br>Expiration: " + lic.expirationDate;
-                }
-                if (typeof (lic.daysToExpiration) != 'undefined') {
-                    document.getElementById("licInfoElement").innerHTML += "<br>Days to Expiration: " + lic.daysToExpiration;
-                }
-                document.getElementById("licInfoElement").innerHTML += "<br>Feature: " + lic.feature;
-                document.getElementById("licInfoElement").innerHTML += "<br>Version: " + lic.version;
-                document.getElementById("licInfoElement").innerHTML += "<br>Activation Code: " + lic.activationCode;
-                document.getElementById("licInfoElement").innerHTML += "<br>Activation Date: " + lic.activationDate;
-                document.getElementById("licInfoElement").innerHTML += "<br>Demo: " + lic.demo;
-                document.getElementById("licInfoElement").innerHTML += "<br>Expired: " + lic.expired;
-                if (typeof (lic.customer) != 'undefined') {
-                    document.getElementById("licInfoElement").innerHTML += "<br>Customer: " + lic.customer;
-                }
-                if (typeof (lic.customerInfo) != 'undefined') {
-                    document.getElementById("licInfoElement").innerHTML += "<br>Customer Info: " + lic.customerInfo;
-                }
-            }
-            else {
-                document.getElementById("licInfoElement").innerHTML += "getLicenseInfo failed, status: " +
-                    lic.status + ", message: " + lic.message;
-            }
-        }
-
         // Verify the symbology configuration
         function onSetBufferedComplete(result) {
             if (result.status !== 0) {
@@ -181,6 +145,8 @@ Notes:
                     result.status + ", message: " + result.message + "</p>";
                 logMsgElement.innerHTML += "<p>Family=" + result.family + " Key=" + result.key +
                     " Option=" + result.option + "</p>";
+
+                alert("from onSetBufferedComplete");
             }
         }
 
@@ -201,17 +167,9 @@ Notes:
             }
         }
 
-        // Handle barcode data when available //
+        // Handle barcode data when available
         function onBarcodeDataReady(data, type, time) {
-
-            if (type == 'DATAMATRIX') {
-                var sample = data;
-                sample = sample.substring(0,29) +'~'+ sample.substring(0,30) +'~' + sample.substring(31);
-                barcodeDataText.value = sample.substring(7); 
-            }
-            else
-                barcodeDataText.value = data;
-
+            barcodeDataText.value = data;
             symbTypeText.value = type;
             readTimeText.value = time;
         }
@@ -257,7 +215,7 @@ Notes:
 
         function openBarcodeReader(scannerName) {
             if (!barcodeReader) {
-                barcodeReader = new BarcodeReader(scannerName, onBarcodeReadersComplete);
+                barcodeReader = new BarcodeReader(scannerName, onBarcodeReaderComplete);
             }
         }
 
@@ -279,6 +237,9 @@ Notes:
             }
         }
 
+
+
+
         function openButtonClicked() {
             var scannerName = readerSelect.options[readerSelect.selectedIndex].value;
             if (scannerName != "None") {
@@ -290,7 +251,6 @@ Notes:
         }
 
         function closeButtonClicked() {
-            
             closeBarcodeReader(false);
         }
 
@@ -325,12 +285,6 @@ Notes:
             // and be ready to decode. This feature is often referred
             // to as starting the software trigger.
             barcodeReader.activate(true, onActivateComplete);
-        }
-
-        function getlicenseinformation()
-        {
-            alert('inside getlicenseinformation');
-
         }
 
         function deactivateBarcodeReader() {
@@ -402,121 +356,27 @@ Notes:
     </script>
 </head>
 <body onload="setup();">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <h3>BarcodeReader API Demo</h3>
     <label for="readerSelect">Readers:</label>
     <select id="readerSelect">
         <option value="None">Select a reader</option>
     </select>
     <br>
-    <!--<input type="button" value="Open Reader" id="openButton" onclick="openButtonClicked()" />
-        <input type="button" value="Close Reader" id="closeButton" onclick="closeButtonClicked()" disabled /><br>
-        <input type="button" value="Activate Reader" id="activateButton" onclick="activateButtonClicked()" disabled />
-        <input type="button" value="Deactivate Reader" id="deactivateButton" onclick="deactivateButtonClicked()" disabled />
-        <input type="button" value="Remove Listener" id="addEventListenerButton" onclick="addEventListenerButtonClicked()" disabled />
-        <input type="button" value="Disable Trigger" id="enableTriggerButton" onclick="enableTriggerButtonClicked()" disabled />
-        <input type="button" value="Clear log" id="clearLogButton" onclick="clearLogButtonClicked()" />-->
+    <input type="button" value="Open Reader" id="openButton" onclick="openButtonClicked()" />
+    <input type="button" value="Close Reader" id="closeButton" onclick="closeButtonClicked()" disabled /><br>
+    <input type="button" value="Activate Reader" id="activateButton" onclick="activateButtonClicked()" disabled />
+    <input type="button" value="Deactivate Reader" id="deactivateButton" onclick="deactivateButtonClicked()" disabled />
+    <input type="button" value="Remove Listener" id="addEventListenerButton" onclick="addEventListenerButtonClicked()" disabled />
+    <input type="button" value="Disable Trigger" id="enableTriggerButton" onclick="enableTriggerButtonClicked()" disabled />
+    <input type="button" value="Clear log" id="clearLogButton" onclick="clearLogButtonClicked()" />
     <div>
         <b>Barcode Data Read</b><br>
-        <!--<label for="BarcodeData">Data:</label><input type="text" id="BarcodeData" size=20 /><br>
+        <label for="BarcodeData">Data:</label><input type="text" id="BarcodeData" size=20 /><br>
         <label for="SymbType">Symbology:</label><input type="text" id="SymbType" size=16 /><br>
-            <label for="ReadTime">Time:</label><input type="text" id="ReadTime" size=24 /><br>-->
-
-    </div>
-    <div>
-        <div>
-            <div class="col-sm-2">
-                <input type="button" value="Open Reader" id="openButton" onclick="openButtonClicked()" />
-            </div>
-            <div class="col-sm-2">
-                <input type="button" value="Close Reader" id="closeButton" onclick="closeButtonClicked()" disabled />
-            </div>
-            <div class="col-sm-2">
-                <input type="button" value="Activate Reader" id="activateButton" onclick="activateButtonClicked()" disabled />
-            </div>
-            <div class="col-sm-2">
-                <input type="button" value="Deactivate Reader" id="deactivateButton" onclick="deactivateButtonClicked()" disabled />
-            </div>
-            <div class="col-sm-2">
-                <input type="button" value="Remove Listener" id="addEventListenerButton" onclick="addEventListenerButtonClicked()" disabled />
-            </div>
-            <div class="col-sm-2">
-                <input type="button" value="Disable Trigger" id="enableTriggerButton" onclick="enableTriggerButtonClicked()" disabled />
-            </div>
-            <div class="col-sm-2">
-                <input type="button" value="Clear log" id="clearLogButton" onclick="clearLogButtonClicked()" />
-            </div>
-            <div class="col-sm-2">
-                <input type="button" value="License Info" id="LicenseInfo" onclick="getlicenseinformation()" />
-            </div>
-        </div>
-        <form>
-            <div class="form-group-row">
-                <div class="col-sm-5">
-                    <label for="colFormLabelSm" class="col-sm-5 col-form-label col-form-label-sm">Data</label>
-                </div>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control form-control-sm" id="BarcodeData" placeholder="col-form-label-sm">
-                </div>
-            </div>
-            <div class="form-group-row">
-                <div class="col-sm-5">
-                    <label for="colFormLabelSm" class="col-sm-5 col-form-label col-form-label-sm">Symbology</label>
-                </div>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control form-control-sm" id="SymbType" placeholder="col-form-label-sm">
-                </div>
-            </div>
-            <div class="form-group-row">
-                <div class="col-sm-5">
-                    <label for="colFormLabelSm" class="col-sm-5 col-form-label col-form-label-sm">Time</label>
-                </div>
-                <div class="col-sm-7">
-                    <input type="text" class="form-control form-control-sm" id="ReadTime" placeholder="col-form-label-sm">
-                </div>
-            </div>
-        </form>
+        <label for="ReadTime">Time:</label><input type="text" id="ReadTime" size=24 /><br>
     </div>
     <div><b>Log:</b></div>
     <div id="logMsg">
-    </div> <br>
-    <div><b>License Info:</b></div>
-    <div id="licInfoElement">
-
-    </div>
-    <div>
-        <table class="table table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 </body>
 </html>
