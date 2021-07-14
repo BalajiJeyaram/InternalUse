@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EWRTemplate", "EWRTemplate\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBarcodeReader", "WebBarcodeReader\WebBarcodeReader.csproj", "{FC21517E-7C92-45EB-A436-982FB2B951FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HONUtility", "HONUtilities\HONUtility.csproj", "{09B70C64-C757-4EE6-A7C0-57CDE62FC414}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -152,6 +154,22 @@ Global
 		{FC21517E-7C92-45EB-A436-982FB2B951FF}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{FC21517E-7C92-45EB-A436-982FB2B951FF}.Release|x86.ActiveCfg = Release|Any CPU
 		{FC21517E-7C92-45EB-A436-982FB2B951FF}.Release|x86.Build.0 = Release|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Debug|x86.Build.0 = Debug|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Release|iPhone.Build.0 = Release|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Release|x86.ActiveCfg = Release|Any CPU
+		{09B70C64-C757-4EE6-A7C0-57CDE62FC414}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
